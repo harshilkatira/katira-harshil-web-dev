@@ -1,6 +1,10 @@
 body {
     padding-top: 60px;
+    padding-bottom: 50px;
 }
 .input-margin {
     margin-bottom: 8px;
+}
+.nav-button {
+    margin-right: 5px;
 }
