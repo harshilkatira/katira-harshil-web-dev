@@ -5,8 +5,13 @@ body {
 .input-margin {
     margin-bottom: 8px;
 }
-.nav-top-btn {
+.nav-check-btn {
     color: black;
+    margin-right: 5px;
+}
+.nav-back-btn {
+    color: black;
+    margin-right: 15px;
 }
 .nav-btn {
     margin-right: 5px;
