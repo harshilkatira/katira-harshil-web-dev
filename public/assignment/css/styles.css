@@ -5,6 +5,15 @@ body {
 .input-margin {
     margin-bottom: 8px;
 }
-.nav-button {
+.nav-top-btn {
+    color: black;
+}
+.nav-btn {
     margin-right: 5px;
+}
+.list-btn {
+    padding: 0px;
+}
+.website-list-padding {
+    padding: 8px;
 }
