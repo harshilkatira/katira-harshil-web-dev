@@ -5,8 +5,8 @@ body {
 a:hover{
     text-decoration: none;
 }
-.input-margin {
-    margin-bottom: 8px;
+input.form-control,textarea {
+    margin-bottom: 5px;
 }
 .nav-check-btn {
     color: black;
