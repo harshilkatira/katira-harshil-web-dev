@@ -8,13 +8,16 @@ body {
 .nav-check-btn {
     color: black;
     margin-right: 5px;
+    top: 0;
 }
 .nav-back-btn {
     color: black;
     margin-right: 15px;
+    top: 0;
 }
 .nav-btn {
     margin-right: 5px;
+    top: 0;
 }
 .list-btn {
     padding: 0;
