@@ -42,3 +42,6 @@ span.glyphicon {
     padding-right: 3px;
     padding-left: 4px;
 }
+p {
+    text-align: justify;
+}
