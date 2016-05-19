@@ -2,6 +2,9 @@ body {
     padding-top: 60px;
     padding-bottom: 50px;
 }
+a {
+    font-weight: bold;
+}
 a:hover{
     text-decoration: none;
 }
@@ -22,5 +25,5 @@ input.form-control,textarea {
     padding: 0;
 }
 .data-list-padding {
-    padding: 8px;
+    padding: 10px;
 }

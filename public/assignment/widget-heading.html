@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <title>Widget List</title>
+        <title>Widget Edit</title>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
         <link href="css/style.css" rel="stylesheet">
     </head>
@@ -11,40 +11,45 @@
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-text pull-left">
-                    <a href="page-list.html"
+                    <a href="widget-choose.html"
                        class="navbar-link">
                         <span class="glyphicon glyphicon-chevron-left nav-back-btn"></span>
                     </a>
                 </div>
                 <div class="navbar-header pull-left">
                     <a class="navbar-brand"
-                       href="#">Widgets</a>
+                       href="#">Widget Edit</a>
                 </div>
                 <div class="navbar-text pull-right">
-                    <a href="widget-choose.html"
+                    <a href="widget-list.html"
                        class="navbar-link">
-                        <span class="glyphicon glyphicon-plus nav-check-btn"></span>
+                        <span class="glyphicon glyphicon-ok nav-check-btn"></span>
                     </a>
                 </div>
             </div>
         </nav>
         <div class="container-fluid">
-
+            <label for="name">Name</label>
+            <input id="name" type="text"
+                   placeholder="name"
+                   class="form-control">
+            <label for="text">Text</label>
+            <input id="text"
+                   type="text"
+                   placeholder="text"
+                   class="form-control"
+                   value="US Senate Reaches Compromise on Emergency">
+            <label for="size">Size</label>
+            <input id="size"
+                   type="text"
+                   placeholder="size"
+                   class="form-control"
+                   value="3">
+            <a class="btn btn-danger btn-block"
+               href="widget-list.html">Delete</a>
         </div>
         <nav class="navbar navbar-default navbar-fixed-bottom">
             <div class="container-fluid">
-                <div class="navbar-text pull-left">
-                    <a class="navbar-link"
-                       href="#">
-                        <span class="glyphicon glyphicon-play nav-back-btn"></span>
-                    </a>
-                </div>
-                <div class="navbar-text pull-left">
-                    <a class="navbar-link"
-                       href="#">
-                        <span class="glyphicon glyphicon-eye-open nav-back-btn"></span>
-                    </a>
-                </div>
                 <div class="navbar-text pull-right">
                     <a class="navbar-link"
                        href="profile.html">
