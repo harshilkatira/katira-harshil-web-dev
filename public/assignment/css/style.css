@@ -33,3 +33,12 @@ span.glyphicon {
 .header {
     margin: 0;
 }
+.widget-btn {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    z-index: 2;
+    background: white;
+    padding-right: 3px;
+    padding-left: 4px;
+}
