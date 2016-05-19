@@ -14,16 +14,22 @@ input.form-control,textarea {
 .navbar-brand {
     font-weight: bold;
 }
-.nav-check-btn {
+.black-btn {
     color: black;
 }
 .nav-back-btn {
     color: black;
     margin-right: 10px;
 }
+span.glyphicon {
+    top: 0;
+}
 .list-btn {
     padding: 0;
 }
 .data-list-padding {
     padding: 10px;
+}
+.header {
+    margin: 0;
 }
