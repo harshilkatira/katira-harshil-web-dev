@@ -5,25 +5,25 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="viewport" content="initial-scale=1.25, user-scalable=no" />
-        <title>Edit Website</title>
+        <title>Widget Edit</title>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-        <link href="css/style.css" rel="stylesheet">
+        <link href="/assignment/css/style.css" rel="stylesheet">
     </head>
     <body>
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-text pull-left">
-                    <a href="website-list.html"
+                    <a href="widget-list.html"
                        class="navbar-link">
                         <span class="glyphicon glyphicon-chevron-left nav-back-btn"></span>
                     </a>
                 </div>
                 <div class="navbar-header pull-left">
                     <a class="navbar-brand"
-                       href="#">Edit Website</a>
+                       href="#">Widget Edit</a>
                 </div>
                 <div class="navbar-text pull-right">
-                    <a href="website-list.html"
+                    <a href="widget-list.html"
                        class="navbar-link">
                         <span class="glyphicon glyphicon-ok black-btn"></span>
                     </a>
@@ -31,32 +31,43 @@
             </div>
         </nav>
         <div class="container-fluid">
-            <label for="name">Application Name</label>
-            <input id="name"
+            <label for="name">Name</label>
+            <input id="name" type="text"
+                   placeholder="name"
+                   class="form-control">
+            <label for="text">Text</label>
+            <input id="text"
                    type="text"
-                   placeholder="Name"
+                   placeholder="text"
+                   class="form-control">
+            <label for="url">URL</label>
+            <input id="url"
+                   type="text"
+                   placeholder="url"
                    class="form-control"
-                   value="Blogger">
-            <label for="desc">Description</label>
-            <textarea id="desc"
-                      rows="4"
-                      class="form-control"
-                      placeholder="Description">Blogger is a blog-publishing service that allows multi-user blogs with time-stamped entries. It was developed by Pyra Labs, which was bought by Google in 2003. Generally, the blogs are hosted by Google</textarea>
+                   value="https://youtu.be/F059-fa1O_U">
+            <label for="width">Width</label>
+            <input id="width"
+                   type="text"
+                   placeholder="width%"
+                   class="form-control"
+                   value="100%">
+            <label for="upload">Upload</label>
+            <input id="upload"
+                   type="file"
+                   class="form-control">
+            <a class="btn btn-primary btn-block"
+               href="#"
+               role="button">Upload Image</a>
             <a class="btn btn-danger btn-block"
-               href="website-list.html"
+               href="widget-list.html"
                role="button">Delete</a>
         </div>
         <nav class="navbar navbar-default navbar-fixed-bottom">
             <div class="container-fluid">
-                <div class="navbar-text pull-left">
-                    <a class="navbar-link"
-                       href="#">
-                        <span class="glyphicon glyphicon-share-alt"></span>
-                    </a>
-                </div>
                 <div class="navbar-text pull-right">
                     <a class="navbar-link"
-                       href="profile.html">
+                       href="/assignment/user/profile.html">
                         <span class="glyphicon glyphicon-user text-primary"></span>
                     </a>
                 </div>

@@ -5,25 +5,25 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="viewport" content="initial-scale=1.25, user-scalable=no" />
-        <title>New Page</title>
+        <title>Edit Website</title>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-        <link href="css/style.css" rel="stylesheet">
+        <link href="/assignment/css/style.css" rel="stylesheet">
     </head>
     <body>
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-text pull-left">
-                    <a href="page-list.html"
+                    <a href="website-list.html"
                        class="navbar-link">
                         <span class="glyphicon glyphicon-chevron-left nav-back-btn"></span>
                     </a>
                 </div>
                 <div class="navbar-header pull-left">
                     <a class="navbar-brand"
-                       href="#">New Page</a>
+                       href="#">Edit Website</a>
                 </div>
                 <div class="navbar-text pull-right">
-                    <a href="page-list.html"
+                    <a href="website-list.html"
                        class="navbar-link">
                         <span class="glyphicon glyphicon-ok black-btn"></span>
                     </a>
@@ -31,22 +31,32 @@
             </div>
         </nav>
         <div class="container-fluid">
-            <label for="name">Name</label>
+            <label for="name">Application Name</label>
             <input id="name"
                    type="text"
-                   placeholder="Page Name"
-                   class="form-control">
-            <label for="title">Title</label>
-            <input id="title"
-                   type="text"
-                   placeholder="Page Title"
-                   class="form-control">
+                   placeholder="Name"
+                   class="form-control"
+                   value="Blogger">
+            <label for="desc">Description</label>
+            <textarea id="desc"
+                      rows="4"
+                      class="form-control"
+                      placeholder="Description">Blogger is a blog-publishing service that allows multi-user blogs with time-stamped entries. It was developed by Pyra Labs, which was bought by Google in 2003. Generally, the blogs are hosted by Google</textarea>
+            <a class="btn btn-danger btn-block"
+               href="website-list.html"
+               role="button">Delete</a>
         </div>
         <nav class="navbar navbar-default navbar-fixed-bottom">
             <div class="container-fluid">
+                <div class="navbar-text pull-left">
+                    <a class="navbar-link"
+                       href="#">
+                        <span class="glyphicon glyphicon-share-alt"></span>
+                    </a>
+                </div>
                 <div class="navbar-text pull-right">
                     <a class="navbar-link"
-                       href="profile.html">
+                       href="/assignment/user/profile.html">
                         <span class="glyphicon glyphicon-user text-primary"></span>
                     </a>
                 </div>
