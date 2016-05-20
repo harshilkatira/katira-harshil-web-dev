@@ -30,18 +30,12 @@ span.glyphicon {
 .data-list-padding {
     padding: 10px;
 }
-.header {
-    margin: 0;
-}
-.widget-btn {
+.widget-tool {
     position: absolute;
-    top: 0;
     right: 15px;
-    z-index: 2;
-    background: white;
-    padding-right: 3px;
-    padding-left: 4px;
-}
-p {
-    text-align: justify;
+    background-color: white;
+    padding-left: 5px;
+    padding-bottom: 2px;
+    border-bottom-left-radius: 8px;
+    opacity: 0.8;
 }
