@@ -20,7 +20,7 @@
                 </div>
                 <div class="navbar-header pull-left">
                     <a class="navbar-brand"
-                       href="#">Widget Edit</a>
+                       href="">Widget Edit</a>
                 </div>
                 <div class="navbar-text pull-right">
                     <a href="widget-list.html"
@@ -43,11 +43,14 @@
                        class="form-control"
                        value="US Senate Reaches Compromise on Emergency">
                 <label for="size">Size</label>
-                <input id="size"
-                       type="text"
-                       placeholder="Size"
-                       class="form-control"
-                       value="3">
+                <select id="size" class="form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3" selected="true">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
                 <a class="btn btn-danger btn-block"
                    href="widget-list.html"
                    role="button">Delete</a>

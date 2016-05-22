@@ -8,7 +8,7 @@ a {
 a:hover{
     text-decoration: none;
 }
-input.form-control,textarea {
+input.form-control,textarea,select {
     margin-bottom: 5px;
 }
 .navbar-brand {
