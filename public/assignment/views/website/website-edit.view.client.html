@@ -1,68 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <meta name="viewport" content="initial-scale=1.25, user-scalable=no" />
-        <title>Edit Website</title>
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-        <link href="/assignment/css/style.css" rel="stylesheet">
-    </head>
-    <body>
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container-fluid">
-                <div class="navbar-text pull-left">
-                    <a href="website-list.view.client.html"
-                       class="navbar-link">
-                        <span class="glyphicon glyphicon-chevron-left nav-back-btn"></span>
-                    </a>
-                </div>
-                <div class="navbar-header pull-left">
-                    <a class="navbar-brand"
-                       href="">Edit Website</a>
-                </div>
-                <div class="navbar-text pull-right">
-                    <a href="website-list.view.client.html"
-                       class="navbar-link">
-                        <span class="glyphicon glyphicon-ok black-btn"></span>
-                    </a>
-                </div>
-            </div>
-        </nav>
-        <div class="container-fluid">
-            <form>
-                <label for="name">Website Name</label>
-                <input id="name"
-                       type="text"
-                       placeholder="Name"
-                       class="form-control"
-                       value="Blogger">
-                <label for="desc">Description</label>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a href="website-list.view.client.html"
+               class="navbar-link">
+                <span class="glyphicon glyphicon-chevron-left nav-back-btn"></span>
+            </a>
+        </div>
+        <div class="navbar-header pull-left">
+            <a class="navbar-brand"
+               href="">Edit Website</a>
+        </div>
+        <div class="navbar-text pull-right">
+            <a href="website-list.view.client.html"
+               class="navbar-link">
+                <span class="glyphicon glyphicon-ok black-btn"></span>
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <form>
+        <label for="name">Website Name</label>
+        <input id="name"
+               type="text"
+               placeholder="Name"
+               class="form-control"
+               value="Blogger">
+        <label for="desc">Description</label>
                 <textarea id="desc"
                           rows="4"
                           class="form-control"
                           placeholder="Description">Blogger is a blog-publishing service that allows multi-user blogs with time-stamped entries. It was developed by Pyra Labs, which was bought by Google in 2003. Generally, the blogs are hosted by Google</textarea>
-                <a class="btn btn-danger btn-block"
-                   href="website-list.view.client.html"
-                   role="button">Delete</a>
-            </form>
+        <a class="btn btn-danger btn-block"
+           href="website-list.view.client.html"
+           role="button">Delete</a>
+    </form>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a class="navbar-link"
+               href="">
+                <span class="glyphicon glyphicon-share-alt"></span>
+            </a>
         </div>
-        <nav class="navbar navbar-default navbar-fixed-bottom">
-            <div class="container-fluid">
-                <div class="navbar-text pull-left">
-                    <a class="navbar-link"
-                       href="">
-                        <span class="glyphicon glyphicon-share-alt"></span>
-                    </a>
-                </div>
-                <div class="navbar-text pull-right">
-                    <a class="navbar-link"
-                       href="/assignment/user/profile.html">
-                        <span class="glyphicon glyphicon-user text-primary"></span>
-                    </a>
-                </div>
-            </div>
-        </nav>
-    </body>
-</html>
+        <div class="navbar-text pull-right">
+            <a class="navbar-link"
+               href="/assignment/user/profile.html">
+                <span class="glyphicon glyphicon-user text-primary"></span>
+            </a>
+        </div>
+    </div>
+</nav>
