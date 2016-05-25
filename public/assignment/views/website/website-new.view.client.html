@@ -5,7 +5,7 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="viewport" content="initial-scale=1.25, user-scalable=no" />
-        <title>Widget Edit</title>
+        <title>New Website</title>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
         <link href="/assignment/css/style.css" rel="stylesheet">
     </head>
@@ -13,18 +13,17 @@
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-text pull-left">
-                    <a href="widget-list.html"
+                    <a href="website-list.view.client.html"
                        class="navbar-link">
                         <span class="glyphicon glyphicon-chevron-left nav-back-btn"></span>
                     </a>
                 </div>
                 <div class="navbar-header pull-left">
                     <a class="navbar-brand"
-                       href="">Widget Edit</a>
+                       href="">New Website</a>
                 </div>
                 <div class="navbar-text pull-right">
-                    <a href="widget-list.html"
-                       class="navbar-link">
+                    <a href="website-list.view.client.html" class="navbar-link">
                         <span class="glyphicon glyphicon-ok black-btn"></span>
                     </a>
                 </div>
@@ -33,36 +32,15 @@
         <div class="container-fluid">
             <form>
                 <label for="name">Name</label>
-                <input id="name" type="text"
+                <input id="name"
+                       type="text"
                        placeholder="Name"
                        class="form-control">
-                <label for="text">Text</label>
-                <input id="text"
-                       type="text"
-                       placeholder="Text"
-                       class="form-control">
-                <label for="url">URL</label>
-                <input id="url"
-                       type="text"
-                       placeholder="url"
-                       class="form-control"
-                       value="https://youtu.be/F059-fa1O_U">
-                <label for="width">Width</label>
-                <input id="width"
-                       type="text"
-                       placeholder="width%"
-                       class="form-control"
-                       value="100%">
-                <label for="upload">Upload</label>
-                <input id="upload"
-                       type="file"
-                       class="form-control">
-                <a class="btn btn-primary btn-block"
-                   href=""
-                   role="button">Upload Image</a>
-                <a class="btn btn-danger btn-block"
-                   href="widget-list.html"
-                   role="button">Delete</a>
+                <label for="desc">Description</label>
+                <textarea id="desc"
+                          rows="4"
+                          class="form-control"
+                          placeholder="Description"></textarea>
             </form>
         </div>
         <nav class="navbar navbar-default navbar-fixed-bottom">
