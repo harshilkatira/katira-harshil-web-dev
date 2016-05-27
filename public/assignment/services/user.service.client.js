@@ -22,20 +22,15 @@
         return api;
 
         function createUser(user) {
-            if(findUserByUsername(user.username)){
-                return null;
-            }
-            else{
-                var newUser = {
-                    _id: (new Date()).getTime()+"",
-                    username: user.username,
-                    password: user.password,
-                    firstName: user.firstName,
-                    lastName: user.lastName
-                };
-                users.push(newUser);
-                return newUser;
-            }
+            var newUser = {
+                _id: (new Date()).getTime()+"",
+                username: user.username,
+                password: user.password,
+                firstName: user.firstName,
+                lastName: user.lastName
+            };
+            users.push(newUser);
+            return newUser;
         }
         
         function findUserById(userId) {

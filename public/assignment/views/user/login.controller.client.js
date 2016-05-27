@@ -13,7 +13,7 @@
                 $location.url("/user/"+user._id);
             }
             else{
-                vm.error = "Unable to login!";
+                vm.error = "Unable to login.";
             }
         }
     }
