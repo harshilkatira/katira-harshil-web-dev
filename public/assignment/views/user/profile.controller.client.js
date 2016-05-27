@@ -3,19 +3,26 @@
         .module("WebAppMaker")
         .controller("ProfileController", ProfileController);
     
-    function ProfileController(UserService) {
+    function ProfileController($routeParams, UserService) {
         var vm = this;
+        vm.updateUser = updateUser;
 
-        vm.login = login;
+        var id = $routeParams.uid;
 
-        function login(username, password) {
-            var user = UserService.findUserByCredentials(username, password);
-            if(user){
-                $location.url("/user/"+user._id);
+        function init() {
+            vm.user = UserService.findUserById(id);
+        }
+        init();
+
+        function updateUser(newUser) {
+            var result = UserService.updateUser(id, newUser);
+            if(result){
+                vm.message = "Your profile was saved."
             }
             else{
-                vm.error = "User not found..";
+                vm.error = "Error saving profile."
             }
         }
+
     }
 })();

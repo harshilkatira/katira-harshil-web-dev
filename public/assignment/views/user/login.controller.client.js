@@ -5,7 +5,6 @@
     
     function LoginController($location, UserService) {
         var vm = this;
-
         vm.login = login;
 
         function login(username, password) {
@@ -14,7 +13,7 @@
                 $location.url("/user/"+user._id);
             }
             else{
-                vm.error = "User not found..";
+                vm.error = "Unable to login!";
             }
         }
     }
