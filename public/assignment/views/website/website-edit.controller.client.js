@@ -9,7 +9,7 @@
         vm.deleteWebsite = deleteWebsite;
         
         vm.userId = $routeParams.userId;
-        vm.websiteId = $routeParams.wid;
+        vm.websiteId = $routeParams.websiteId;
 
         function init() {
             vm.website = angular.copy(WebsiteService.findWebsiteById(vm.websiteId))

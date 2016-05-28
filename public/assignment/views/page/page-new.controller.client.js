@@ -8,7 +8,7 @@
         vm.createPage = createPage;
         
         vm.userId = $routeParams.userId;
-        vm.websiteId = $routeParams.wid;
+        vm.websiteId = $routeParams.websiteId;
 
         function createPage(name, title) {
             if(name) {

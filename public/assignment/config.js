@@ -35,37 +35,37 @@
                 controller: "NewWebsiteController",
                 controllerAs: "model"
             })
-            .when("/user/:userId/website/:wid", {
+            .when("/user/:userId/website/:websiteId", {
                 templateUrl: "views/website/website-edit.view.client.html",
                 controller: "EditWebsiteController",
                 controllerAs: "model"
             })
-            .when("/user/:userId/website/:wid/page", {
+            .when("/user/:userId/website/:websiteId/page", {
                 templateUrl: "views/page/page-list.view.client.html",
                 controller: "PageListController",
                 controllerAs: "model"
             })
-            .when("/user/:userId/website/:wid/page/new", {
+            .when("/user/:userId/website/:websiteId/page/new", {
                 templateUrl: "views/page/page-new.view.client.html",
                 controller: "NewPageController",
                 controllerAs: "model"
             })
-            .when("/user/:userId/website/:wid/page/:pid", {
+            .when("/user/:userId/website/:websiteId/page/:pid", {
                 templateUrl: "views/page/page-edit.view.client.html",
                 controller: "EditPageController",
                 controllerAs: "model"
             })
-            .when("/user/:userId/website/:wid/page/:pid/widget", {
+            .when("/user/:userId/website/:websiteId/page/:pid/widget", {
                 templateUrl: "views/widget/widget-list.view.client.html",
                 controller: "",
                 controllerAs: "model"
             })
-            .when("/user/:userId/website/:wid/page/:pid/widget/new", {
+            .when("/user/:userId/website/:websiteId/page/:pid/widget/new", {
                 templateUrl: "views/widget/widget-chooser.view.client.html",
                 controller: "",
                 controllerAs: "model"
             })
-            .when("/user/:userId/website/:wid/page/:pid/widget/:wgid", {
+            .when("/user/:userId/website/:websiteId/page/:pid/widget/:wgid", {
                 templateUrl: "views/widget/widget-edit.view.client.html",
                 controller: "",
                 controllerAs: "model"

@@ -9,7 +9,7 @@
         vm.deletePage = deletePage;
         
         vm.userId = $routeParams.userId;
-        vm.websiteId = $routeParams.wid;
+        vm.websiteId = $routeParams.websiteId;
         vm.pageId = $routeParams.pid;
 
         function init() {
