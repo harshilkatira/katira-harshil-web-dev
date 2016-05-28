@@ -7,17 +7,16 @@
         var vm = this;
         vm.updateUser = updateUser;
 
-        var id = $routeParams.uid;
+        var userId = $routeParams.uid;
 
         function init() {
-            vm.user = angular.copy(UserService.findUserById(id));
-            console.log(vm.user);
+            vm.user = angular.copy(UserService.findUserById(userId));
         }
         init();
 
         function updateUser(newUser) {
             // console.log("here");
-            var result = UserService.updateUser(id, newUser);
+            var result = UserService.updateUser(userId, newUser);
             if(result){
                 vm.message = "Your profile was saved."
             }
