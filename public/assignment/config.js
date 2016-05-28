@@ -37,7 +37,7 @@
             })
             .when("/user/:uid/website/:wid", {
                 templateUrl: "views/website/website-edit.view.client.html",
-                controller: "",
+                controller: "EditWebsiteController",
                 controllerAs: "model"
             })
             .when("/user/:uid/website/:wid/page", {

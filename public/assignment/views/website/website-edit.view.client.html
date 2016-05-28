@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-text pull-left">
-            <a href="website-list.view.client.html"
+            <a href="#/user/{{model.userId}}/website"
                class="navbar-link">
                 <span class="glyphicon glyphicon-chevron-left nav-back-btn"></span>
             </a>
@@ -11,7 +11,7 @@
                href="">Edit Website</a>
         </div>
         <div class="navbar-text pull-right">
-            <a href="website-list.view.client.html"
+            <a ng-click="model.updateWebsite(model.website)"
                class="navbar-link">
                 <span class="glyphicon glyphicon-ok black-btn"></span>
             </a>
@@ -19,20 +19,24 @@
     </div>
 </nav>
 <div class="container-fluid">
+    <div ng-if="model.error" class="alert alert-danger">
+        {{model.error}}
+    </div>
     <form>
         <label for="name">Website Name</label>
-        <input id="name"
+        <input ng-model="model.website.name"
+               id="name"
                type="text"
                placeholder="Name"
-               class="form-control"
-               value="Blogger">
+               class="form-control">
         <label for="desc">Description</label>
-                <textarea id="desc"
-                          rows="4"
-                          class="form-control"
-                          placeholder="Description">Blogger is a blog-publishing service that allows multi-user blogs with time-stamped entries. It was developed by Pyra Labs, which was bought by Google in 2003. Generally, the blogs are hosted by Google</textarea>
+        <textarea ng-model="model.website.description"
+                  id="desc"
+                  rows="4"
+                  class="form-control"
+                  placeholder="Description"></textarea>
         <a class="btn btn-danger btn-block"
-           href="website-list.view.client.html"
+           ng-click="model.deleteWebsite(model.websiteId)"
            role="button">Delete</a>
     </form>
 </div>
@@ -46,7 +50,7 @@
         </div>
         <div class="navbar-text pull-right">
             <a class="navbar-link"
-               href="/assignment/user/profile.html">
+               href="#/user/{{model.userId}}">
                 <span class="glyphicon glyphicon-user text-primary"></span>
             </a>
         </div>
