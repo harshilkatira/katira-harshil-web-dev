@@ -31,8 +31,8 @@
             }
         }
 
-        function deleteWebsite(websiteId){
-            var result = WebsiteService.deleteWebsite(websiteId);
+        function deleteWebsite(){
+            var result = WebsiteService.deleteWebsite(vm.websiteId);
             if(result) {
                 $location.url("/user/"+vm.userId+"/website");
             } else {
