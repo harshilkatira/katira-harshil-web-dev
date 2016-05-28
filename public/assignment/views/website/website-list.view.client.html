@@ -15,7 +15,7 @@
 <div class="container-fluid">
     <ul class="list-group">
         <li ng-repeat="website in model.websites" class="list-group-item">
-            <a href="/assignment/page/page-list.html">
+            <a href="#/user/{{website.developerId}}/website/{{website._id}}/page">
                 {{website.name}}
             </a>
             <span class="pull-right">
