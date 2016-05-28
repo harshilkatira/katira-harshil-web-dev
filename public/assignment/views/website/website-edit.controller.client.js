@@ -17,12 +17,17 @@
         init();
 
         function updateWebsite(newWebsite) {
-            var result = WebsiteService.updateWebsite(vm.websiteId, newWebsite);
-            if(result){
-                $location.url("/user/"+vm.userId+"/website");
+            if(newWebsite.name) {
+                var result = WebsiteService.updateWebsite(vm.websiteId, newWebsite);
+                if (result) {
+                    $location.url("/user/" + vm.userId + "/website");
+                }
+                else {
+                    vm.error = "Error updating website details."
+                }
             }
-            else{
-                vm.error = "Error updating website details."
+            else {
+                vm.error = "Website name cannot be empty."
             }
         }
 
