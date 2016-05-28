@@ -6,7 +6,7 @@
     function PageListController($routeParams, PageService) {
         var vm = this;
         
-        vm.userId = $routeParams.uid;
+        vm.userId = $routeParams.userId;
         vm.websiteId = $routeParams.wid;
 
         function init(){

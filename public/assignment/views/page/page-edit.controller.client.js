@@ -8,7 +8,7 @@
         vm.updatePage = updatePage;
         vm.deletePage = deletePage;
         
-        vm.userId = $routeParams.uid;
+        vm.userId = $routeParams.userId;
         vm.websiteId = $routeParams.wid;
         vm.pageId = $routeParams.pid;
 

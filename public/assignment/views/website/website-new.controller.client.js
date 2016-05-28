@@ -7,7 +7,7 @@
         var vm = this;
         vm.createWebsite = createWebsite;
         
-        vm.userId = $routeParams.uid;
+        vm.userId = $routeParams.userId;
 
         function createWebsite(name, desc) {
             if(name) {

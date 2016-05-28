@@ -8,7 +8,7 @@
         vm.updateWebsite = updateWebsite;
         vm.deleteWebsite = deleteWebsite;
         
-        vm.userId = $routeParams.uid;
+        vm.userId = $routeParams.userId;
         vm.websiteId = $routeParams.wid;
 
         function init() {

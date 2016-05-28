@@ -6,7 +6,7 @@
     function WebsiteListController($routeParams, WebsiteService) {
         var vm = this;
         
-        vm.userId = $routeParams.uid;
+        vm.userId = $routeParams.userId;
 
         function init(){
             vm.websites = angular.copy(WebsiteService.findWebsitesByUser(vm.userId));
