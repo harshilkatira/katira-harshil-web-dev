@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-text pull-left">
-            <a href="website-list.view.client.html"
+            <a href="#/user/{{model.userId}}/website"
                class="navbar-link">
                 <span class="glyphicon glyphicon-chevron-left nav-back-btn"></span>
             </a>
@@ -11,7 +11,7 @@
                href="">New Website</a>
         </div>
         <div class="navbar-text pull-right">
-            <a href="website-list.view.client.html" class="navbar-link">
+            <a ng-click="model.createWebsite(name,desc)" class="navbar-link">
                 <span class="glyphicon glyphicon-ok black-btn"></span>
             </a>
         </div>
@@ -20,22 +20,24 @@
 <div class="container-fluid">
     <form>
         <label for="name">Name</label>
-        <input id="name"
+        <input ng-model="name"
+               id="name"
                type="text"
                placeholder="Name"
                class="form-control">
         <label for="desc">Description</label>
-                <textarea id="desc"
-                          rows="4"
-                          class="form-control"
-                          placeholder="Description"></textarea>
+        <textarea ng-model="desc"
+                  id="desc"
+                  rows="4"
+                  class="form-control"
+                  placeholder="Description"></textarea>
     </form>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
             <a class="navbar-link"
-               href="/assignment/user/profile.html">
+               href="#/user/{{model.userId}}">
                 <span class="glyphicon glyphicon-user text-primary"></span>
             </a>
         </div>
