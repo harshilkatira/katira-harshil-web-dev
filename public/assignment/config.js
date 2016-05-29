@@ -50,22 +50,22 @@
                 controller: "NewPageController",
                 controllerAs: "model"
             })
-            .when("/user/:userId/website/:websiteId/page/:pid", {
+            .when("/user/:userId/website/:websiteId/page/:pageId", {
                 templateUrl: "views/page/page-edit.view.client.html",
                 controller: "EditPageController",
                 controllerAs: "model"
             })
-            .when("/user/:userId/website/:websiteId/page/:pid/widget", {
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget", {
                 templateUrl: "views/widget/widget-list.view.client.html",
-                controller: "",
+                controller: "WidgetListController",
                 controllerAs: "model"
             })
-            .when("/user/:userId/website/:websiteId/page/:pid/widget/new", {
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget/new", {
                 templateUrl: "views/widget/widget-chooser.view.client.html",
                 controller: "",
                 controllerAs: "model"
             })
-            .when("/user/:userId/website/:websiteId/page/:pid/widget/:widgetId", {
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId", {
                 templateUrl: "views/widget/widget-edit.view.client.html",
                 controller: "",
                 controllerAs: "model"

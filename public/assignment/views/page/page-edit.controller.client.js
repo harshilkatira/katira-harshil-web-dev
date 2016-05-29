@@ -10,7 +10,7 @@
         
         vm.userId = $routeParams.userId;
         vm.websiteId = $routeParams.websiteId;
-        vm.pageId = $routeParams.pid;
+        vm.pageId = $routeParams.pageId;
 
         function init() {
             vm.page = angular.copy(PageService.findPageById(vm.pageId))

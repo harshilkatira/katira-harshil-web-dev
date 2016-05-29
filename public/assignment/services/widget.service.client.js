@@ -36,6 +36,7 @@
                 url: widget.url
             };
             widgets.push(newWidget);
+            console.log(widgets);
             return newWidget;
         }
         
