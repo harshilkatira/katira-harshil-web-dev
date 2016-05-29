@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-text pull-left">
-            <a href="widget-list.view.client.html"
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget"
                class="navbar-link">
                 <span class="glyphicon glyphicon-chevron-left nav-back-btn"></span>
             </a>
@@ -14,41 +14,41 @@
 </nav>
 <div class="container-fluid">
     <div class="data-list-padding">
-        <a href="widget-heading.view.client.html">Header</a>
+        <a ng-click="model.createWidget('HEADER')">Header</a>
     </div>
     <div class="data-list-padding">
-        <a href="">Label</a>
+        <a ng-click="">Label</a>
     </div>
     <div class="data-list-padding">
-        <a href="">HTML</a>
+        <a ng-click="model.createWidget('HTML')">HTML</a>
     </div>
     <div class="data-list-padding">
-        <a href="">Text Input</a>
+        <a ng-click="">Text Input</a>
     </div>
     <div class="data-list-padding">
-        <a href="">Link</a>
+        <a ng-click="">Link</a>
     </div>
     <div class="data-list-padding">
-        <a href="">Button</a>
+        <a ng-click="">Button</a>
     </div>
     <div class="data-list-padding">
-        <a href="widget-image.view.client.html">Image</a>
+        <a ng-click="model.createWidget('IMAGE')">Image</a>
     </div>
     <div class="data-list-padding">
-        <a href="widget-youtube.view.client.html">YouTube</a>
+        <a ng-click="model.createWidget('YOUTUBE')">YouTube</a>
     </div>
     <div class="data-list-padding">
-        <a href="">Data Table</a>
+        <a ng-click="">Data Table</a>
     </div>
     <div class="data-list-padding">
-        <a href="">Repeater</a>
+        <a ng-click="">Repeater</a>
     </div>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
             <a class="navbar-link"
-               href="/assignment/user/profile.html">
+               href="#/user/{{model.userId}}">
                 <span class="glyphicon glyphicon-user text-primary"></span>
             </a>
         </div>
