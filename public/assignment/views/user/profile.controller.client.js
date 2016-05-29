@@ -15,7 +15,6 @@
         init();
 
         function updateUser(newUser) {
-            // console.log("here");
             var result = UserService.updateUser(userId, newUser);
             if(result){
                 vm.message = "Your profile was saved."
