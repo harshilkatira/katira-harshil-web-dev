@@ -65,7 +65,7 @@
                 controller: "",
                 controllerAs: "model"
             })
-            .when("/user/:userId/website/:websiteId/page/:pid/widget/:wgid", {
+            .when("/user/:userId/website/:websiteId/page/:pid/widget/:widgetId", {
                 templateUrl: "views/widget/widget-edit.view.client.html",
                 controller: "",
                 controllerAs: "model"
