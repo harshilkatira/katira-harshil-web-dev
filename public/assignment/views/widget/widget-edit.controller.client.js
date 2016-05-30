@@ -5,7 +5,8 @@
     
     function EditWidgetController($location, $routeParams, WidgetService) {
         var vm = this;
-        vm.updateWidget = updateWidget;
+        vm.updateHeader = updateHeader;
+        vm.updateMedia = updateMedia;
         vm.deleteWidget = deleteWidget;
         
         vm.userId = $routeParams.userId;
@@ -18,13 +19,33 @@
         }
         init();
 
-        function updateWidget(newWidget) {
-            var result = WidgetService.updateWidget(vm.widgetId, newWidget);
-            if (result) {
-                $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+        function updateHeader(newWidget) {
+            if(newWidget.text && newWidget.size) {
+                var result = WidgetService.updateWidget(vm.widgetId, newWidget);
+                if (result) {
+                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+                }
+                else {
+                    vm.error = "Error updating widget details."
+                }
             }
-            else {
-                vm.error = "Error updating widget details."
+            else{
+                vm.error = "Text and Size are required fields.";
+            }
+        }
+
+        function updateMedia(newWidget) {
+            if(newWidget.url && newWidget.width) {
+                var result = WidgetService.updateWidget(vm.widgetId, newWidget);
+                if (result) {
+                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+                }
+                else {
+                    vm.error = "Error updating widget details."
+                }
+            }
+            else{
+                vm.error = "URL and Width are required fields.";
             }
         }
 

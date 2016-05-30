@@ -4,6 +4,7 @@ body {
 }
 a {
     font-weight: bold;
+    cursor: pointer;
 }
 a:hover{
     text-decoration: none;

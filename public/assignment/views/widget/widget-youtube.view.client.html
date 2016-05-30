@@ -11,7 +11,7 @@
                href="">Widget Edit</a>
         </div>
         <div class="navbar-text pull-right">
-            <a ng-click="model.updateWidget(model.widget)"
+            <a ng-click="model.updateMedia(model.widget)"
                class="navbar-link">
                 <span class="glyphicon glyphicon-ok black-btn"></span>
             </a>
@@ -19,6 +19,9 @@
     </div>
 </nav>
 <div class="container-fluid">
+    <div ng-if="model.error" class="alert alert-danger">
+        {{model.error}}
+    </div>
     <form>
         <div class="form-group">
             <label for="name">Name</label>
