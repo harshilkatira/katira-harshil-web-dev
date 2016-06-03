@@ -27,21 +27,13 @@
         }
         
         function findUserById(userId) {
-            for(var i in users) {
-                if(users[i]._id === userId) {
-                    return users[i];
-                }
-            }
-            return null;
+            var url = "/api/user/"+userId;
+            return $http.get(url);
         }
 
         function findUserByUsername(username) {
-            for(var i in users) {
-                if(users[i].username === username) {
-                    return users[i];
-                }
-            }
-            return null;
+            var url = "/api/user?username="+username;
+            return $http.get(url);
         }
 
         function findUserByCredentials(username, password) {
