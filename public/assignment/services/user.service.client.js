@@ -16,14 +16,10 @@
 
         function createUser(user) {
             var newUser = {
-                _id: (new Date()).getTime()+"",
                 username: user.username,
-                password: user.password,
-                firstName: user.firstName,
-                lastName: user.lastName
+                password: user.password
             };
-            users.push(newUser);
-            return newUser;
+            return $http.post("/api/user", newUser);
         }
         
         function findUserById(userId) {
