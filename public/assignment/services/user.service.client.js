@@ -21,7 +21,7 @@
             };
             return $http.post("/api/user", newUser);
         }
-        
+
         function findUserById(userId) {
             var url = "/api/user/"+userId;
             return $http.get(url);
@@ -38,24 +38,13 @@
         }
 
         function updateUser(userId, user) {
-            for(var i in users) {
-                if(users[i]._id === userId) {
-                    users[i].firstName = user.firstName;
-                    users[i].lastName = user.lastName;
-                    return true;
-                }
-            }
-            return false;
+            var url = "/api/user/"+userId;
+            return $http.put(url, user);
         }
 
         function deleteUser(userId) {
-            for(var i in users) {
-                if (users[i]._id === userId) {
-                    users.splice(i, 1);
-                    return true;
-                }
-            }
-            return false;
+            var url = "/api/user/"+userId;
+            return $http.delete(url);
         }
     }
 })();
