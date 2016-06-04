@@ -15,13 +15,17 @@
             var newWidget = {
                 widgetType: widgetType
             };
-            var result = WidgetService.createWidget(vm.pageId, newWidget);
-            if (result) {
-                $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + result._id);
-            }
-            else {
-                vm.error = "Unable to create widget."
-            }
+            WidgetService
+                .createWidget(vm.pageId, newWidget)
+                .then(function (response) {
+                    var widget = response.data;
+                    if (widget) {
+                        $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + widget._id);
+                    }
+                    else {
+                        vm.error = "Unable to create widget."
+                    }
+                });
         }
     }
 })();

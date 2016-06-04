@@ -15,7 +15,11 @@
         vm.widgetId = $routeParams.widgetId;
 
         function init() {
-            vm.widget = angular.copy(WidgetService.findWidgetById(vm.widgetId));
+            WidgetService
+                .findWidgetById(vm.widgetId)
+                .then(function (response) {
+                    vm.widget = response.data;
+                });
         }
         init();
 
