@@ -33,24 +33,8 @@
         }
 
         function updateWidget(widgetId, widget) {
-            for(var i in widgets) {
-                if(widgets[i]._id === widgetId) {
-                    widgets[i].name = widget.name;
-                    widgets[i].text = widget.text;
-                    switch (widget.widgetType){
-                        case "HEADER":
-                            widgets[i].size = widget.size;
-                            break;
-                        case "IMAGE":
-                        case "YOUTUBE":
-                            widgets[i].width = widget.width;
-                            widgets[i].url = widget.url;
-                            break;
-                    }
-                    return true;
-                }
-            }
-            return false;
+            var url = "/api/widget/"+widgetId;
+            return $http.put(url, widget);
         }
 
         function deleteWidget(widgetId) {

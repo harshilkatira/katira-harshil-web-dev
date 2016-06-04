@@ -25,13 +25,16 @@
 
         function updateHeader(newWidget) {
             if(newWidget.text && newWidget.size) {
-                var result = WidgetService.updateWidget(vm.widgetId, newWidget);
-                if (result) {
-                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
-                }
-                else {
-                    vm.error = "Error updating widget details."
-                }
+                WidgetService
+                    .updateWidget(vm.widgetId, newWidget)
+                    .then(
+                        function (response) {
+                            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+                        },
+                        function (error) {
+                            vm.error = "Error updating widget details."
+                        }
+                    );
             }
             else{
                 vm.error = "Text and Size are required fields.";
@@ -40,13 +43,16 @@
 
         function updateMedia(newWidget) {
             if(newWidget.url && newWidget.width) {
-                var result = WidgetService.updateWidget(vm.widgetId, newWidget);
-                if (result) {
-                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
-                }
-                else {
-                    vm.error = "Error updating widget details."
-                }
+                WidgetService
+                    .updateWidget(vm.widgetId, newWidget)
+                    .then(
+                        function (response) {
+                            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+                        },
+                        function (error) {
+                            vm.error = "Error updating widget details."
+                        }
+                    );
             }
             else{
                 vm.error = "URL and Width are required fields.";

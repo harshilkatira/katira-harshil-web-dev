@@ -15,7 +15,7 @@ module.exports = function (app) {
     app.post("/api/page/:pageId/widget", createWidget);
     app.get("/api/page/:pageId/widget", findAllWidgetsForPage);
     app.get("/api/widget/:widgetId", findWidgetById);
-    // app.put("/api/widget/:widgetId", updateWidget);
+    app.put("/api/widget/:widgetId", updateWidget);
     // app.delete("/api/widget/:widgetId", deleteWidget);
 
     function createWidget(req, res) {
@@ -45,5 +45,29 @@ module.exports = function (app) {
             }
         }
         res.send({});
+    }
+    
+    function updateWidget(req, res) {
+        var widgetId = req.params.widgetId;
+        var widget = req.body;
+        for(var i in widgets) {
+            if(widgets[i]._id === widgetId) {
+                widgets[i].name = widget.name;
+                widgets[i].text = widget.text;
+                switch (widget.widgetType){
+                    case "HEADER":
+                        widgets[i].size = widget.size;
+                        break;
+                    case "IMAGE":
+                    case "YOUTUBE":
+                        widgets[i].width = widget.width;
+                        widgets[i].url = widget.url;
+                        break;
+                }
+                res.send(200);
+                return;
+            }
+        }
+        res.send(400);
     }
 };
