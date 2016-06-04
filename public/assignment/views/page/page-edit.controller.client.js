@@ -13,7 +13,11 @@
         vm.pageId = $routeParams.pageId;
 
         function init() {
-            vm.page = angular.copy(PageService.findPageById(vm.pageId))
+            PageService
+                .findPageById(vm.pageId)
+                .then(function (response) {
+                    vm.page = response.data;
+                });
         }
         init();
 

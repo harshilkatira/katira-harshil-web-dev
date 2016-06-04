@@ -8,7 +8,7 @@ module.exports = function (app) {
 
     app.post("/api/website/:websiteId/page", createPage);
     app.get("/api/website/:websiteId/page", findAllPagesForWebsite);
-    // app.get("/api/page/:pageId", findPageById);
+    app.get("/api/page/:pageId", findPageById);
     // app.put("/api/page/:pageId", updatePage);
     // app.delete("/api/page/:pageId", deletePage);
 
@@ -28,6 +28,17 @@ module.exports = function (app) {
             }
         }
         res.json(result);
+    }
+    
+    function findPageById(req, res) {
+        var pageId = req.params.pageId;
+        for(var i in pages){
+            if(pages[i]._id === pageId){
+                res.send(pages[i]);
+                return;
+            }
+        }
+        res.send({});
     }
 
 };

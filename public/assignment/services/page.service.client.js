@@ -29,12 +29,8 @@
         }
 
         function findPageById(pageId) {
-            for(var i in pages) {
-                if(pages[i]._id === pageId) {
-                    return pages[i];
-                }
-            }
-            return null;
+            var url = "/api/page/"+pageId;
+            return $http.get(url);
         }
 
         function updatePage(pageId, page) {
