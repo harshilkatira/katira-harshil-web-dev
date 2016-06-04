@@ -34,14 +34,8 @@
         }
 
         function updatePage(pageId, page) {
-            for(var i in pages) {
-                if(pages[i]._id === pageId) {
-                    pages[i].name = page.name;
-                    pages[i].title = page.title;
-                    return true;
-                }
-            }
-            return false;
+            var url = "/api/page/"+pageId;
+            return $http.put(url, page);
         }
 
         function deletePage(pageId) {

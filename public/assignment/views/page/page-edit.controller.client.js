@@ -23,13 +23,16 @@
 
         function updatePage(newPage) {
             if(newPage.name) {
-                var result = PageService.updatePage(vm.pageId, newPage);
-                if (result) {
-                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
-                }
-                else {
-                    vm.error = "Error updating page details."
-                }
+                PageService
+                    .updatePage(vm.pageId, newPage)
+                    .then(
+                        function (response) {
+                            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+                        },
+                        function (error) {
+                            vm.error = "Error updating page details."
+                        }
+                    );
             }
             else {
                 vm.error = "Page name cannot be empty."
