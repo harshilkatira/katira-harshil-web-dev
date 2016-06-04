@@ -72,6 +72,7 @@ module.exports = function (app) {
             if(users[i]._id === userId) {
                 users[i].firstName = newUser.firstName;
                 users[i].lastName = newUser.lastName;
+                users[i].email = newUser.email;
                 res.send(200);
                 return;
             }
