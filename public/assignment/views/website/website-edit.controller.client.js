@@ -38,12 +38,16 @@
         }
 
         function deleteWebsite(){
-            var result = WebsiteService.deleteWebsite(vm.websiteId);
-            if(result) {
-                $location.url("/user/"+vm.userId+"/website");
-            } else {
-                vm.error = "Unable to delete website";
-            }
+            WebsiteService
+                .deleteWebsite(vm.websiteId)
+                .then(
+                    function (response) {
+                        $location.url("/user/"+vm.userId+"/website");
+                    },
+                    function (error) {
+                        vm.error = "Unable to delete website";
+                    }
+                );
         }
     }
 })();
