@@ -38,13 +38,8 @@
         }
 
         function deleteWidget(widgetId) {
-            for(var i in widgets) {
-                if (widgets[i]._id === widgetId) {
-                    widgets.splice(i, 1);
-                    return true;
-                }
-            }
-            return false;
+            var url = "/api/widget/"+widgetId;
+            return $http.delete(url);
         }
     }
 })();

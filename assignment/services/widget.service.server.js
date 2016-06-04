@@ -16,7 +16,7 @@ module.exports = function (app) {
     app.get("/api/page/:pageId/widget", findAllWidgetsForPage);
     app.get("/api/widget/:widgetId", findWidgetById);
     app.put("/api/widget/:widgetId", updateWidget);
-    // app.delete("/api/widget/:widgetId", deleteWidget);
+    app.delete("/api/widget/:widgetId", deleteWidget);
 
     function createWidget(req, res) {
         var widget = req.body;
@@ -64,6 +64,18 @@ module.exports = function (app) {
                         widgets[i].url = widget.url;
                         break;
                 }
+                res.send(200);
+                return;
+            }
+        }
+        res.send(400);
+    }
+
+    function deleteWidget(req, res) {
+        var widgetId = req.params.widgetId;
+        for(var i in widgets) {
+            if (widgets[i]._id === widgetId) {
+                widgets.splice(i, 1);
                 res.send(200);
                 return;
             }

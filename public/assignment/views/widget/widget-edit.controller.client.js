@@ -60,12 +60,16 @@
         }
 
         function deleteWidget(){
-            var result = WidgetService.deleteWidget(vm.widgetId);
-            if(result) {
-                $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
-            } else {
-                vm.error = "Unable to delete widget";
-            }
+            WidgetService
+                .deleteWidget(vm.widgetId)
+                .then(
+                    function (response) {
+                        $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+                    },
+                    function (error) {
+                        vm.error = "Unable to delete widget";
+                    }
+                );
         }
     }
 })();
