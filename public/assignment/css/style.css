@@ -12,6 +12,9 @@ a:hover{
 input.form-control,textarea,select {
     margin-bottom: 5px;
 }
+.upload-btn {
+    margin-bottom: 5px;
+}
 .navbar-brand {
     font-weight: bold;
 }
