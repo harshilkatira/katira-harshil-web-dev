@@ -17,7 +17,7 @@
                 .findWidgetsByPageId(vm.pageId)
                 .then(function (response) {
                     vm.widgets = response.data;
-                    $(".container-fluid")
+                    $(".widget-sortable")
                         .sortable({
                             axis: "y"
                         });
