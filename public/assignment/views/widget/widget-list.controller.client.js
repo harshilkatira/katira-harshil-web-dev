@@ -2,12 +2,12 @@
     angular
         .module("WebAppMaker")
         .controller("WidgetListController", WidgetListController);
-    
+
     function WidgetListController($sce, $routeParams, WidgetService) {
         var vm = this;
         vm.getSafeHtml = getSafeHtml;
         vm.getSafeUrl = getSafeUrl;
-        
+
         vm.userId = $routeParams.userId;
         vm.websiteId = $routeParams.websiteId;
         vm.pageId = $routeParams.pageId;
@@ -17,6 +17,10 @@
                 .findWidgetsByPageId(vm.pageId)
                 .then(function (response) {
                     vm.widgets = response.data;
+                    $(".container-fluid")
+                        .sortable({
+                            axis: "y"
+                        });
                 });
         }
         init();
