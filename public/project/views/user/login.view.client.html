@@ -1,9 +1,9 @@
-<div class="container-fluid">
+<div class="container">
     <div ng-if="model.error" class="alert alert-danger">
         {{model.error}}
     </div>
-    <form>
-        <h1>Login</h1>
+    <div class="well">
+        <h3 class="text-center well-header">Gamers Login:</h3>
         <div class="input-group">
             <span class="input-group-addon" id="username">
                 <i class="fa fa-envelope-o"></i>
@@ -28,12 +28,12 @@
                    required />
         </div>
 
-        <a class="btn btn-primary btn-block"
+        <a class="btn btn-success btn-block"
            ng-click="model.login(username,password)"
            role="button">Login</a>
 
-        <a class="btn btn-success btn-block"
-           href="#/register"
-           role="button">Register</a>
-    </form>
+        <div class="row href-text">
+            <a href="#/register">Already a member?</a>
+        </div>
+    </div>
 </div>
