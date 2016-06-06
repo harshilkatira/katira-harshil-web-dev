@@ -19,6 +19,11 @@
                 templateUrl: "views/user/profile.view.client.html",
                 controller: "ProfileController",
                 controllerAs: "model"
+            })
+            .when("/home", {
+                templateUrl: "views/home/home.html",
+                controller: "HomeController",
+                controllerAs: "model"
             });
             /*.otherwise({
                 redirectTo: "/login"
