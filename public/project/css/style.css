@@ -11,6 +11,7 @@ body {
     vertical-align: middle;
 }
 .href-text{
+    font-weight: bold;
     text-align: right;
     padding: 15px;
 }
