@@ -7,26 +7,29 @@
         var vm = this;
         vm.register = register;
 
-        function register(username, password, verifyPassword) {
-            if (username && password && verifyPassword) {
-                if (password !== verifyPassword) {
+        function register(newUser) {
+            if (newUser && newUser.username && newUser.password && newUser.verifyPassword) {
+                if (newUser.password !== newUser.verifyPassword) {
                     vm.error = "Passwords do not match.";
                 }
                 else {
                     UserService
-                        .findUserByUsername(username)
+                        .findUserByUsername(newUser.username)
                         .then(function (response) {
                             var user = response.data;
                             if (user._id) {
                                 vm.error = "Username already exists.";
                             }
                             else {
-                                var newUser = {
-                                    username: username,
-                                    password: password
+                                var user = {
+                                    username: newUser.username,
+                                    password: newUser.password,
+                                    firstName: newUser.firstName,
+                                    lastName: newUser.lastName,
+                                    email: newUser.email
                                 };
                                 UserService
-                                    .createUser(newUser)
+                                    .createUser(user)
                                     .then(function (response) {
                                         var user = response.data;
                                         if (user) {

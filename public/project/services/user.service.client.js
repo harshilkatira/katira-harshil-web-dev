@@ -17,7 +17,10 @@
         function createUser(user) {
             var newUser = {
                 username: user.username,
-                password: user.password
+                password: user.password,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email
             };
             return $http.post("/api/user", newUser);
         }
