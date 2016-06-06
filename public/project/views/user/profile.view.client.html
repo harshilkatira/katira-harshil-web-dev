@@ -1,0 +1,72 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header pull-left">
+            <a class="navbar-brand"
+               href="">Profile</a>
+        </div>
+        <div class="navbar-text pull-right">
+            <a ng-click="model.updateUser(model.user)"
+               class="navbar-link">
+                <span class="glyphicon glyphicon-ok black-btn"></span>
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div ng-if="model.success" class="alert alert-success">
+        {{model.success}}
+    </div>
+    <div ng-if="model.error" class="alert alert-danger">
+        {{model.error}}
+    </div>
+    <form>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input ng-model="model.user.username"
+                   id="username"
+                   type="text"
+                   class="form-control"
+                   placeholder="username"/>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input ng-model="model.user.email"
+                   id="email"
+                   type="email"
+                   class="form-control"
+                   placeholder="alice@wonderland.com"/>
+        </div>
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input ng-model="model.user.firstName"
+                   id="firstName"
+                   type="text"
+                   class="form-control"
+                   placeholder="First Name"/>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input ng-model="model.user.lastName"
+                   id="lastName"
+                   type="text"
+                   class="form-control"
+                   placeholder="Last Name"/>
+        </div>
+        <a class="btn btn-primary btn-block"
+           href="#/user/{{model.user._id}}/website"
+           role="button">Websites</a>
+        <a class="btn btn-danger btn-block"
+           href="#/login"
+           role="button">Logout</a>
+    </form>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a class="navbar-link"
+               href="">
+                <span class="glyphicon glyphicon-user text-primary"></span>
+            </a>
+        </div>
+    </div>
+</nav>
