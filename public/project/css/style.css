@@ -1,0 +1,12 @@
+body {
+    padding-top: 60px;
+    padding-bottom: 50px;
+}
+.input-group {
+    margin-bottom: 10px;
+    width: 100%;
+}
+.input-group-addon {
+    min-width:40px;
+    text-align:center;
+}

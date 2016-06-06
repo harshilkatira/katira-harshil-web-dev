@@ -1,0 +1,40 @@
+<div class="container-fluid">
+    <!--<div ng-if="model.error" class="alert alert-danger">
+        {{model.error}}
+    </div>-->
+    <form class="login">
+
+        <h2>Login</h2>
+        <div class="input-group">
+            <span class="input-group-addon" id="username">
+                <i class="fa fa-envelope-o"></i>
+            </span>
+            <input ng-model="username"
+                   type="text"
+                   placeholder="Username"
+                   class="form-control"
+                   aria-describedby="username"
+                   required />
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-addon" id="password">
+                <i class="fa fa-lock"></i>
+            </span>
+            <input ng-model="password"
+                   type="password"
+                   placeholder="Password"
+                   class="form-control"
+                   aria-describedby="password"
+                   required />
+        </div>
+
+        <a class="btn btn-primary btn-block"
+           ng-click="model.login(username,password)"
+           role="button">Login</a>
+
+        <a class="btn btn-success btn-block"
+           href="#/register"
+           role="button">Register</a>
+    </form>
+</div>
