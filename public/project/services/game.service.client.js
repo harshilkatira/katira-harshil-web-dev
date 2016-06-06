@@ -9,7 +9,8 @@
     function GameService($http) {
         var api = {
             getGamesList: getGamesList,
-            getGameById: getGameById
+            getGameById: getGameById,
+            searchGames: searchGames
         };
         return api;
         
@@ -24,6 +25,14 @@
             var url = urlBase
                 .replace("API_KEY", key)
                 .replace("RESOURCE", "game/"+gameId);
+            return $http.jsonp(url);
+        }
+
+        function searchGames(searchTerm) {
+            var url = urlBase
+                .replace("API_KEY", key)
+                .replace("RESOURCE", "search");
+            url += "&query="+searchTerm+"&resources=game";
             return $http.jsonp(url);
         }
     }
