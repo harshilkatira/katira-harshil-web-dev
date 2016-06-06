@@ -20,6 +20,11 @@
                 controller: "ProfileController",
                 controllerAs: "model"
             })
+            .when("/game/:gameId", {
+                templateUrl: "views/game/game-detail.view.client.html",
+                controller: "GameDetailController",
+                controllerAs: "model"
+            })
             .when("/home", {
                 templateUrl: "views/home/home.html",
                 controller: "HomeController",
