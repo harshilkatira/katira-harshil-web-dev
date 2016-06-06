@@ -2,13 +2,13 @@ body {
     padding-top: 60px;
     padding-bottom: 50px;
 }
-.input-group {
+.input-group{
     margin-bottom: 15px;
     width: 100%;
 }
 .input-group-addon {
     min-width:40px;
-    text-align:center;
+    vertical-align: middle;
 }
 .href-text{
     text-align: right;
