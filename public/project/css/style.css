@@ -21,3 +21,8 @@ body {
 .well {
     background: #ffffff;
 }
+#description a{
+    pointer-events: none;
+    cursor: default;
+    color: black;
+}
