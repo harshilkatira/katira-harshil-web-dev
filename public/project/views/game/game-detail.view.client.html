@@ -4,6 +4,24 @@
     </div>
     <!--{{model.game}}-->
     <div class="row">
-        <div id="description" ng-bind-html="model.game.description"></div>
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-4 v-center">
+                            <img width="100%" class="img-responsive" src="{{model.game.image.thumb_url}}">
+                        </div><!--
+                     --><div class="col-xs-8 text-center v-center">
+                            <h2>{{model.game.name}}</h2>
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+                <div class="panel-body">
+                    <h5>{{model.game.deck}}</h5>
+                    <div id="description" ng-bind-html="model.game.description"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

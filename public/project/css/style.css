@@ -26,3 +26,11 @@ body {
     cursor: default;
     color: black;
 }
+.v-center {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+hr {
+    margin: 0;
+}

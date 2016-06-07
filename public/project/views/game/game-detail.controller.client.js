@@ -16,7 +16,15 @@
                         vm.game = response.data.results;
                         if(vm.game.description) {
                             vm.game.description = vm.game.description
-                                .split('<img').join('<img class="img-responsive col-xs-12"');
+                                .split('<img')
+                                .join('<img class="img-responsive col-xs-12"');
+                            vm.game.description = vm.game.description
+                                .split('<table')
+                                .join('<div class="table-responsive">' +
+                                    '<table class="table table-condensed"');
+                            vm.game.description = vm.game.description
+                                .split('</table>')
+                                .join('</table></div>');
                         }
                     },
                     function (error) {
