@@ -3,15 +3,15 @@
         {{model.error}}
     </div>
     <!--{{model.game}}-->
-    <div class="row">
+    <!--<div class="row">
         <div class="col-xs-12">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-xs-4 v-center">
                             <img width="100%" class="img-responsive" src="{{model.game.image.thumb_url}}">
-                        </div><!--
-                     --><div class="col-xs-8 text-center v-center">
+                        </div>&lt;!&ndash;
+                     &ndash;&gt;<div class="col-xs-8 text-center v-center">
                             <h2>{{model.game.name}}</h2>
                         </div>
                     </div>
@@ -23,5 +23,31 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
+
+
+
+        <div class="row panel">
+            <div class="col-xs-4 v-center">
+                <img class="img-responsive" src='{{model.game.image.medium_url}}'>
+            </div><!--
+         --><div class="col-xs-8 v-center">
+                <div class="header">
+                    <h1>{{model.game.name}}</h1>
+                    <!--<h4>{{model.game.deck}}</h4>-->
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <h5>{{model.game.deck}}</h5>
+            <div id="description" ng-bind-html="model.game.description"></div>
+        </div>
+        <!--<div class="row nav">
+            <div class="col-xs-12" style="margin: 0px;padding: 0px;">
+                <div class="col-md-4 col-xs-4 btn btn-primary"><i class="fa fa-weixin fa-lg"></i> 16</div>
+                <div class="col-md-4 col-xs-4 btn btn-primary"><i class="fa fa-heart-o fa-lg"></i> 14</div>
+                <div class="col-md-4 col-xs-4 btn btn-primary"><i class="fa fa-thumbs-o-up fa-lg"></i> 26</div>
+            </div>
+        </div>-->
+
 </div>
