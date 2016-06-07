@@ -2,5 +2,8 @@
     <div ng-if="model.error" class="alert alert-danger">
         {{model.error}}
     </div>
-    {{model.game}}
+    <!--{{model.game}}-->
+    <div class="row">
+        <div ng-bind-html="model.game.description"></div>
+    </div>
 </div>
