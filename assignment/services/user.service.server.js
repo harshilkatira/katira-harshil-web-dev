@@ -1,4 +1,6 @@
-module.exports = function (app) {
+module.exports = function (app, models) {
+
+    var userModel = models.userModel;
 
     var users = [
         {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
@@ -12,14 +14,26 @@ module.exports = function (app) {
     app.get("/api/user/:userId", findUserById);
     app.put("/api/user/:userId", updateUser);
     app.delete("/api/user/:userId", deleteUser);
-    
+
     function createUser(req, res) {
         var user = req.body;
-        user._id = (new Date()).getTime()+"";
-        users.push(user);
-        res.send(user);
+
+        userModel
+            .createUser(user)
+            .then(
+                function (user) {
+                    res.json(user);
+                },
+                function (error) {
+                    res.statusCode(400).send(error);
+                }
+            );
+
+        /*user._id = (new Date()).getTime()+"";
+         users.push(user);
+         res.send(user);*/
     }
-    
+
     function findUser(req, res) {
         var username = req.query['username'];
         var password = req.query['password'];
@@ -53,16 +67,28 @@ module.exports = function (app) {
         }
         res.send({});
     }
-    
+
     function findUserById(req, res) {
         var userId = req.params.userId;
-        for(var i in users) {
+
+        userModel
+            .findUserById(userId)
+            .then(
+                function (user) {
+                    res.json(user);
+                },
+                function (error) {
+                    res.statusCode(404).send(error);
+                }
+            );
+
+        /*for(var i in users) {
             if(users[i]._id === userId) {
                 res.send(users[i]);
                 return;
             }
         }
-        res.send({});
+        res.send({});*/
     }
 
     function updateUser(req, res) {
