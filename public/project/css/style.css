@@ -34,3 +34,7 @@ body {
 hr {
     margin: 0;
 }
+.detail-header{
+    padding: 5px;
+    margin: 0;
+}
