@@ -123,7 +123,7 @@ module.exports = function (app, models) {
             .updateUser(userId, newUser)
             .then(
                 function (stats) {
-                    console.log(stats);
+                    //console.log(stats);
                     res.send(200);
                 },
                 function (error) {
@@ -149,7 +149,7 @@ module.exports = function (app, models) {
             .deleteUser(userId)
             .then(
                 function (stats) {
-                    console.log(stats);
+                    //console.log(stats);
                     res.send(200);
                 },
                 function (error) {
