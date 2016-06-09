@@ -1,4 +1,6 @@
-module.exports = function (app) {
+module.exports = function (app, models) {
+
+    var websiteModel = models.websiteModel;
 
     var websites = [
         { "_id": "123", "name": "Facebook",    "developerId": "456" },
@@ -16,23 +18,47 @@ module.exports = function (app) {
     app.delete("/api/website/:websiteId", deleteWebsite);
 
     function createWebsite(req, res) {
+        var userId = req.params.userId;
         var website = req.body;
-        website._id = (new Date()).getTime()+"";
+
+        websiteModel
+            .createWebsiteForUser(userId, website)
+            .then(
+                function (website) {
+                    res.json(website);
+                },
+                function (error) {
+                    res.statusCode(400).send(error);
+                }
+            );
+
+        /*website._id = (new Date()).getTime()+"";
         websites.push(website);
-        res.send(website);
+        res.send(website);*/
     }
-    
+
     function findAllWebsitesForUser(req, res) {
         var userId = req.params.userId;
-        var result = [];
-        for(var i in websites){
-            if(websites[i].developerId === userId) {
-                result.push(websites[i]);
-            }
-        }
-        res.json(result);
+
+        websiteModel
+            .findAllWebsitesForUser(userId)
+            .then(
+                function (websites) {
+                    res.json(websites);
+                },
+                function (error) {
+                    res.statusCode(404).send(error);
+                }
+            );
+        /*var result = [];
+         for(var i in websites){
+         if(websites[i].developerId === userId) {
+         result.push(websites[i]);
+         }
+         }
+         res.json(result);*/
     }
-    
+
     function findWebsiteById(req, res) {
         var websiteId = req.params.websiteId;
         for(var i in websites) {
