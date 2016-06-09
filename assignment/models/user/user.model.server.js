@@ -6,7 +6,11 @@ module.exports = function () {
 
     var api = {
         createUser: createUser,
-        findUserById: findUserById
+        findUserById: findUserById,
+        findUserByCreadentials: findUserByCreadentials,
+        findUserByUsername: findUserByUsername,
+        updateUser: updateUser,
+        deleteUser: deleteUser
     };
     return api;
     
@@ -16,5 +20,28 @@ module.exports = function () {
 
     function findUserById(userId) {
         return User.findById(userId);
+    }
+
+    function findUserByCreadentials(username, password) {
+        return User.findOne({username: username, password: password});
+    }
+
+    function findUserByUsername(username) {
+        return User.findOne({username: username});
+    }
+
+    function deleteUser(userId) {
+        return User.remove({_id: userId});
+    }
+
+    function updateUser(userId, user) {
+        return User
+            .update({_id: userId},{
+               $set: {
+                   firstName: user.firstName,
+                   lastName: user.lastName,
+                   email: user.email
+               }
+            });
     }
 };
