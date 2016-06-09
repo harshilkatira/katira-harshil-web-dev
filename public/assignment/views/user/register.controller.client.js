@@ -17,7 +17,7 @@
                         .findUserByUsername(username)
                         .then(function (response) {
                             var user = response.data;
-                            if (user._id) {
+                            if (user) {
                                 vm.error = "Username already exists.";
                             }
                             else {
