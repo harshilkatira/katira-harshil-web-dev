@@ -6,10 +6,10 @@ module.exports = function () {
 
     var api = {
         createPage: createPage,
-        findAllPagesForWebsite: findAllPagesForWebsite
-        // findPageById: findPageById,
-        // updatePage: updatePage,
-        // deletePage: deletePage
+        findAllPagesForWebsite: findAllPagesForWebsite,
+        findPageById: findPageById,
+        updatePage: updatePage,
+        deletePage: deletePage
     };
     return api;
 
@@ -20,5 +20,18 @@ module.exports = function () {
 
     function findAllPagesForWebsite(websiteId) {
         return Page.find({_website: websiteId});
+    }
+
+    function findPageById(pageId) {
+        return Page.findById(pageId);
+    }
+
+    function updatePage(pageId, page) {
+        delete page._id;
+        return Page.update({_id: pageId}, {$set: page});
+    }
+
+    function deletePage(pageId) {
+        return Page.remove({_id: pageId});
     }
 };

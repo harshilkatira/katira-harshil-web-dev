@@ -57,19 +57,42 @@ module.exports = function (app, models) {
     
     function findPageById(req, res) {
         var pageId = req.params.pageId;
-        for(var i in pages){
+
+        pageModel
+            .findPageById(pageId)
+            .then(
+                function (page) {
+                    res.json(page);
+                },
+                function (error) {
+                    res.statusCode(404).send(error);
+                }
+            );
+        /*for(var i in pages){
             if(pages[i]._id === pageId){
                 res.send(pages[i]);
                 return;
             }
         }
-        res.send({});
+        res.send({});*/
     }
 
     function updatePage(req, res) {
         var pageId = req.params.pageId;
         var page = req.body;
-        for(var i in pages) {
+
+        pageModel
+            .updatePage(pageId, page)
+            .then(
+                function (stats) {
+                    //console.log(stats);
+                    res.send(200);
+                },
+                function (error) {
+                    res.statusCode(400).send(error);
+                }
+            );
+        /*for(var i in pages) {
             if(pages[i]._id === pageId) {
                 pages[i].name = page.name;
                 pages[i].title = page.title;
@@ -77,19 +100,31 @@ module.exports = function (app, models) {
                 return;
             }
         }
-        res.send(400);
+        res.send(400);*/
     }
 
     function deletePage(req, res) {
         var pageId = req.params.pageId;
-        for(var i in pages) {
+
+        pageModel
+            .deletePage(pageId)
+            .then(
+                function (stats) {
+                    //console.log(stats);
+                    res.send(200);
+                },
+                function (error) {
+                    res.statusCode(404).send(error);
+                }
+            );
+        /*for(var i in pages) {
             if (pages[i]._id === pageId) {
                 pages.splice(i, 1);
                 res.send(200);
                 return;
             }
         }
-        res.send(400);
+        res.send(400);*/
     }
 
 };
