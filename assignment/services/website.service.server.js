@@ -61,19 +61,42 @@ module.exports = function (app, models) {
 
     function findWebsiteById(req, res) {
         var websiteId = req.params.websiteId;
-        for(var i in websites) {
+
+        websiteModel
+            .findWebsiteById(websiteId)
+            .then(
+                function (website) {
+                    res.json(website);
+                },
+                function (error) {
+                    res.statusCode(404).send(error);
+                }
+            );
+        /*for(var i in websites) {
             if(websites[i]._id === websiteId) {
                 res.send(websites[i]);
                 return;
             }
         }
-        res.send({});
+        res.send({});*/
     }
 
     function updateWebsite(req, res) {
         var websiteId = req.params.websiteId;
         var website = req.body;
-        for(var i in websites) {
+
+        websiteModel
+            .updateWebsite(websiteId, website)
+            .then(
+                function (stats) {
+                    console.log(stats);
+                    res.send(200);
+                },
+                function (error) {
+                    res.statusCode(400).send(error);
+                }
+            );
+        /*for(var i in websites) {
             if(websites[i]._id === websiteId) {
                 websites[i].name = website.name;
                 websites[i].description = website.description;
@@ -81,19 +104,31 @@ module.exports = function (app, models) {
                 return;
             }
         }
-        res.send(400);
+        res.send(400);*/
     }
 
     function deleteWebsite(req, res) {
         var websiteId = req.params.websiteId;
-        for(var i in websites) {
+
+        websiteModel
+            .deleteWebsite(websiteId)
+            .then(
+                function (stats) {
+                    console.log(stats);
+                    res.send(200);
+                },
+                function (error) {
+                    res.statusCode(404).send(error);
+                }
+            );
+        /*for(var i in websites) {
             if(websites[i]._id === websiteId) {
                 websites.splice(i,1);
                 res.send(200);
                 return;
             }
         }
-        res.send(400);
+        res.send(400);*/
     }
 
 };
