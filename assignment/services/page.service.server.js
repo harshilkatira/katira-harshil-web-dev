@@ -1,4 +1,6 @@
-module.exports = function (app) {
+module.exports = function (app, models) {
+
+    var pageModel = models.pageModel;
 
     var pages = [
         { "_id": "321", "name": "Post 1", "websiteId": "456" },
@@ -13,21 +15,44 @@ module.exports = function (app) {
     app.delete("/api/page/:pageId", deletePage);
 
     function createPage(req, res) {
+        var websiteId = req.params.websiteId;
         var page = req.body;
-        page._id = (new Date()).getTime()+"";
+
+        pageModel
+            .createPage(websiteId, page)
+            .then(
+                function (page) {
+                    res.json(page);
+                },
+                function (error) {
+                    res.statusCode(400).send(error);
+                }
+            );
+        /*page._id = (new Date()).getTime()+"";
         pages.push(page);
-        res.send(page);
+        res.send(page);*/
     }
 
     function findAllPagesForWebsite(req, res) {
         var websiteId = req.params.websiteId;
-        var result = [];
-        for(var i in pages){
-            if(pages[i].websiteId === websiteId) {
-                result.push(pages[i]);
-            }
-        }
-        res.json(result);
+
+        pageModel
+            .findAllPagesForWebsite(websiteId)
+            .then(
+                function (pages) {
+                    res.json(pages);
+                },
+                function (error) {
+                    res.statusCode(404).send(error);
+                }
+            );
+        // var result = [];
+        // for(var i in pages){
+        //     if(pages[i].websiteId === websiteId) {
+        //         result.push(pages[i]);
+        //     }
+        // }
+        // res.json(result);
     }
     
     function findPageById(req, res) {
