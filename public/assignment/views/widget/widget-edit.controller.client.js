@@ -19,6 +19,9 @@
                 .findWidgetById(vm.widgetId)
                 .then(function (response) {
                     vm.widget = response.data;
+                    if(vm.widget.size){
+                        vm.widget.size = vm.widget.size + "";
+                    }
                 });
         }
         init();

@@ -11,9 +11,9 @@
         vm.websiteId = $routeParams.websiteId;
         vm.pageId = $routeParams.pageId;
 
-        function createWidget(widgetType) {
+        function createWidget(type) {
             var newWidget = {
-                widgetType: widgetType
+                type: type
             };
             WidgetService
                 .createWidget(vm.pageId, newWidget)
