@@ -8,17 +8,22 @@
         vm.login = login;
 
         function login(username, password) {
-            UserService
-                .findUserByCredentials(username, password)
-                .then(function (response) {
-                    var user = response.data;
-                    if(user){
-                        $location.url("/user/"+user._id);
-                    }
-                    else{
-                        vm.error = "Unable to login.";
-                    }
-                });
+            if (username && password) {
+                UserService
+                    .findUserByCredentials(username, password)
+                    .then(function (response) {
+                        var user = response.data;
+                        if (user) {
+                            $location.url("/user/" + user._id);
+                        }
+                        else {
+                            vm.error = "Unable to login.";
+                        }
+                    });
+            }
+            else{
+                vm.error = "Username and Password are mandatory.";
+            }
         }
     }
 })();
