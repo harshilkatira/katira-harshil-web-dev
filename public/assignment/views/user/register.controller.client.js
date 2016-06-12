@@ -10,7 +10,7 @@
         function register(username, password, verifyPassword) {
             if (username && password && verifyPassword) {
                 if (password !== verifyPassword) {
-                    vm.error = "Passwords do not match.";
+                    vm.error = "Password and Verify Password fields do not match.";
                 }
                 else {
                     UserService
