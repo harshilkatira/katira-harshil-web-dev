@@ -23,8 +23,8 @@ module.exports = function (app, models) {
 
         var newWebsite = websiteModel
             .createWebsiteForUser(userId, website);
-        console.log("response"+newWebsite);
-        res.json(newWebsite);
+        //console.log("response"+newWebsite);
+        res.send(newWebsite);
             /*.then(
                 function (website) {
                     res.json(website);

@@ -18,16 +18,18 @@ module.exports = function (app, models) {
         var websiteId = req.params.websiteId;
         var page = req.body;
 
-        pageModel
-            .createPage(websiteId, page)
-            .then(
+        var newPage = pageModel
+            .createPage(websiteId, page);
+            /*.then(
                 function (page) {
                     res.json(page);
                 },
                 function (error) {
                     res.statusCode(400).send(error);
                 }
-            );
+            );*/
+
+        res.send(newPage);
         /*page._id = (new Date()).getTime()+"";
         pages.push(page);
         res.send(page);*/

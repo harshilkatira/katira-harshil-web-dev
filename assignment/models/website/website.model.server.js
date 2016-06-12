@@ -16,7 +16,7 @@ module.exports = function () {
 
     function createWebsiteForUser(userId, website) {
         website._user = userId;
-        console.log("up");
+        //console.log("up");
 
         return Website.create(website)
             .then(
