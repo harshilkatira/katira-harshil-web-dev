@@ -7,6 +7,7 @@
         var vm = this;
         vm.getSafeHtml = getSafeHtml;
         vm.getSafeUrl = getSafeUrl;
+        vm.reorderWidget = reorderWidget;
 
         vm.userId = $routeParams.userId;
         vm.websiteId = $routeParams.websiteId;
@@ -17,10 +18,6 @@
                 .findWidgetsByPageId(vm.pageId)
                 .then(function (response) {
                     vm.widgets = response.data;
-                    $(".widget-sortable")
-                        .sortable({
-                            axis: "y"
-                        });
                 });
         }
         init();
@@ -36,6 +33,19 @@
                 var url = "https://www.youtube.com/embed/" + id;
                 return $sce.trustAsResourceUrl(url);
             }
+        }
+        
+        function reorderWidget(start, end) {
+            WidgetService
+                .reorderWidget(vm.pageId, start, end)
+                .then(
+                    function (response) {
+                        vm.widgets = response.data;
+                    },
+                    function (error) {
+                        vm.error = "Error while sorting widgets."
+                    }
+                );
         }
     }
 })();

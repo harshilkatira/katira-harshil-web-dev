@@ -19,15 +19,16 @@
         </div>
     </div>
 </nav>
-<div class="container-fluid widget-sortable">
+<div class="container-fluid widget-sortable"
+     wam-sortable callback="model.reorderWidget(start, end)">
 
-    <div ng-repeat="widget in model.widgets" class="widget-content">
+    <div ng-repeat="widget in model.widgets">
         <div class="widget-tool">
             <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}"
                class="btn list-btn">
                 <span class="glyphicon glyphicon-cog"></span>
             </a>
-            <span class="glyphicon glyphicon-align-justify black-btn"></span>
+            <span class="glyphicon glyphicon-align-justify black-btn sort-handle"></span>
         </div>
         <div ng-switch="widget.type">
             <div ng-switch-when="HEADING" ng-switch="widget.size">
