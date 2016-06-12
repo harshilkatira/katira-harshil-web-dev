@@ -21,16 +21,18 @@ module.exports = function (app, models) {
         var userId = req.params.userId;
         var website = req.body;
 
-        websiteModel
-            .createWebsiteForUser(userId, website)
-            .then(
+        var newWebsite = websiteModel
+            .createWebsiteForUser(userId, website);
+        console.log("response"+newWebsite);
+        res.json(newWebsite);
+            /*.then(
                 function (website) {
                     res.json(website);
                 },
                 function (error) {
                     res.statusCode(400).send(error);
                 }
-            );
+            );*/
 
         /*website._id = (new Date()).getTime()+"";
         websites.push(website);

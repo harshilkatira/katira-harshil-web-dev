@@ -54,7 +54,7 @@ module.exports = function (app, models) {
             .findUserByCreadentials(username, password)
             .then(
                 function (user) {
-                    console.log(user);
+                    //console.log(user);
                     res.json(user);
                 },
                 function (error) {

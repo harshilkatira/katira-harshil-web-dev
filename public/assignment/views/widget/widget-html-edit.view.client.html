@@ -22,7 +22,17 @@
     <div ng-if="model.error" class="alert alert-danger">
         {{model.error}}
     </div>
-    <form>
+    <form name="form">
+        <div class="form-group" ng-class="{'has-error': form.name.$touched && form.name.$invalid}">
+            <label for="name">Name</label>
+            <input ng-model="model.widget.name"
+                   id="name"
+                   type="text"
+                   name="name"
+                   placeholder="Name"
+                   class="form-control" required />
+            <span ng-show="form.name.$touched && form.name.$invalid">Name is required.</span>
+        </div>
         <div ng-model="model.widget.text"
              text-angular
              ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],

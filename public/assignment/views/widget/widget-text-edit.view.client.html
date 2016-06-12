@@ -22,7 +22,17 @@
     <div ng-if="model.error" class="alert alert-danger">
         {{model.error}}
     </div>
-    <form>
+    <form name="form">
+        <div class="form-group" ng-class="{'has-error': form.name.$touched && form.name.$invalid}">
+            <label for="name">Name</label>
+            <input ng-model="model.widget.name"
+                   id="name"
+                   type="text"
+                   name="name"
+                   placeholder="Name"
+                   class="form-control" required />
+            <span ng-show="form.name.$touched && form.name.$invalid">Name is required.</span>
+        </div>
         <div class="form-group">
             <label for="text">Text</label>
             <input ng-model="model.widget.text"
@@ -48,11 +58,13 @@
                    class="form-control">
         </div>
         <div class="form-group">
-            <label for="formatted">Formatted</label>
-            <input ng-model="model.widget.formatted"
-                   id="formatted"
-                   type="checkbox"
-                   class="form-control">
+            <label class="sr-only" for="formatted">Formatted</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="formattedLablel" value="Formatted" disabled>
+                <div class="input-group-addon">
+                    <input ng-model="model.widget.formatted" id="formatted" type="checkbox">
+                </div>
+            </div>
         </div>
         <a class="btn btn-danger btn-block"
            ng-click="model.deleteWidget()"

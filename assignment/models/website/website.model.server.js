@@ -3,6 +3,7 @@ module.exports = function () {
     var mongoose = require("mongoose");
     var WebsiteSchema = require("./website.schema.server")();
     var Website = mongoose.model("Website", WebsiteSchema);
+    var User = mongoose.model("User");
 
     var api = {
         createWebsiteForUser: createWebsiteForUser,
@@ -15,7 +16,50 @@ module.exports = function () {
 
     function createWebsiteForUser(userId, website) {
         website._user = userId;
-        return Website.create(website);
+        console.log("up");
+
+        return Website.create(website)
+            .then(
+                function (website) {
+                    User.findById(userId)
+                        .then(
+                            function (user) {
+                                user.websites.push(website._id);
+                                user.save(function () {});
+                            },
+                            function (error) {
+                                console.log(error);
+                            }
+                        );
+                    // return website;
+                });
+
+
+
+        /*then(function (website, error) {
+         console.log("down");
+         if(error) {
+         console.log("err"+error);
+         } else {
+         User.findById(userId).then(function (user, err) {
+         if (err) {
+         console.log("err1"+err);
+         } else {
+         user.websites.push(website._id);
+         console.log('updated user ' + user);
+         user.save(function (error) {
+         if(error) {
+         console.log(error);
+         } else
+         return website;
+         });
+         }
+         })
+         }
+         }
+         );*/
+
+        //return Website.create(website);
     }
 
     function findAllWebsitesForUser(userId) {
