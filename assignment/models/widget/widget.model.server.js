@@ -27,8 +27,7 @@ module.exports = function () {
     }
 
     function updateWidget(widgetId, widget) {
-        delete widget.widgetId;
-        delete widget.type;
+        delete widget._id;
         return Widget.update({_id: widgetId}, {$set: widget});
     }
 
