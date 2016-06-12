@@ -23,39 +23,13 @@
         {{model.error}}
     </div>
     <form>
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input ng-model="model.widget.name"
-                   id="name"
-                   type="text"
-                   placeholder="Name"
-                   class="form-control">
+        <div ng-model="model.widget.text"
+             text-angular
+             ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+        ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+        ['indent','outdent'],['html']]" class="">
         </div>
-        <div class="form-group">
-            <label for="text">Text</label>
-            <input ng-model="model.widget.text"
-                   id="text"
-                   type="text"
-                   placeholder="Text"
-                   class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="url">URL</label>
-            <input ng-model="model.widget.url"
-                   id="url"
-                   type="text"
-                   placeholder="url"
-                   class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="width">Width</label>
-            <input ng-model="model.widget.width"
-                   id="width"
-                   type="text"
-                   placeholder="100%"
-                   class="form-control">
-        </div>
-        <a class="btn btn-danger btn-block"
+        <a class="btn btn-danger btn-block html-delete-btn"
            ng-click="model.deleteWidget()"
            role="button">Delete</a>
     </form>

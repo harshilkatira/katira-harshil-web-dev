@@ -5,8 +5,7 @@
     
     function EditWidgetController($location, $routeParams, WidgetService) {
         var vm = this;
-        vm.updateHeader = updateHeader;
-        vm.updateMedia = updateMedia;
+        vm.updateWidget = updateWidget;
         vm.deleteWidget = deleteWidget;
         
         vm.userId = $routeParams.userId;
@@ -26,40 +25,17 @@
         }
         init();
 
-        function updateHeader(newWidget) {
-            if(newWidget.text && newWidget.size) {
-                WidgetService
-                    .updateWidget(vm.widgetId, newWidget)
-                    .then(
-                        function (response) {
-                            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
-                        },
-                        function (error) {
-                            vm.error = "Error updating widget details."
-                        }
-                    );
-            }
-            else{
-                vm.error = "Text and Size are required fields.";
-            }
-        }
-
-        function updateMedia(newWidget) {
-            if(newWidget.url && newWidget.width) {
-                WidgetService
-                    .updateWidget(vm.widgetId, newWidget)
-                    .then(
-                        function (response) {
-                            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
-                        },
-                        function (error) {
-                            vm.error = "Error updating widget details."
-                        }
-                    );
-            }
-            else{
-                vm.error = "URL and Width are required fields.";
-            }
+        function updateWidget(newWidget) {
+            WidgetService
+                .updateWidget(vm.widgetId, newWidget)
+                .then(
+                    function (response) {
+                        $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+                    },
+                    function (error) {
+                        vm.error = "Error updating widget details."
+                    }
+                );
         }
 
         function deleteWidget(){
