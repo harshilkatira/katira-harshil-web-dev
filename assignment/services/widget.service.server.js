@@ -1,6 +1,7 @@
 module.exports = function (app, models) {
 
     var widgetModel = models.widgetModel;
+    var pageModel = models.pageModel;
 
     var multer = require('multer'); // npm install multer --save
     var upload = multer({ dest: __dirname+'/../../public/uploads' });
@@ -74,6 +75,22 @@ module.exports = function (app, models) {
             .createWidget(pageId, widget)
             .then(
                 function (widget) {
+                    pageModel
+                        .findPageById(pageId)
+                        .then(
+                            function (page) {
+                                page.widgets.push(widget._id);
+                                pageModel
+                                    .updatePage(pageId, page)
+                                    .then(
+                                        function (stats) {},
+                                        function (error) {}
+                                    );
+                            },
+                            function (error) {
+
+                            }
+                        );
                     res.json(widget);
                 },
                 function (error) {
