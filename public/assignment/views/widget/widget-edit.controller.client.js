@@ -26,16 +26,21 @@
         init();
 
         function updateWidget(newWidget) {
-            WidgetService
-                .updateWidget(vm.widgetId, newWidget)
-                .then(
-                    function (response) {
-                        $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
-                    },
-                    function (error) {
-                        vm.error = "Error updating widget details."
-                    }
-                );
+            if(newWidget.name) {
+                WidgetService
+                    .updateWidget(vm.widgetId, newWidget)
+                    .then(
+                        function (response) {
+                            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+                        },
+                        function (error) {
+                            vm.error = "Error updating widget details."
+                        }
+                    );
+            }
+            else {
+                vm.error = "Widget Name is required."
+            }
         }
 
         function deleteWidget(){
