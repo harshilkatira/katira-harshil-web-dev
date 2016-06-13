@@ -22,7 +22,7 @@
 <div class="container-fluid widget-sortable"
      wam-sortable callback="model.reorderWidget(start, end)">
 
-    <div ng-repeat="widget in model.widgets">
+    <div ng-repeat="widget in model.widgets | orderBy: 'order'">
         <div class="widget-tool">
             <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}"
                class="btn list-btn">

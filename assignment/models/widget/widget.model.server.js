@@ -15,7 +15,17 @@ module.exports = function () {
 
     function createWidget(pageId, widget) {
         widget._page = pageId;
-        return Widget.create(widget);
+        return Widget
+            .find({_page: pageId})
+            .then(
+                function (widgets) {
+                    widget.order = widgets.length;
+                    return Widget.create(widget);
+                },
+                function (error) {
+                    return null;
+                }
+            );
     }
 
     function findAllWidgetsForPage(pageId) {
@@ -36,6 +46,36 @@ module.exports = function () {
     }
 
     function reorderWidget(pageId, start, end) {
-        return Widget.find();
+        var start = parseInt(start);
+        var end = parseInt(end);
+        //console.log([start, end]);
+        return Widget.find({"_page": pageId})
+            .then(
+                function (widgets) {
+                    widgets.forEach(function (widget) {
+                        if(start > end) {
+                            if(widget.order >= end && widget.order < start) {
+                                widget.order = widget.order + 1;
+                                widget.save(function(){});
+                            } else if(widget.order === start) {
+                                widget.order = end;
+                                widget.save(function(){});
+                            }
+                        } else {
+                            if(widget.order > start && widget.order <= end) {
+                                widget.order = widget.order - 1;
+                                widget.save(function(){});
+                            } else if(widget.order === start) {
+                                widget.order = end;
+                                widget.save(function(){});
+                            }
+                        }
+                    });
+                    return widgets;
+                },
+                function (error) {
+                    return null;
+                }
+            );
     }
 };

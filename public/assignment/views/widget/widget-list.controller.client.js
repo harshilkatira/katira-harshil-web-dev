@@ -40,6 +40,7 @@
                 .reorderWidget(vm.pageId, start, end)
                 .then(
                     function (response) {
+                        //console.log(response.data);
                         vm.widgets = response.data;
                     },
                     function (error) {
