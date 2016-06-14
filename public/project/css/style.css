@@ -1,5 +1,5 @@
 body {
-    padding-top: 60px;
+    //padding-top: 60px;
     padding-bottom: 50px;
 }
 .input-group{
@@ -37,4 +37,12 @@ hr {
 .detail-header{
     padding: 5px;
     margin: 0;
+}
+.fix-ht{
+    min-height: 600px;
+    height: 600px;
+}
+.thumbnail-img{
+    min-height: 350px;
+    height: 350px!important;
 }

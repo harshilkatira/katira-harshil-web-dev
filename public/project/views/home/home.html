@@ -31,15 +31,14 @@
 <div class="container">
     <div class="row">
         <div ng-repeat="game in model.games" class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img src="{{model.game.image.medium_url}}">
+            <div class="thumbnail fix-ht">
+                <img class="img-responsive thumbnail-img" ng-src="{{game.image.medium_url}}">
                 <div class="caption">
-                    <h3>{{model.game.name}}</h3>
-                    <p>{{model.game.deck}}</p>
+                    <h3>{{game.name}}</h3>
+                    <p>{{game.deck}}</p>
 
                 </div>
             </div>
         </div>
     </div>
 </div>
-{{model.games}}

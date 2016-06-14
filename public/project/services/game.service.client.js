@@ -10,7 +10,7 @@
         "expected_release_year,franchises,genres,id,image,images,name,original_release_date," +
         "platforms,publishers,similar_games,themes,videos";
 
-    var limit = "&limit=20";
+    var limit = "&limit=15";
 
     var sort = "&sort=number_of_user_reviews:desc";
 
