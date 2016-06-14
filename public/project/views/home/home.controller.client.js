@@ -8,7 +8,7 @@
 
         function init() {
             GameService
-                .getGamesList()
+                .getPopularGamesList()
                 .then(
                     function (response) {
                         vm.games = response.data.results;
