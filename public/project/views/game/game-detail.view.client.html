@@ -15,7 +15,7 @@
         </div>
         <div class="panel-body">
             <h5 class="well">{{model.game.deck}}</h5>
-            <div id="description" ng-bind-html="model.game.description"></div>
+            <div id="description" ng-bind-html="model.getSafeHtml(model.game.description)"></div>
         </div>
     </div>
     <!--<div class="row nav">

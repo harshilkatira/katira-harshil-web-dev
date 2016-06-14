@@ -29,12 +29,20 @@
 </nav>
 
 <div class="container">
+
+    <!-- Search bar -->
+
     <div class="row">
+        <div class="page-header">
+            <h2>Popular Games</h2>
+        </div>
         <div ng-repeat="game in model.games" class="col-sm-6 col-md-4">
             <div class="thumbnail fix-ht">
-                <img class="img-responsive thumbnail-img" ng-src="{{game.image.medium_url}}">
                 <div class="caption">
+                <a href="#/game/{{game.id}}">
+                    <img class="img-responsive thumbnail-img" ng-src="{{game.image.medium_url}}">
                     <h3>{{game.name}}</h3>
+                </a>
                     <p>{{game.deck}}</p>
 
                 </div>

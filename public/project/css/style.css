@@ -46,3 +46,7 @@ hr {
     min-height: 350px;
     height: 350px!important;
 }
+a,a:hover {
+    color: black;
+    text-decoration: none;
+}
