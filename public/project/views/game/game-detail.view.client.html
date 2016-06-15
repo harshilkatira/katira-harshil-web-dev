@@ -5,12 +5,17 @@
     <!--{{model.game}}-->
 
     <div class="panel panel-default">
-        <div class="row panel-heading panel-heading-custom">
-            <div class="col-xs-4 v-center">
-                <img class="img-responsive" src='{{model.game.image.medium_url}}'>
-            </div><!--
-         --><div class="col-xs-8 panel-title v-center">
-                <h2>{{model.game.name}}</h2>
+        <div class="panel-heading panel-heading-custom">
+            <div class="row">
+                <div class="col-xs-4 v-center">
+                    <img class="img-responsive detail-heading-img" src='{{model.game.image.medium_url}}'>
+                </div><!--
+                --><div class="col-xs-8 panel-title v-center">
+                    <h3>{{model.game.name}}</h3>
+                </div><!--
+               <div class="col-xs-2 panel-title v-center btn btn-block">
+                    <a class=""><i class="fa fa-thumbs-o-up fa-lg"></i></a>
+                </div>-->
             </div>
         </div>
         <div class="panel-body">

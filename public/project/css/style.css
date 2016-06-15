@@ -34,10 +34,10 @@ body {
 hr {
     margin: 0;
 }
-.detail-header{
+/*.detail-header{
     padding: 5px;
     margin: 0;
-}
+}*/
 .fix-ht{
     min-height: 600px;
     height: 600px;
@@ -51,6 +51,24 @@ a,a:hover {
     text-decoration: none;
 }
 .panel-default > .panel-heading-custom {
+    border-radius: 15px;
     background-color: black;
     color: white;
+}
+.panel-default{
+    border-radius: 15px;
+}
+.detail-heading-img {
+    border: 3px solid;
+    border-radius: 10px;
+    border-color: #cccccc;
+}
+@media only screen and (max-width: 767px) {
+
+    h3 {
+        font-size: 18px;
+    }
+}
+.home-title{
+    margin-left: 15px;
 }
