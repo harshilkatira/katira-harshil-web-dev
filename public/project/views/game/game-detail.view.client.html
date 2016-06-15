@@ -20,7 +20,14 @@
         </div>
         <div class="panel-body">
             <h5 class="well">{{model.game.deck}}</h5>
-            <div id="description" ng-bind-html="model.getSafeHtml(model.game.description)"></div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Game WIKI</h3>
+                </div>
+                <div class="panel-body">
+                    <div id="description" ng-bind-html="model.getSafeHtml(model.game.description)"></div>
+                </div>
+            </div>
         </div>
     </div>
     <!--<div class="row nav">
