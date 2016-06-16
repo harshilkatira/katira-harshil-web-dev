@@ -5,9 +5,17 @@ module.exports = function () {
     var Game = mongoose.model("Game", GameSchema);
 
     var api = {
-
+        storeGame: storeGame,
+        findStoredGameById: findStoredGameById
     };
     return api;
 
+    function storeGame(game) {
+        return Game.create(game);
+    }
+
+    function findStoredGameById(gameId) {
+        return Game.findById(gameId);
+    }
     
 };

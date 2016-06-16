@@ -26,7 +26,7 @@
                 controllerAs: "model"
             })
             .when("/home", {
-                templateUrl: "views/home/home.html",
+                templateUrl: "views/home/home.view.client.html",
                 controller: "HomeController",
                 controllerAs: "model"
             });

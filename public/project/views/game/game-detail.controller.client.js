@@ -6,8 +6,12 @@
     function GameDetailController($sce, $routeParams, GameService) {
         var vm = this;
         vm.getSafeHtml = getSafeHtml;
+        vm.clickLikeDislike = clickLikeDislike;
 
         vm.gameId = $routeParams.gameId;
+        vm.userId = "123";
+        vm.liked = false;
+
 
         function init() {
             GameService
@@ -32,11 +36,80 @@
                         vm.error = error.status;
                     }
                 );
+
+            GameService
+                .findStoredGameById(vm.gameId)
+                .then(
+                    function (response) {
+                        vm.storedGame = response.data;
+                    },
+                    function (error) {
+                        console.log("game is not stored");
+                    }
+                );
         }
         init();
 
         function getSafeHtml(desc) {
             return $sce.trustAsHtml(desc);
+        }
+        
+        function clickLikeDislike() {
+            if(vm.storedGame) {
+                if (!vm.liked) {
+                    likeGame();
+                }
+                else {
+                    dislikeGame();
+                }
+            }
+            else{
+                storeTheGame()
+                    .then(
+                        function (response) {
+                            vm.storedGame = response.data;
+                            likeGame();
+                        },
+                        function (error) {
+                            console.log("unable to store game");
+                        }
+                    );
+            }
+        }
+        
+        function storeTheGame() {
+            var game = {
+                _id: vm.gameId,
+                name: vm.game.name,
+                image: vm.game.image.medium_url
+            };
+            return GameService.storeGame(game)
+        }
+
+        function likeGame() {
+            UserService
+                .likeGame(vm.userId, vm.gameId)
+                .then(
+                    function (response) {
+                        vm.liked = true;
+                    },
+                    function (error) {
+                        vm.error = "Unable to like game";
+                    }
+                );
+        }
+
+        function dislikeGame() {
+            UserService
+                .unlikeGame(userId, vm.gameId)
+                .then(
+                    function (response) {
+                        vm.liked = false;
+                    },
+                    function (error) {
+                        vm.error = "Unable to unlike game";
+                    }
+                );
         }
     }
 })();
