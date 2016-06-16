@@ -1,9 +1,9 @@
 module.exports = function (app, models) {
-    var userModel = models.userModel;
+
     var gameModel = models.gameModel;
 
-    app.post("/projectapi/game", storeGame);
-    app.get("/projectapi/like/:gameId", findStoredGameById);
+    app.post("/project/api/game", storeGame);
+    app.get("/project/api/game/:gameId", findStoredGameById);
 
     function storeGame(req, res) {
         var game = req.body;

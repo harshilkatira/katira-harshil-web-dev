@@ -3,15 +3,14 @@
         .module("GamersBay")
         .controller("GameDetailController", GameDetailController);
 
-    function GameDetailController($sce, $routeParams, GameService) {
+    function GameDetailController($sce, $routeParams, GameService, UserService) {
         var vm = this;
         vm.getSafeHtml = getSafeHtml;
         vm.clickLikeDislike = clickLikeDislike;
 
         vm.gameId = $routeParams.gameId;
-        vm.userId = "123";
+        vm.userId = "5762f35680f6602c2416a924";
         vm.liked = false;
-
 
         function init() {
             GameService
@@ -83,7 +82,7 @@
                 name: vm.game.name,
                 image: vm.game.image.medium_url
             };
-            return GameService.storeGame(game)
+            return GameService.storeGame(game);
         }
 
         function likeGame() {

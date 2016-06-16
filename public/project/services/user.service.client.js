@@ -10,7 +10,9 @@
             findUserByUsername: findUserByUsername,
             findUserByCredentials: findUserByCredentials,
             updateUser: updateUser,
-            deleteUser: deleteUser
+            deleteUser: deleteUser,
+            likeGame: likeGame,
+            unlikeGame: unlikeGame
         };
         return api;
 
@@ -22,32 +24,40 @@
                 lastName: user.lastName,
                 email: user.email
             };
-            return $http.post("/api/user", newUser);
+            return $http.post("/project/api/user", newUser);
         }
 
         function findUserById(userId) {
-            var url = "/api/user/"+userId;
+            var url = "/project/api/user/"+userId;
             return $http.get(url);
         }
 
         function findUserByUsername(username) {
-            var url = "/api/user?username="+username;
+            var url = "/project/api/user?username="+username;
             return $http.get(url);
         }
 
         function findUserByCredentials(username, password) {
-            var url = "/api/user?username="+username+"&password="+password;
+            var url = "/project/api/user?username="+username+"&password="+password;
             return $http.get(url);
         }
 
         function updateUser(userId, user) {
-            var url = "/api/user/"+userId;
+            var url = "/project/api/user/"+userId;
             return $http.put(url, user);
         }
 
         function deleteUser(userId) {
-            var url = "/api/user/"+userId;
+            var url = "/project/api/user/"+userId;
             return $http.delete(url);
+        }
+        
+        function likeGame() {
+
+        }
+        
+        function unlikeGame() {
+
         }
     }
 })();
