@@ -5,6 +5,7 @@
 
     function HomeController(GameService) {
         var vm = this;
+        vm.searchGames = searchGames;
 
         function init() {
             GameService
@@ -19,5 +20,18 @@
                 );
         }
         init();
+
+        function searchGames(searchText) {
+            GameService
+                .searchGames(searchText)
+                .then(
+                    function (response) {
+                        vm.games = response.data.results;
+                    },
+                    function (error) {
+                        vm.games = error.status;
+                    }
+                );
+        }
     }
 })();

@@ -31,6 +31,14 @@
 <div class="container">
 
     <!-- Search bar -->
+    <div class="input-group">
+        <input ng-model="searchText" type="text" class="form-control" placeholder="Look up your favourite Game!">
+    <span class="input-group-btn">
+        <a ng-click="model.searchGames(searchText)" class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-search"></span>
+        </a>
+    </span>
+    </div>
 
     <div class="row">
         <h3 class="home-title">Popular Games</h3>
@@ -38,10 +46,10 @@
         <div ng-repeat="game in model.games" class="col-sm-6 col-md-4">
             <div class="thumbnail fix-ht">
                 <div class="caption">
-                <a href="#/game/{{game.id}}">
-                    <img class="img-responsive thumbnail-img" ng-src="{{game.image.medium_url}}">
-                    <h3>{{game.name}}</h3>
-                </a>
+                    <a href="#/game/{{game.id}}">
+                        <img class="img-responsive thumbnail-img" ng-src="{{game.image.medium_url}}">
+                        <h3>{{game.name}}</h3>
+                    </a>
                     <p>{{game.deck}}</p>
 
                 </div>
