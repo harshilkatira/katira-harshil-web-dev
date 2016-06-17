@@ -13,11 +13,8 @@ module.exports = function (app,models) {
         var gameId = req.params.gameId;
         var review = req.body;
 
-        review.userId = userId;
-        review.gameId = gameId;
-
         reviewModel
-            .saveReview(review)
+            .saveReview(userId, gameId, review)
             .then(
                 function (review) {
                     res.json(review);

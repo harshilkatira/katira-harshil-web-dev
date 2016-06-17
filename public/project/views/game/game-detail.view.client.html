@@ -45,7 +45,7 @@
                         <small>USER : August 25, 2014 at 9:30 PM</small>
                     </h4>
                     <p>
-                        <ng-rating ng-model=""
+                        <ng-rating ng-model="model.review.rating"
                                    editable="false">
                         </ng-rating>
                     </p>
@@ -64,7 +64,7 @@
                     </h4>
                     <small>USER : August 25, 2014 at 9:30 PM</small>
                     <p>
-                        <ng-rating ng-model=""
+                        <ng-rating ng-model="model.review.rating"
                                    editable="false">
                         </ng-rating>
                     </p>
@@ -95,7 +95,7 @@
                               class="form-control">
                     </textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <a ng-click="model.submitReview(model.review)" class="btn btn-primary">Submit</a>
                 </form>
             </div>
         </div>

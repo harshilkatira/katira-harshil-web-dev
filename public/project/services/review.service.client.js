@@ -3,7 +3,7 @@
         .module("GamersBay")
         .factory("ReviewService", ReviewService);
 
-    function ReviewService($http){
+    function ReviewService($http) {
         var api = {
             saveReview: saveReview,
             getAllReviewsByGameId: getAllReviewsByGameId,

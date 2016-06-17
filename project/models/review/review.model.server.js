@@ -13,7 +13,10 @@ module.exports = function () {
     };
     return api;
 
-    function saveReview(review) {
+    function saveReview(userId, gameId, review) {
+        review.userId = userId;
+        review.gameId = gameId;
+
         return Review.create(review);
     }
 
@@ -27,6 +30,7 @@ module.exports = function () {
 
     function updateReview(reviewId, review) {
         delete review._id;
+        review.timestamp = Date.now();
         return Review
             .update({_id: reviewId},{
                 $set: review
