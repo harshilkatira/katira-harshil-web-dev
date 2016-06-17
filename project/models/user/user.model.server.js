@@ -13,7 +13,7 @@ module.exports = function () {
         deleteUser: deleteUser
     };
     return api;
-    
+
     function createUser(user) {
         return User.create(user);
     }
@@ -41,4 +41,11 @@ module.exports = function () {
                $set: user
             });
     }
+
+   /* function userLikedGame(userId, gameId) {
+        return User
+            .findByIdAndUpdate(userId, {
+                $push: {likedGames: gameId}
+            });
+    }*/
 };

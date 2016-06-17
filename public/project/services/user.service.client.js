@@ -52,12 +52,14 @@
             return $http.delete(url);
         }
         
-        function likeGame() {
-
+        function likeGame(userId, gameId) {
+            var url = "/project/api/user/"+userId+"/like/"+gameId;
+            return $http.put(url);
         }
         
-        function unlikeGame() {
-
+        function unlikeGame(userId, gameId) {
+            var url = "/project/api/user/"+userId+"/unlike/"+gameId;
+            return $http.put(url);
         }
     }
 })();

@@ -6,6 +6,8 @@ module.exports = function (app, models) {
     app.get("/project/api/user", findUser);
     app.get("/project/api/user/:userId", findUserById);
     app.put("/project/api/user/:userId", updateUser);
+    app.put("/project/api/user/:userId/like/:gameId", userLikedGame);
+    app.put("/project/api/user/:userId/unlike/:gameId", userUnlikedGame);
     app.delete("/project/api/user/:userId", deleteUser);
 
     function createUser(req, res) {
@@ -110,6 +112,57 @@ module.exports = function (app, models) {
                 },
                 function (error) {
                     res.statusCode(404).send(error);
+                }
+            );
+    }
+    
+    function userLikedGame(req, res) {
+        var userId = req.params.userId;
+        var gameId = req.params.gameId;
+
+        userModel
+            .findUserById(userId)
+            .then(
+                function (user) {
+                    user.likedGames.push(gameId);
+                    return userModel.updateUser(userId, user);
+                },
+                function (error) {
+                    res.statusCode(404).send("user not found");
+                }
+            )
+            .then(
+                function (stats) {
+                    res.send(200);
+                },
+                function (error) {
+                    res.statusCode(400).send("unable to like");
+                }
+            );
+    }
+    
+    function userUnlikedGame(req, res) {
+        var userId = req.params.userId;
+        var gameId = req.params.gameId;
+
+        userModel
+            .findUserById(userId)
+            .then(
+                function (user) {
+                    var index = user.likedGames.indexOf(gameId);
+                    user.likedGames.splice(index,1);
+                    return userModel.updateUser(userId, user);
+                },
+                function (error) {
+                    res.statusCode(404).send("user not found");
+                }
+            )
+            .then(
+                function (stats) {
+                    res.send(200);
+                },
+                function (error) {
+                    res.statusCode(400).send("unable to unlike");
                 }
             );
     }

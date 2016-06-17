@@ -9,7 +9,7 @@
         vm.clickLikeDislike = clickLikeDislike;
 
         vm.gameId = $routeParams.gameId;
-        vm.userId = "5762f35680f6602c2416a924";
+        vm.userId = "576344eb500837143f0b8f11";
         vm.liked = false;
 
         function init() {
@@ -100,7 +100,7 @@
 
         function dislikeGame() {
             UserService
-                .unlikeGame(userId, vm.gameId)
+                .unlikeGame(vm.userId, vm.gameId)
                 .then(
                     function (response) {
                         vm.liked = false;
