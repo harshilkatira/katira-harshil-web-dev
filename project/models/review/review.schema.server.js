@@ -6,8 +6,8 @@ module.exports = function () {
         rating: Number,
         title: String,
         comment: String,
-        reviewer: {type: mongoose.Schema.ObjectId, ref: 'ProjectUser'},
-        reviewedGame: {type: mongoose.Schema.ObjectId, ref: 'Game'},
+        userId: {type: mongoose.Schema.ObjectId, ref: 'ProjectUser'},
+        gameId: {type: mongoose.Schema.ObjectId, ref: 'Game'},
         dateCreated: {type: Date, default: Date.now}
     }, {collection: "project.review"});
     
