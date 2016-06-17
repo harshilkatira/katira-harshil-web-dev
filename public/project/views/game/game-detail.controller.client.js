@@ -10,9 +10,20 @@
 
         vm.gameId = $routeParams.gameId;
         vm.userId = "576344eb500837143f0b8f11";
-        vm.liked = false;
 
         function init() {
+
+            UserService
+                .findUserById(vm.userId)
+                .then(
+                    function (response) {
+                        vm.user = response.data;
+                    },
+                    function (error) {
+                        console.log("unable to get user by Id");
+                    }
+                );
+
             GameService
                 .getGameById(vm.gameId)
                 .then(
@@ -55,7 +66,7 @@
         
         function clickLikeDislike() {
             if(vm.storedGame) {
-                if (!vm.liked) {
+                if (vm.user.likedGames.indexOf(vm.gameId) === -1) {
                     likeGame();
                 }
                 else {
