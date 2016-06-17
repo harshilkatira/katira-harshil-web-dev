@@ -1,6 +1,7 @@
 body {
     //padding-top: 60px;
     padding-bottom: 50px;
+    font-weight: bold;
 }
 .input-group{
     margin-bottom: 15px;
@@ -20,6 +21,7 @@ body {
 }
 .well {
     background: #ffffff;
+    border-radius: 15px;
 }
 #description a{
     pointer-events: none;
@@ -33,6 +35,7 @@ body {
 }
 hr {
     margin: 0;
+    margin-bottom: 10px;
 }
 /*.detail-header{
     padding: 5px;
@@ -73,4 +76,13 @@ a,a:hover {
 }
 .btn-green{
     color: green;
+}
+.btn-black{
+    background-color: black;
+}
+.form-control{
+    margin-bottom: 10px;
+}
+.review-box{
+    padding-bottom: 60px;
 }

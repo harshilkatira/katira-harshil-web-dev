@@ -7,9 +7,15 @@
         var vm = this;
         vm.getSafeHtml = getSafeHtml;
         vm.clickLikeDislike = clickLikeDislike;
+        vm.submitReview = submitReview;
 
         vm.gameId = $routeParams.gameId;
         vm.userId = "576344eb500837143f0b8f11";
+        vm.review = {
+            rating:0,
+            title:"",
+            comment:""
+        };
 
         function init() {
 
@@ -120,6 +126,12 @@
                         vm.error = "Unable to unlike game";
                     }
                 );
+        }
+
+        function submitReview(review) {
+            review.reviewer = vm.userId;
+            review.reviewedGame = vm.gameId;
+
         }
     }
 })();

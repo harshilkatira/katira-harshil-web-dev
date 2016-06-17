@@ -44,13 +44,13 @@
         <h3 class="home-title">Popular Games</h3>
         <hr/>
         <div ng-repeat="game in model.games" class="col-sm-6 col-md-4">
-            <div class="thumbnail fix-ht">
+            <div class="thumbnail well fix-ht">
                 <div class="caption">
                     <a href="#/game/{{game.id}}">
                         <img class="img-responsive thumbnail-img" ng-src="{{game.image.medium_url}}">
                         <h3>{{game.name}}</h3>
                     </a>
-                    <p>{{game.deck}}</p>
+                    <h5>{{game.deck}}</h5>
 
                 </div>
             </div>

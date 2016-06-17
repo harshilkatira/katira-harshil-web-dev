@@ -1,3 +1,3 @@
 (function(){
-    angular.module("GamersBay", ["ngRoute", "ngSanitize"]);
+    angular.module("GamersBay", ["ngRoute", "ngSanitize", "ngRating"]);
 })();
