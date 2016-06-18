@@ -3,9 +3,10 @@
         .module("WebAppMaker")
         .controller("ProfileController", ProfileController);
 
-    function ProfileController($routeParams, UserService) {
+    function ProfileController($location, $routeParams, UserService) {
         var vm = this;
         vm.updateUser = updateUser;
+        vm.logout = logout;
 
         var userId = $routeParams.userId;
 
@@ -28,6 +29,19 @@
                     function (error) {
                         vm.error = "Error saving profile."
                     });
+        }
+        
+        function logout() {
+            UserService
+                .logout()
+                .then(
+                    function (response) {
+                        $location.url("/login");
+                    },
+                    function (error) {
+                        $location.url("/login");
+                    }
+                );
         }
     }
 })();
