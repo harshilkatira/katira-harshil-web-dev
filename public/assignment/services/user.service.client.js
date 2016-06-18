@@ -8,6 +8,7 @@
             createUser: createUser,
             login: login,
             logout: logout,
+            loggedIn: loggedIn,
             findUserById: findUserById,
             findUserByUsername: findUserByUsername,
             findUserByCredentials: findUserByCredentials,
@@ -34,6 +35,10 @@
 
         function logout() {
             return $http.post("/api/logout");
+        }
+        
+        function loggedIn() {
+            return $http.get("/api/loggedIn");
         }
 
         function findUserById(userId) {
