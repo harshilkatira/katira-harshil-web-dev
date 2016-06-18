@@ -13,6 +13,7 @@ module.exports = function (app, models) {
     ];
 
     app.post("/api/user", createUser);
+    app.post("/api/register", register);
     app.post("/api/login", passport.authenticate('assignment'), login);
     app.post("/api/logout", logout);
     app.get("/api/loggedIn", loggedIn);
@@ -56,6 +57,45 @@ module.exports = function (app, models) {
                 },
                 function(err){
                     done(err, null);
+                }
+            );
+    }
+
+    function register(req, res) {
+        var username = req.body.username;
+        var password = req.body.password;
+        userModel
+            .findUserByUsername(username)
+            .then(
+                function (user) {
+                    if(user){
+                        res.status(400).send("Username already in use");
+                        return;
+                    }
+                    else{
+                        return userModel
+                            .createUser(req.body);
+                    }
+                },
+                function (error) {
+                    res.status(400).send(error);
+                }
+            )
+            .then(
+                function (user) {
+                    if(user){
+                        req.login(user, function (error) {
+                            if(error){
+                                res.status(400).send(error);
+                            }
+                            else{
+                                res.json(user);
+                            }
+                        });
+                    }
+                },
+                function (error) {
+                    res.status(400).send(error);
                 }
             );
     }

@@ -6,6 +6,7 @@
     function UserService($http){
         var api = {
             createUser: createUser,
+            register: register,
             login: login,
             logout: logout,
             loggedIn: loggedIn,
@@ -16,6 +17,14 @@
             deleteUser: deleteUser
         };
         return api;
+
+        function register(username, password) {
+            var newUser = {
+                username: username,
+                password: password
+            };
+            return $http.post("/api/register", newUser);
+        }
 
         function createUser(user) {
             var newUser = {

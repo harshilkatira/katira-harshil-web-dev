@@ -14,30 +14,18 @@
                 }
                 else {
                     UserService
-                        .findUserByUsername(username)
-                        .then(function (response) {
-                            var user = response.data;
-                            if (user) {
-                                vm.error = "Username already exists.";
+                        .register(username, password)
+                        .then(
+                            function (response) {
+                                var user = response.data;
+                                if (user) {
+                                    $location.url("/user/" + user._id);
+                                }
+                            },
+                            function (error) {
+                                vm.error = error.data;
                             }
-                            else {
-                                var newUser = {
-                                    username: username,
-                                    password: password
-                                };
-                                UserService
-                                    .createUser(newUser)
-                                    .then(function (response) {
-                                        var user = response.data;
-                                        if (user) {
-                                            $location.url("/user/" + user._id);
-                                        }
-                                        else {
-                                            vm.error = "Unable to create new user."
-                                        }
-                                    });
-                            }
-                        });
+                        );
                 }
             }
             else {
