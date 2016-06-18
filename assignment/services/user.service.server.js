@@ -1,3 +1,6 @@
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+
 module.exports = function (app, models) {
 
     var userModel = models.userModel;
@@ -10,10 +13,50 @@ module.exports = function (app, models) {
     ];
 
     app.post("/api/user", createUser);
+    app.post("/api/login", passport.authenticate('assignment'), login);
     app.get("/api/user", findUser);
     app.get("/api/user/:userId", findUserById);
     app.put("/api/user/:userId", updateUser);
     app.delete("/api/user/:userId", deleteUser);
+
+    passport.use('assignment', new LocalStrategy(localStrategy));
+    passport.serializeUser(serializeUser);
+    passport.deserializeUser(deserializeUser);
+
+    function localStrategy(username, password, done) {
+        userModel
+            .findUserByCredentials(username, password)
+            .then(
+                function(user) {
+                    if(user) {
+                        return done(null, user);
+                    }
+                    else {
+                        return done(null, false);
+                    }
+                },
+                function(err) {
+                    if (err) { return done(err); }
+                }
+            );
+    }
+
+    function serializeUser(user, done) {
+        done(null, user);
+    }
+
+    function deserializeUser(user, done) {
+        userModel
+            .findUserById(user._id)
+            .then(
+                function(user){
+                    done(null, user);
+                },
+                function(err){
+                    done(err, null);
+                }
+            );
+    }
 
     function createUser(req, res) {
         var user = req.body;
@@ -28,17 +71,18 @@ module.exports = function (app, models) {
                     res.statusCode(400).send(error);
                 }
             );
+    }
 
-        /*user._id = (new Date()).getTime()+"";
-         users.push(user);
-         res.send(user);*/
+    function login(req, res) {
+        var user = req.user;
+        res.json(user);
     }
 
     function findUser(req, res) {
         var username = req.query['username'];
         var password = req.query['password'];
         if(username && password){
-            findUserByCredentials(username, password, res);
+            findUserByCredentials(username, password, req, res);
         }
         else if(username){
             findUserByUsername(username, res);
@@ -48,27 +92,23 @@ module.exports = function (app, models) {
         }
     }
 
-    function findUserByCredentials(username, password, res) {
+    function findUserByCredentials(username, password, req, res) {
 
         userModel
-            .findUserByCreadentials(username, password)
+            .findUserByCredentials(username, password)
             .then(
                 function (user) {
                     //console.log(user);
+
+                    //console.log(req.session);
+                    req.session.currentUser = user;
+
                     res.json(user);
                 },
                 function (error) {
                     res.statusCode(404).send(error);
                 }
             );
-
-        /*for(var i in users) {
-            if(users[i].username === username && users[i].password === password) {
-                res.send(users[i]);
-                return;
-            }
-        }
-        res.send({});*/
     }
 
     function findUserByUsername(username, res) {
@@ -83,13 +123,7 @@ module.exports = function (app, models) {
                     res.statusCode(404).send(error);
                 }
             );
-        /*for(var i in users) {
-            if(users[i].username === username) {
-                res.send(users[i]);
-                return;
-            }
-        }
-        res.send({});*/
+
     }
 
     function findUserById(req, res) {
@@ -106,13 +140,7 @@ module.exports = function (app, models) {
                 }
             );
 
-        /*for(var i in users) {
-            if(users[i]._id === userId) {
-                res.send(users[i]);
-                return;
-            }
-        }
-        res.send({});*/
+
     }
 
     function updateUser(req, res) {
@@ -130,16 +158,7 @@ module.exports = function (app, models) {
                     res.statusCode(404).send(error);
                 }
             );
-        /*for(var i in users) {
-            if(users[i]._id === userId) {
-                users[i].firstName = newUser.firstName;
-                users[i].lastName = newUser.lastName;
-                users[i].email = newUser.email;
-                res.send(200);
-                return;
-            }
-        }
-        res.send(400);*/
+
     }
 
     function deleteUser(req, res) {
@@ -156,13 +175,6 @@ module.exports = function (app, models) {
                     res.statusCode(404).send(error);
                 }
             );
-        /*for(var i in users) {
-            if(users[i]._id === userId) {
-                users.splice(i,1);
-                res.send(200);
-                return;
-            }
-        }
-        res.send(400);*/
+
     }
 };
