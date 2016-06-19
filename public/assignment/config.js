@@ -28,6 +28,9 @@
                     loggedIn: checkLoggedIn
                 }
             })
+            .when("/user/:userId", {
+                redirectTo: "/user"
+            })
             .when("/user/:userId/website", {
                 templateUrl: "views/website/website-list.view.client.html",
                 controller: "WebsiteListController",
