@@ -8,7 +8,6 @@ module.exports = function () {
         firstName: String,
         lastName: String,
         email: String,
-        phone: String,
         image: String,
         followers: [{type: mongoose.Schema.ObjectId, ref: 'ProjectUser'}],
         following: [{type: mongoose.Schema.ObjectId, ref: 'ProjectUser'}],
