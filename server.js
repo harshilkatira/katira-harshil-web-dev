@@ -35,10 +35,14 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
 var mongoose = require("mongoose");
 mongoose.connect(connectionString);
 
+var assignmentUserModel = require("./assignment/models/user/user.model.server.js")();
+var projectUserModel = require("./project/models/user/user.model.server.js")();
+var securityService = require("./security/security.js")(assignmentUserModel, projectUserModel);
+var passport = securityService.getPassport();
 
 var assignment = require("./assignment/app.js");
-assignment(app);
+assignment(app, assignmentUserModel, passport);
 
-require("./project/app.js")(app);
+require("./project/app.js")(app, projectUserModel, passport);
 
 app.listen(port, ipaddress);

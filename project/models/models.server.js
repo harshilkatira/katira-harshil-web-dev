@@ -12,7 +12,7 @@ module.exports = function () {
     mongoose.connect(connectionString);*/
 
     var models = {
-        userModel: require("./user/user.model.server")(),
+        //userModel: require("./user/user.model.server")(),
         gameModel: require("./game/game.model.server")(),
         reviewModel: require("./review/review.model.server")()
     };

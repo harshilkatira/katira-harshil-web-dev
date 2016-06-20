@@ -12,6 +12,7 @@ module.exports = function () {
             token: String,
             displayName: String
         },*/
+        type: {type: String, default: 'gamer'},
         email: String,
         image: String,
         followers: [{type: mongoose.Schema.ObjectId, ref: 'ProjectUser'}],

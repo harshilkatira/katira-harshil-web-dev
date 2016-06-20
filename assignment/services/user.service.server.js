@@ -1,11 +1,11 @@
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
+// var passport = require('passport');
+// var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var bcrypt = require("bcrypt-nodejs");
 
-module.exports = function (app, models) {
+module.exports = function (app, userModel, passport) {
 
-    var userModel = models.userModel;
+    // userModel = models.userModel;
 
     var users = [
         {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
@@ -30,9 +30,9 @@ module.exports = function (app, models) {
     app.put("/api/user/:userId", updateUser);
     app.delete("/api/user/:userId", deleteUser);
 
-    passport.use('assignment', new LocalStrategy(localStrategy));
+    /*passport.use('assignment', new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
-    passport.deserializeUser(deserializeUser);
+    passport.deserializeUser(deserializeUser);*/
 
 
     var facebookConfig = {
@@ -43,7 +43,7 @@ module.exports = function (app, models) {
 
     passport.use('facebook', new FacebookStrategy(facebookConfig, facebookLogin));
 
-    function localStrategy(username, password, done) {
+    /*function localStrategy(username, password, done) {
         userModel
             .findUserByUsername(username)
             .then(
@@ -76,7 +76,7 @@ module.exports = function (app, models) {
                     done(err, null);
                 }
             );
-    }
+    }*/
 
     function register(req, res) {
         var username = req.body.username;
