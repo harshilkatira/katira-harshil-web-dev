@@ -16,8 +16,8 @@
                 controllerAs: "model"
             })
             .when("/user", {
-                templateUrl: "views/user/profile.view.client.html",
-                controller: "ProfileController",
+                templateUrl: "views/user/profile-edit.view.client.html",
+                controller: "ProfileEditController",
                 controllerAs: "model",
                 resolve: {
                     loggedIn: checkLoggedIn

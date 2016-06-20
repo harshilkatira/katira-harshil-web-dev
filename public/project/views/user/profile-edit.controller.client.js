@@ -1,9 +1,9 @@
 (function () {
     angular
         .module("GamersBay")
-        .controller("ProfileController", ProfileController);
+        .controller("ProfileEditController", ProfileEditController);
 
-    function ProfileController($location, $routeParams, UserService, $rootScope) {
+    function ProfileEditController($location, $routeParams, UserService, $rootScope) {
         var vm = this;
         vm.updateUser = updateUser;
         vm.logout = logout;
