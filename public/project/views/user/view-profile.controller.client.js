@@ -1,18 +1,18 @@
 (function () {
     angular
         .module("GamersBay")
-        .controller("ProfileEditController", ProfileEditController);
+        .controller("ViewProfileController", ViewProfileController);
 
-    function ProfileEditController($location, $routeParams, UserService, $rootScope) {
+    function ViewProfileController($location, $routeParams, UserService, $rootScope) {
         var vm = this;
         vm.updateUser = updateUser;
         vm.logout = logout;
 
-        vm.currentUser = $rootScope.currentUser;
+        var userId = $rootScope.currentUser._id;
 
         function init() {
             UserService
-                .findUserById(vm.currentUser._id)
+                .findUserById(userId)
                 .then(function (response) {
                     vm.user = response.data;
                 });
@@ -21,7 +21,7 @@
 
         function updateUser(newUser) {
             UserService
-                .updateUser(vm.currentUser._id, newUser)
+                .updateUser(userId, newUser)
                 .then(
                     function (response) {
                         vm.success = "Your profile was saved.";
