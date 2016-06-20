@@ -29,7 +29,10 @@
             .when("/game/:gameId", {
                 templateUrl: "views/game/game-detail.view.client.html",
                 controller: "GameDetailController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    getLoggedIn: getLoggedIn
+                }
             })
             .when("/home", {
                 templateUrl: "views/home/home.view.client.html",

@@ -4,23 +4,39 @@
     </div>
     <!--{{model.game}}-->
 
+
     <div class="panel panel-default">
+        <div class="panel-heading panel-heading-custom">
+            <div class="row">
+                <div class="col-xs-4 col-md-3 v-center">
+                    <img class="img-responsive img-circle" src="{{model.game.image.medium_url}}">
+                </div><!--
+                --><div class="col-xs-4 col-md-7 panel-title v-center text-center">
+                <h2>{{model.game.name}}</h2>
+            </div><!--
+               --><div class="col-xs-4 col-md-2 panel-title v-center text-center">
+                <a href="" class=""><i class="fa fa-thumbs-o-up fa-2x"></i></a>
+                <br>
+            </div>
+            </div>
+        </div>
+    <!--<div class="panel panel-default">
         <div class="panel-heading panel-heading-custom">
             <div class="row">
                 <div class="col-xs-4 v-center">
                     <img class="img-responsive detail-heading-img" src='{{model.game.image.medium_url}}'>
-                </div><!--
-                --><div class="col-xs-6 panel-title v-center">
+                </div>&lt;!&ndash;
+                &ndash;&gt;<div class="col-xs-6 panel-title v-center">
                 <h3>{{model.game.name}}</h3>
-            </div><!--
-               --><div class="col-xs-2 panel-title v-center">
+            </div>&lt;!&ndash;
+               &ndash;&gt;<div class="col-xs-2 panel-title v-center">
                     <span ng-click="model.clickLikeDislike()"
                           class="btn btn-block">
                         <i ng-class="{'btn-green': liked}" class="fa fa-thumbs-o-up fa-lg"></i>
                     </span>
             </div>
             </div>
-        </div>
+        </div>-->
         <div class="panel-body">
             <h5 class="well">{{model.game.deck}}</h5>
             <!--<div class="panel">
