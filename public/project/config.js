@@ -34,11 +34,14 @@
             .when("/home", {
                 templateUrl: "views/home/home.view.client.html",
                 controller: "HomeController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    getLoggedIn: getLoggedIn
+                }
             });
-            /*.otherwise({
-                redirectTo: "/login"
-            });*/
+        /*.otherwise({
+         redirectTo: "/login"
+         });*/
 
         function checkLoggedIn(UserService, $location, $q, $rootScope) {
 
@@ -66,5 +69,22 @@
                 );
             return deferred.promise;
         }
+
+        function getLoggedIn(UserService, $q, $rootScope) {
+            var deferred = $q.defer();
+
+            UserService
+                .loggedIn()
+                .then(function (response) {
+                    var currentUser = response.data;
+                    if (currentUser) {
+                        $rootScope.currentUser = currentUser;
+                    }
+                    deferred.resolve();
+                });
+
+            return deferred.promise;
+        }
+
     }
 })();

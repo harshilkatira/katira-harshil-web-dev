@@ -26,7 +26,7 @@
                             function (response) {
                                 var user = response.data;
                                 if (user) {
-                                    $location.url("/user/" + user._id);
+                                    $location.url("/user");
                                 }
                             },
                             function (error) {
