@@ -3,11 +3,12 @@
         .module("GamersBay")
         .controller("ProfileController", ProfileController);
 
-    function ProfileController($routeParams, UserService) {
+    function ProfileController($location, $routeParams, UserService, $rootScope) {
         var vm = this;
         vm.updateUser = updateUser;
+        vm.logout = logout;
 
-        var userId = $routeParams.userId;
+        var userId = $rootScope.currentUser._id;
 
         function init() {
             UserService
@@ -28,6 +29,19 @@
                     function (error) {
                         vm.error = "Error saving profile."
                     });
+        }
+
+        function logout() {
+            UserService
+                .logout()
+                .then(
+                    function (response) {
+                        $location.url("/login");
+                    },
+                    function (error) {
+                        $location.url("/login");
+                    }
+                );
         }
     }
 })();

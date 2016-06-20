@@ -7,6 +7,11 @@ module.exports = function () {
         password: {type: String, required: true},
         firstName: String,
         lastName: String,
+        /*facebook: {
+            id:    String,
+            token: String,
+            displayName: String
+        },*/
         email: String,
         image: String,
         followers: [{type: mongoose.Schema.ObjectId, ref: 'ProjectUser'}],
