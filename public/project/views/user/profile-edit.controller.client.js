@@ -11,6 +11,8 @@
 
         vm.currentUser = $rootScope.currentUser;
 
+        vm.reviewList = [];
+
         function init() {
             /*UserService
                 .findUserById(vm.currentUser._id)
@@ -25,7 +27,7 @@
                 .then(
                     function (response) {
                         vm.reviewList = response.data;
-                        console.log(vm.reviewList);
+                        //console.log(vm.reviewList);
                     },
                     function (error) {
                         console.log("error fetching user reviews");

@@ -16,29 +16,88 @@
             </div>
         </div>
         <div class="panel-body">
-
-            <!--<div class="row">
-                <div class="col-xs-10">
-                    <h1 class="">{{model.user.username}}</h1>
-                    <button type="button" class="btn btn-success">Follow</button>
-                    <br>
-                </div>
-                <div class="col-xs-2">
-                    <a href="/users" class="pull-right">
-                        <img class="img-responsive img-circle" src="http://www.rlsandbox.com/img/profile.jpg">
-                    </a>
-                </div>
-            </div>-->
             <br>
             <div class="row">
                 <div class="col-xs-12 col-md-3">
                     <!--left col-->
                     <ul class="list-group">
-                        <li class="list-group-item text-muted" contenteditable="false">Profile</li>
-                        <li class="list-group-item"><span class="pull-left"><strong class="">First Name</strong></span> : {{model.user.firstName}} </li>
-                        <li class="list-group-item"><span class="pull-left"><strong class="">Last Name</strong></span> : {{model.user.lastName}} </li>
-                        <li class="list-group-item"><span class="pull-left"><strong class="">Email</strong></span> : {{model.user.email}} </li>
-                        <li class="list-group-item"><span class="pull-left"><strong class="">Joined</strong></span> : {{model.user.dateCreated}}</li>
+                        <li class="list-group-item text-muted">
+                            Activity
+                            <i class="fa fa-dashboard fa-1x pull-right"></i>
+                        </li>
+                        <a href="" class="list-group-item text-right"
+                           ng-class="{'active' : model.activeMenu === 'Liked Games'}"
+                           ng-click="model.setActive('Liked Games')">
+                            <div>
+                                <span class="pull-left">Liked Games </span>
+                                <span class="badge">{{model.user.likedGames.length}}</span>
+                                <span class="margin-left">
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </a>
+                        <a href="" class="list-group-item text-right"
+                           ng-class="{'active' : model.activeMenu === 'Following'}"
+                           ng-click="model.setActive('Following')">
+                            <div>
+                                <span class="pull-left">Following </span>
+                                <span class="badge">{{model.user.following.length}}</span>
+                                <span class="margin-left">
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </a>
+                        <a href="" class="list-group-item text-right"
+                           ng-class="{'active' : model.activeMenu === 'Followers'}"
+                           ng-click="model.setActive('Followers')">
+                            <div>
+                                <span class="pull-left">Followers </span>
+                                <span class="badge">{{model.user.followers.length}}</span>
+                                <span class="margin-left">
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </a>
+                        <a href="" class="list-group-item text-right"
+                           ng-class="{'active' : model.activeMenu === 'Reviews'}"
+                           ng-click="model.setActive('Reviews')">
+                            <div>
+                                <span class="pull-left">Reviews </span>
+                                <span class="badge">{{model.reviewList.length}}</span>
+                                <span class="margin-left">
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </a>
+                    </ul>
+
+
+
+                    <ul class="list-group">
+                        <li class="list-group-item text-muted" contenteditable="false">
+                            Profile
+                            <i class="fa fa-user fa-1x pull-right"></i>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="pull-left">
+                                <strong class="">First Name</strong>
+                            </span> : {{model.user.firstName}}
+                        </li>
+                        <li class="list-group-item">
+                            <span class="pull-left">
+                                <strong class="">Last Name</strong>
+                            </span> : {{model.user.lastName}}
+                        </li>
+                        <li class="list-group-item">
+                            <span class="pull-left">
+                                <strong class="">Email</strong>
+                            </span> : {{model.user.email}}
+                        </li>
+                        <li class="list-group-item">
+                            <span class="pull-left">
+                                <strong class="">Joined</strong>
+                            </span> : {{model.user.dateCreated}}
+                        </li>
                     </ul>
                     <!--<div class="panel panel-default">
                         <div class="panel-heading">Insured / Bonded?
@@ -57,30 +116,69 @@
                         </div>
                     </div>-->
 
-                    <ul class="list-group">
-                        <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
-                        <li class="list-group-item text-right"><span class="pull-left"><strong class="">Liked Games</strong></span> {{model.user.likedGames.length}}</li>
-                        <li class="list-group-item text-right"><span class="pull-left"><strong class="">Following</strong></span> {{model.user.following.length}}</li>
-                        <li class="list-group-item text-right"><span class="pull-left"><strong class="">Followers</strong></span> {{model.user.followers.length}}</li>
-                        <li class="list-group-item text-right"><span class="pull-left"><strong class="">Reviews</strong></span> {{model.reviewList.length}}</li>
-                    </ul>
+
                 </div>
                 <!--/col-3-->
                 <div class="col-md-9 hidden-xs hidden-sm">
-                    <h4>My Games</h4>
+                    <h4>{{model.activeMenu}}</h4>
                     <hr/>
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="thumbnail">
-                                <img alt="300x300" src="http://lorempixel.com/300/300/people">
-                                <div class="caption">
-                                    <h3>
-                                        Rover
-                                    </h3>
+                        <div ng-switch="model.activeMenu">
+                            <div ng-switch-when="Liked Games">
+                                <div class="col-md-4" ng-repeat="obj in model.data">
+                                    <div class="thumbnail well detail-fix-ht">
+                                        <a href="#/game/{{obj._id}}" class="text-center">
+                                            <img class="img-responsive detail-img" alt="300x300" ng-src="{{obj.image}}">
+                                            <h4>{{obj.name}}</h4>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
+                            <div ng-switch-when="Following">
+                                <div class="col-md-4" ng-repeat="obj in model.data">
+                                    <div class="thumbnail well detail-fix-ht">
+                                        <a href="#/game/{{obj._id}}" class="text-center">
+                                            <img class="img-responsive detail-img" alt="300x300" ng-src="{{obj.image}}">
+                                            <h4>{{obj.name}}</h4>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-switch-when="Followers">
+                                <div class="col-md-4" ng-repeat="obj in model.data">
+                                    <div class="thumbnail well detail-fix-ht">
+                                        <a href="#/game/{{obj._id}}" class="text-center">
+                                            <img class="img-responsive detail-img" alt="300x300" ng-src="{{obj.image}}">
+                                            <h4>{{obj.name}}</h4>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-switch-when="Reviews">
+                                <div class="well" ng-repeat="review in model.data">
+                                    <div class="media">
+                                        <a class="pull-left" href="#/game/{{review.game._id}}">
+                                            <img class="media-object img-responsive review-img" ng-src="{{review.game.image}}">
+                                        </a>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">
+                                                <a href="#/game/{{review.game._id}}">{{review.title}}</a>
+                                            </h4>
+                                            <p>
+                                                <ng-rating ng-model="review.rating"
+                                                           editable="false">
+                                                </ng-rating>
+                                            </p>
+                                            <h6>On: {{review.timestamp}}</h6>
+                                            <div>{{review.comment}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
-                        <div class="col-md-4">
+
+                        <!--<div class="col-md-4">
                             <div class="thumbnail">
                                 <img alt="300x300" src="http://lorempixel.com/300/300/city">
                                 <div class="caption">
@@ -90,20 +188,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="thumbnail">
-                                <img alt="300x300" src="http://lorempixel.com/300/300/sports">
-                                <div class="caption">
-                                    <h3>
-                                        Rover
-                                    </h3>
-                                </div>
-                            </div>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>
