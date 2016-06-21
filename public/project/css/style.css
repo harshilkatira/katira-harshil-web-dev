@@ -94,6 +94,11 @@ a,a:hover {
     min-height: 200px;
     height: 200px!important;
 }
+.review-img{
+    min-height: 200px;
+    height: 200px!important;
+    width: 170px;
+}
 .margin-left{
     margin-left: 6px;
 }

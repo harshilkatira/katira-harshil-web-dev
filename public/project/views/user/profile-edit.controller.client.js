@@ -5,6 +5,7 @@
 
     function ProfileEditController($location, $routeParams, UserService, $rootScope, ReviewService) {
         var vm = this;
+        vm.setActive = setActive;
         vm.updateUser = updateUser;
         vm.logout = logout;
 
@@ -16,7 +17,7 @@
                 .then(function (response) {
                     vm.user = response.data;
                 });*/
-            vm.dataHeading = "My Games";
+            vm.activeMenu = "My Games";
             vm.data = vm.currentUser.likedGames;
 
             ReviewService
@@ -24,6 +25,7 @@
                 .then(
                     function (response) {
                         vm.reviewList = response.data;
+                        console.log(vm.reviewList);
                     },
                     function (error) {
                         console.log("error fetching user reviews");
@@ -31,6 +33,24 @@
                 );
         }
         init();
+
+        function setActive(menu) {
+            vm.activeMenu = menu;
+            switch (menu){
+                case "My Games":
+                    vm.data = vm.currentUser.likedGames;
+                    break;
+                case "Following":
+                    vm.data = vm.currentUser.following;
+                    break;
+                case "Followers":
+                    vm.data = vm.currentUser.followers;
+                    break;
+                case "My Reviews":
+                    vm.data = vm.reviewList;
+                    break;
+            }
+        }
 
         function updateUser(newUser) {
             UserService
