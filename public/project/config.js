@@ -85,7 +85,7 @@
                 .loggedIn()
                 .then(function (response) {
                     var currentUser = response.data;
-                    if (currentUser) {
+                    if (currentUser != '0') {
                         $rootScope.currentUser = currentUser;
                     }
                     deferred.resolve();
