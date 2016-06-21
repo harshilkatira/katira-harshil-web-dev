@@ -3,7 +3,7 @@
         <div class="panel-heading panel-heading-custom">
             <div class="row">
                 <div class="col-xs-4 col-md-2 v-center">
-                    <img class="img-responsive img-circle" src="http://www.rlsandbox.com/img/profile.jpg">
+                    <img class="img-responsive img-circle" ng-src="{{model.currentUser.image}}" src="http://www.rlsandbox.com/img/profile.jpg">
                 </div><!--
                 --><div class="col-xs-4 col-md-8 panel-title v-center text-center">
                 <h1 class="">{{model.currentUser.username}}</h1>
@@ -116,6 +116,20 @@
                             <a class="btn btn-primary btn-block"
                                ng-click="model.updateUser(model.currentUser)"
                                role="button">Update</a>
+                        </li>
+                    </ul>
+
+                    <ul class="list-group">
+                        <li class="list-group-item text-muted" contenteditable="false">
+                            Profile Picture
+                            <i class="fa fa-picture-o fa-1x pull-right"></i>
+                        </li>
+                        <li class="list-group-item">
+                            <form action="/project/api/upload"  method="post" enctype="multipart/form-data">
+                                <input  name="myFile" type="file" class="form-control"/>
+                                <input  name="userId" value="{{model.currentUser._id}}"   style="display: none"/>
+                                <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
+                            </form>
                         </li>
                     </ul>
                     <!--<div class="panel panel-default">

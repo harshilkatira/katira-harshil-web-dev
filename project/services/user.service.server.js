@@ -5,8 +5,11 @@ var bcrypt = require("bcrypt-nodejs");
 
 module.exports = function (app, userModel, passport) {
 
-    //var userModel = models.userModel;
+    var multer = require('multer'); // npm install multer --save
+    var upload = multer({ dest: __dirname+'/../../public/uploads' });
 
+    //var userModel = models.userModel;
+    app.post ("/project/api/upload", upload.single('myFile'), uploadImage);
     app.post("/project/api/user", createUser);
     app.post("/project/api/register", register);
     app.post("/project/api/login", passport.authenticate('project'), login);
@@ -74,6 +77,39 @@ module.exports = function (app, userModel, passport) {
      }
      );
      }*/
+
+    function uploadImage(req, res) {
+        var userId = req.body.userId;
+        var myFile = req.file;
+
+        if(myFile == null) {
+            res.redirect("/project/#/user/");
+            return;
+        }
+
+        var originalname  = myFile.originalname; // file name on user's computer
+        var filename      = myFile.filename;     // new file name in upload folder
+        var path          = myFile.path;         // full path of uploaded file
+        var destination   = myFile.destination;  // folder where file is saved to
+        var size          = myFile.size;
+        var mimetype      = myFile.mimetype;
+
+        var newUser = {
+            image: "/uploads/"+filename
+        };
+
+        userModel
+            .updateUser(userId, newUser)
+            .then(
+                function (stats) {
+                    //console.log(stats);
+                    res.redirect("/project/#/user/");
+                },
+                function (error) {
+                    res.statusCode(404).send(error);
+                }
+            );
+    }
 
     function register(req, res) {
         var username = req.body.username;
