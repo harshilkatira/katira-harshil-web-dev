@@ -78,10 +78,10 @@
 
                     <ul class="list-group">
                         <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
-                        <li class="list-group-item text-right"><span class="pull-left"><strong class="">My Games</strong></span> 13</li>
-                        <li class="list-group-item text-right"><span class="pull-left"><strong class="">Following</strong></span> 37</li>
-                        <li class="list-group-item text-right"><span class="pull-left"><strong class="">Followers</strong></span> 78</li>
-                        <li class="list-group-item text-right"><span class="pull-left"><strong class="">My Reviews</strong></span> 78</li>
+                        <li class="list-group-item text-right"><span class="pull-left"><strong class="">My Games</strong></span> {{model.currentUser.likedGames.length}}</li>
+                        <li class="list-group-item text-right"><span class="pull-left"><strong class="">Following</strong></span> {{model.currentUser.following.length}}</li>
+                        <li class="list-group-item text-right"><span class="pull-left"><strong class="">Followers</strong></span> {{model.currentUser.followers.length}}</li>
+                        <li class="list-group-item text-right"><span class="pull-left"><strong class="">My Reviews</strong></span> {{model.reviewList.length}}</li>
                     </ul>
                 </div>
                 <!--/col-3-->
@@ -127,12 +127,4 @@
                role="button">Logout</a>
         </div>
     </div>
-</div>
-
-
-
-
-
-<div class="container">
-
 </div>

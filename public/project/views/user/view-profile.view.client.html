@@ -59,10 +59,10 @@
 
                     <ul class="list-group">
                         <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
-                        <li class="list-group-item text-right"><span class="pull-left"><strong class="">Liked Games</strong></span> 13</li>
-                        <li class="list-group-item text-right"><span class="pull-left"><strong class="">Following</strong></span> 37</li>
-                        <li class="list-group-item text-right"><span class="pull-left"><strong class="">Followers</strong></span> 78</li>
-                        <li class="list-group-item text-right"><span class="pull-left"><strong class="">Reviews</strong></span> 78</li>
+                        <li class="list-group-item text-right"><span class="pull-left"><strong class="">Liked Games</strong></span> {{model.user.likedGames.length}}</li>
+                        <li class="list-group-item text-right"><span class="pull-left"><strong class="">Following</strong></span> {{model.user.following.length}}</li>
+                        <li class="list-group-item text-right"><span class="pull-left"><strong class="">Followers</strong></span> {{model.user.followers.length}}</li>
+                        <li class="list-group-item text-right"><span class="pull-left"><strong class="">Reviews</strong></span> {{model.reviewList.length}}</li>
                     </ul>
                 </div>
                 <!--/col-3-->
@@ -108,59 +108,3 @@
         </div>
     </div>
 </div>
-
-
-
-
-<!--
-<div class="container">
-    <div ng-if="model.success" class="alert alert-success">
-        {{model.success}}
-    </div>
-    <div ng-if="model.error" class="alert alert-danger">
-        {{model.error}}
-    </div>
-    <form>
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input ng-model="model.user.username"
-                   id="username"
-                   type="text"
-                   class="form-control"
-                   placeholder="username"/>
-        </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input ng-model="model.user.email"
-                   id="email"
-                   type="email"
-                   class="form-control"
-                   placeholder="alice@wonderland.com"/>
-        </div>
-        <div class="form-group">
-            <label for="firstName">First Name</label>
-            <input ng-model="model.user.firstName"
-                   id="firstName"
-                   type="text"
-                   class="form-control"
-                   placeholder="First Name"/>
-        </div>
-        <div class="form-group">
-            <label for="lastName">Last Name</label>
-            <input ng-model="model.user.lastName"
-                   id="lastName"
-                   type="text"
-                   class="form-control"
-                   placeholder="Last Name"/>
-        </div>
-
-        <a class="btn btn-primary btn-block"
-           ng-click="model.updateUser(model.user)"
-           role="button">Update</a>
-
-        <a class="btn btn-danger btn-block"
-           href="#/login"
-           role="button">Logout</a>
-
-    </form>
-</div>-->

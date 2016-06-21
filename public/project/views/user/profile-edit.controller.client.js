@@ -3,7 +3,7 @@
         .module("GamersBay")
         .controller("ProfileEditController", ProfileEditController);
 
-    function ProfileEditController($location, $routeParams, UserService, $rootScope) {
+    function ProfileEditController($location, $routeParams, UserService, $rootScope, ReviewService) {
         var vm = this;
         vm.updateUser = updateUser;
         vm.logout = logout;
@@ -11,11 +11,22 @@
         vm.currentUser = $rootScope.currentUser;
 
         function init() {
-            UserService
+            /*UserService
                 .findUserById(vm.currentUser._id)
                 .then(function (response) {
                     vm.user = response.data;
-                });
+                });*/
+
+            ReviewService
+                .getAllReviewsByUserId(vm.currentUser._id)
+                .then(
+                    function (response) {
+                        vm.reviewList = response.data;
+                    },
+                    function (error) {
+                        console.log("error fetching user reviews");
+                    }
+                );
         }
         init();
 

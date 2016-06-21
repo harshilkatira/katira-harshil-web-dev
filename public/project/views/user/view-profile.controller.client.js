@@ -3,7 +3,7 @@
         .module("GamersBay")
         .controller("ViewProfileController", ViewProfileController);
 
-    function ViewProfileController($location, $routeParams, UserService, $rootScope) {
+    function ViewProfileController($location, $routeParams, UserService, $rootScope, ReviewService) {
         var vm = this;
         vm.followUser = followUser;
         vm.unfollowUser = unfollowUser;
@@ -25,6 +25,17 @@
                     vm.following = true;
                 }
             }
+
+            ReviewService
+                .getAllReviewsByUserId(vm.userId)
+                .then(
+                    function (response) {
+                        vm.reviewList = response.data;
+                    },
+                    function (error) {
+                        console.log("error fetching user reviews");
+                    }
+                );
         }
         init();
 
