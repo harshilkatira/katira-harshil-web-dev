@@ -86,3 +86,14 @@ a,a:hover {
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
 }
+.detail-fix-ht{
+    min-height: 290px;
+    height: 290px;
+}
+.detail-img{
+    min-height: 200px;
+    height: 200px!important;
+}
+.margin-left{
+    margin-left: 6px;
+}

@@ -16,6 +16,8 @@
                 .then(function (response) {
                     vm.user = response.data;
                 });*/
+            vm.dataHeading = "My Games";
+            vm.data = vm.currentUser.likedGames;
 
             ReviewService
                 .getAllReviewsByUserId(vm.currentUser._id)
