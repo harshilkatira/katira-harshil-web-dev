@@ -306,8 +306,14 @@ module.exports = function (app, userModel, passport) {
             .findUserById(userId)
             .then(
                 function (user) {
-                    var index = user.likedGames.indexOf(gameId);
-                    user.likedGames.splice(index,1);
+                    var games = user.likedGames;
+                    for(var i in games){
+                        if(games[i]._id === gameId){
+                            games.splice(i,1);
+                            break;
+                        }
+                    }
+                    user.likedGames = games;
                     return userModel.updateUser(userId, user);
                 },
                 function (error) {

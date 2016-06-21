@@ -6,7 +6,8 @@
     function GameDetailController($sce, $routeParams, $rootScope, $location, GameService, UserService, ReviewService) {
         var vm = this;
         vm.getSafeHtml = getSafeHtml;
-        vm.clickLikeDislike = clickLikeDislike;
+        vm.clickLike = clickLike;
+        vm.unlikeGame = unlikeGame;
         vm.submitReview = submitReview;
         vm.viewProfile = viewProfile;
 
@@ -84,16 +85,11 @@
             return $sce.trustAsHtml(desc);
         }
 
-        function clickLikeDislike() {
+        function clickLike() {
             if (vm.currentUser) {
 
                 if (vm.storedGame) {
-                    if (!vm.liked) {
-                        likeGame();
-                    }
-                    else {
-                        unlikeGame();
-                    }
+                    likeGame();
                 }
                 else {
                     storeTheGame()

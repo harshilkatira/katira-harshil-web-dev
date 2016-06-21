@@ -8,6 +8,7 @@
         vm.followUser = followUser;
         vm.unfollowUser = unfollowUser;
         vm.setActive = setActive;
+        vm.showDetails = showDetails;
 
         vm.userId = $routeParams.userId;
 
@@ -20,6 +21,8 @@
                 .findUserById(vm.userId)
                 .then(function (response) {
                     vm.user = response.data;
+                    vm.activeMenu = "Liked Games";
+                    vm.data = vm.user.likedGames;
                 });
 
             vm.following = false;
@@ -28,9 +31,6 @@
                     vm.following = true;
                 }
             }
-
-            vm.activeMenu = "Liked Games";
-            vm.data = vm.currentUser.likedGames;
 
             ReviewService
                 .getAllReviewsByUserId(vm.userId)
@@ -49,13 +49,31 @@
             vm.activeMenu = menu;
             switch (menu){
                 case "Liked Games":
-                    vm.data = vm.currentUser.likedGames;
+                    vm.data = vm.user.likedGames;
                     break;
                 case "Following":
-                    vm.data = vm.currentUser.following;
+                    vm.data = vm.user.following;
                     break;
                 case "Followers":
-                    vm.data = vm.currentUser.followers;
+                    vm.data = vm.user.followers;
+                    break;
+                case "Reviews":
+                    vm.data = vm.reviewList;
+                    break;
+            }
+        }
+
+        function showDetails(menu) {
+            vm.activeMenu = menu;
+            switch (menu){
+                case "Liked Games":
+                    vm.data = vm.user.likedGames;
+                    break;
+                case "Following":
+                    vm.data = vm.user.following;
+                    break;
+                case "Followers":
+                    vm.data = vm.user.followers;
                     break;
                 case "Reviews":
                     vm.data = vm.reviewList;
@@ -71,6 +89,7 @@
                     .then(
                         function (response) {
                             vm.following = true;
+                            vm.user.followers.push(vm.currentUser._id);
                         },
                         function (error) {
                             console.log("error following user");
@@ -88,6 +107,8 @@
                 .then(
                     function (response) {
                         vm.following = false;
+                        var index = vm.user.followers.indexOf(vm.currentUser._id);
+                        vm.user.followers.splice(index, 1);
                     },
                     function (error) {
                         console.log("error unfollowing user");

@@ -20,56 +20,107 @@
             <div class="row">
                 <div class="col-xs-12 col-md-3">
                     <!--left col-->
-                    <ul class="list-group">
-                        <li class="list-group-item text-muted">
-                            Activity
-                            <i class="fa fa-dashboard fa-1x pull-right"></i>
-                        </li>
-                        <a href="" class="list-group-item text-right"
-                           ng-class="{'active' : model.activeMenu === 'Liked Games'}"
-                           ng-click="model.setActive('Liked Games')">
-                            <div>
-                                <span class="pull-left">Liked Games </span>
-                                <span class="badge">{{model.user.likedGames.length}}</span>
+                    <div class="hidden-xs hidden-sm">
+                        <ul class="list-group">
+                            <li class="list-group-item text-muted">
+                                Activity
+                                <i class="fa fa-dashboard fa-1x pull-right"></i>
+                            </li>
+                            <a href="" class="list-group-item text-right"
+                               ng-class="{'active' : model.activeMenu === 'Liked Games'}"
+                               ng-click="model.setActive('Liked Games')">
+                                <div>
+                                    <span class="pull-left">Liked Games </span>
+                                    <span class="badge">{{model.user.likedGames.length}}</span>
                                 <span class="margin-left">
                                     <i class="fa fa-chevron-right" aria-hidden="true"></i>
                                 </span>
-                            </div>
-                        </a>
-                        <a href="" class="list-group-item text-right"
-                           ng-class="{'active' : model.activeMenu === 'Following'}"
-                           ng-click="model.setActive('Following')">
-                            <div>
-                                <span class="pull-left">Following </span>
-                                <span class="badge">{{model.user.following.length}}</span>
+                                </div>
+                            </a>
+                            <a href="" class="list-group-item text-right"
+                               ng-class="{'active' : model.activeMenu === 'Following'}"
+                               ng-click="model.setActive('Following')">
+                                <div>
+                                    <span class="pull-left">Following </span>
+                                    <span class="badge">{{model.user.following.length}}</span>
                                 <span class="margin-left">
                                     <i class="fa fa-chevron-right" aria-hidden="true"></i>
                                 </span>
-                            </div>
-                        </a>
-                        <a href="" class="list-group-item text-right"
-                           ng-class="{'active' : model.activeMenu === 'Followers'}"
-                           ng-click="model.setActive('Followers')">
-                            <div>
-                                <span class="pull-left">Followers </span>
-                                <span class="badge">{{model.user.followers.length}}</span>
+                                </div>
+                            </a>
+                            <a href="" class="list-group-item text-right"
+                               ng-class="{'active' : model.activeMenu === 'Followers'}"
+                               ng-click="model.setActive('Followers')">
+                                <div>
+                                    <span class="pull-left">Followers </span>
+                                    <span class="badge">{{model.user.followers.length}}</span>
                                 <span class="margin-left">
                                     <i class="fa fa-chevron-right" aria-hidden="true"></i>
                                 </span>
-                            </div>
-                        </a>
-                        <a href="" class="list-group-item text-right"
-                           ng-class="{'active' : model.activeMenu === 'Reviews'}"
-                           ng-click="model.setActive('Reviews')">
-                            <div>
-                                <span class="pull-left">Reviews </span>
-                                <span class="badge">{{model.reviewList.length}}</span>
+                                </div>
+                            </a>
+                            <a href="" class="list-group-item text-right"
+                               ng-class="{'active' : model.activeMenu === 'Reviews'}"
+                               ng-click="model.setActive('Reviews')">
+                                <div>
+                                    <span class="pull-left">Reviews </span>
+                                    <span class="badge">{{model.reviewList.length}}</span>
                                 <span class="margin-left">
                                     <i class="fa fa-chevron-right" aria-hidden="true"></i>
                                 </span>
-                            </div>
-                        </a>
-                    </ul>
+                                </div>
+                            </a>
+                        </ul>
+                    </div>
+
+                    <div class="hidden-md hidden-lg hidden-xl">
+                        <ul class="list-group">
+                            <li class="list-group-item text-muted">
+                                Activity
+                                <i class="fa fa-dashboard fa-1x pull-right"></i>
+                            </li>
+                            <a href="" class="list-group-item text-right"
+                               ng-click="model.showDetails('Liked Games')">
+                                <div>
+                                    <span class="pull-left">Liked Games </span>
+                                    <span class="badge">{{model.user.likedGames.length}}</span>
+                                <span class="margin-left">
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </span>
+                                </div>
+                            </a>
+                            <a href="" class="list-group-item text-right"
+                               ng-click="model.showDetails('Following')">
+                                <div>
+                                    <span class="pull-left">Following </span>
+                                    <span class="badge">{{model.user.following.length}}</span>
+                                <span class="margin-left">
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </span>
+                                </div>
+                            </a>
+                            <a href="" class="list-group-item text-right"
+                               ng-click="model.showDetails('Followers')">
+                                <div>
+                                    <span class="pull-left">Followers </span>
+                                    <span class="badge">{{model.user.followers.length}}</span>
+                                <span class="margin-left">
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </span>
+                                </div>
+                            </a>
+                            <a href="" class="list-group-item text-right"
+                               ng-click="model.showDetails('Reviews')">
+                                <div>
+                                    <span class="pull-left">Reviews </span>
+                                    <span class="badge">{{model.reviewList.length}}</span>
+                                <span class="margin-left">
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </span>
+                                </div>
+                            </a>
+                        </ul>
+                    </div>
 
 
 
