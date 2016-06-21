@@ -64,7 +64,7 @@
                         if(user == '0'){
                             $rootScope.currentUser = null;
                             deferred.reject();
-                            $location.url("/login");
+                            $location.url("/home");
                         }
                         else{
                             $rootScope.currentUser = user;
@@ -72,7 +72,7 @@
                         }
                     },
                     function (error) {
-                        $location.url("/login");
+                        $location.url("/home");
                     }
                 );
             return deferred.promise;
