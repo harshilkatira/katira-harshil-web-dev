@@ -21,7 +21,7 @@ module.exports = function (app, userModel, passport) {
     app.get("/project/api/user", findUser);
     app.get("/project/api/user/:userId", findUserById);
     app.put("/project/api/user/:userId", updateUser);
-    app.put("/project/api/user/:userId/like/:gameId", userLikedGame);
+    app.put("/project/api/user/:userId/like", userLikedGame);
     app.put("/project/api/user/:userId/unlike/:gameId", userUnlikedGame);
     app.delete("/project/api/user/:userId", deleteUser);
 
@@ -273,13 +273,13 @@ module.exports = function (app, userModel, passport) {
     
     function userLikedGame(req, res) {
         var userId = req.params.userId;
-        var gameId = req.params.gameId;
+        var game = req.body;
 
         userModel
             .findUserById(userId)
             .then(
                 function (user) {
-                    user.likedGames.push(gameId);
+                    user.likedGames.push(game);
                     return userModel.updateUser(userId, user);
                 },
                 function (error) {

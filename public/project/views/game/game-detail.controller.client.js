@@ -3,32 +3,30 @@
         .module("GamersBay")
         .controller("GameDetailController", GameDetailController);
 
-    function GameDetailController($sce, $routeParams, GameService, UserService, ReviewService) {
+    function GameDetailController($sce, $routeParams, $rootScope, GameService, UserService, ReviewService) {
         var vm = this;
         vm.getSafeHtml = getSafeHtml;
         vm.clickLikeDislike = clickLikeDislike;
         vm.submitReview = submitReview;
 
+        vm.currentUser = $rootScope.currentUser;
         vm.gameId = $routeParams.gameId;
-        vm.userId = "57643e4088bccb80292c0ce1";
-        vm.review = {
-            rating:0,
-            title:"",
-            comment:""
-        };
+
 
         function init() {
 
-            UserService
-                .findUserById(vm.userId)
-                .then(
-                    function (response) {
-                        vm.user = response.data;
-                    },
-                    function (error) {
-                        console.log("unable to get user by Id");
-                    }
-                );
+            if(vm.currentUser && vm.currentUser.likedGames.indexOf(vm.gameId) > -1){
+                vm.liked = true;
+            }
+            else{
+                vm.liked = false;
+            }
+
+            vm.review = {
+                rating:0,
+                title:"",
+                comment:""
+            };
 
             GameService
                 .getGameById(vm.gameId)
@@ -71,25 +69,31 @@
         }
 
         function clickLikeDislike() {
-            if(vm.storedGame) {
-                if (vm.user.likedGames.indexOf(vm.gameId) === -1) {
-                    likeGame();
+            if (vm.currentUser) {
+
+                if (vm.storedGame) {
+                    if (!vm.liked) {
+                        likeGame();
+                    }
+                    else {
+                        unlikeGame();
+                    }
                 }
                 else {
-                    dislikeGame();
+                    storeTheGame()
+                        .then(
+                            function (response) {
+                                vm.storedGame = response.data;
+                                likeGame();
+                            },
+                            function (error) {
+                                console.log("unable to store game");
+                            }
+                        );
                 }
             }
-            else{
-                storeTheGame()
-                    .then(
-                        function (response) {
-                            vm.storedGame = response.data;
-                            likeGame();
-                        },
-                        function (error) {
-                            console.log("unable to store game");
-                        }
-                    );
+            else {
+                vm.error = "Please login to like a game";
             }
         }
 
@@ -104,7 +108,7 @@
 
         function likeGame() {
             UserService
-                .likeGame(vm.userId, vm.gameId)
+                .likeGame(vm.currentUser._id, vm.game)
                 .then(
                     function (response) {
                         vm.liked = true;
@@ -115,9 +119,9 @@
                 );
         }
 
-        function dislikeGame() {
+        function unlikeGame() {
             UserService
-                .unlikeGame(vm.userId, vm.gameId)
+                .unlikeGame(vm.currentUser._id, vm.gameId)
                 .then(
                     function (response) {
                         vm.liked = false;
@@ -149,7 +153,7 @@
         function saveReview() {
             console.log("in save");
             ReviewService
-                .saveReview(vm.userId, vm.gameId, vm.review)
+                .saveReview(vm.currentUser._id, vm.gameId, vm.review)
                 .then(
                     function (response) {
                         console.log(response.data);

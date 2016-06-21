@@ -46,11 +46,4 @@ module.exports = function () {
                $set: user
             });
     }
-
-   /* function userLikedGame(userId, gameId) {
-        return User
-            .findByIdAndUpdate(userId, {
-                $push: {likedGames: gameId}
-            });
-    }*/
 };

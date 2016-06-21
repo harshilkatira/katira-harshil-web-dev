@@ -8,6 +8,7 @@
         vm.logout = logout;
 
         function logout() {
+            $rootScope.currentUser = null;
             UserService
                 .logout()
                 .then(

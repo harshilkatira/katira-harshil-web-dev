@@ -14,18 +14,18 @@ module.exports = function () {
     return api;
 
     function saveReview(userId, gameId, review) {
-        review.userId = userId;
-        review.gameId = gameId;
+        review.user = userId;
+        review.game = gameId;
 
         return Review.create(review);
     }
 
     function getAllReviewsByGameId(gameId) {
-        return Review.find({gameId: gameId});
+        return Review.find({"game.gameId": gameId});
     }
 
     function getAllReviewsByUserId(userId) {
-        return Review.find({userId: userId});
+        return Review.find({"user.userId": userId});
     }
 
     function updateReview(reviewId, review) {

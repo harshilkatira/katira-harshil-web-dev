@@ -32,6 +32,7 @@
         }
 
         function logout() {
+            $rootScope.currentUser = null;
             UserService
                 .logout()
                 .then(

@@ -76,9 +76,9 @@
             return $http.delete(url);
         }
         
-        function likeGame(userId, gameId) {
-            var url = "/project/api/user/"+userId+"/like/"+gameId;
-            return $http.put(url);
+        function likeGame(userId, game) {
+            var url = "/project/api/user/"+userId+"/like";
+            return $http.put(url, game);
         }
         
         function unlikeGame(userId, gameId) {
