@@ -13,8 +13,8 @@
         };
         return api;
 
-        function saveReview(userId, gameId, review) {
-            var url = "/project/api/user/"+userId+"/game/"+gameId+"/review/";
+        function saveReview(review) {
+            var url = "/project/api/review";
 
             return $http.post(url, review);
         }

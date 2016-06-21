@@ -13,19 +13,16 @@ module.exports = function () {
     };
     return api;
 
-    function saveReview(userId, gameId, review) {
-        review.user = userId;
-        review.game = gameId;
-
+    function saveReview(review) {
         return Review.create(review);
     }
 
     function getAllReviewsByGameId(gameId) {
-        return Review.find({"game.gameId": gameId});
+        return Review.find({"game._id": gameId});
     }
 
     function getAllReviewsByUserId(userId) {
-        return Review.find({"user.userId": userId});
+        return Review.find({"user._id": userId});
     }
 
     function updateReview(reviewId, review) {

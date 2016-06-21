@@ -52,44 +52,24 @@
 
             <h4>Reviews:</h4>
             <hr/>
-            <div class="media">
-                <a class="pull-left" href="#">
+            <div class="media" ng-repeat="review in model.reviewList">
+                <a class="pull-left" href="">
                     <img class="media-object" src="http://placehold.it/64x64" alt="">
                 </a>
                 <div class="media-body">
                     <h4 class="media-heading">
-                        Review Title
-                        <small>USER : August 25, 2014 at 9:30 PM</small>
+                        {{review.title}}
+                        <small>{{review.user.username}} : {{review.timestamp}}</small>
                     </h4>
                     <p>
-                        <ng-rating ng-model="model.review.rating"
+                        <ng-rating ng-model="review.rating"
                                    editable="false">
                         </ng-rating>
                     </p>
-                    <div>Review Comment</div>
+                    <div>{{review.comment}}</div>
                 </div>
+                <hr/>
             </div>
-
-            <hr/>
-            <div class="media">
-                <a class="pull-left" href="#">
-                    <img class="media-object" src="http://placehold.it/64x64" alt="">
-                </a>
-                <div class="media-body">
-                    <h4 class="media-heading">
-                        Review Title
-                    </h4>
-                    <small>USER : August 25, 2014 at 9:30 PM</small>
-                    <p>
-                        <ng-rating ng-model="model.review.rating"
-                                   editable="false">
-                        </ng-rating>
-                    </p>
-                    <div>Review Comment</div>
-                </div>
-            </div>
-
-            <hr/>
 
             <div class="well">
                 <h4>Write a Review:</h4>

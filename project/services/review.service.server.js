@@ -2,19 +2,17 @@ module.exports = function (app,models) {
 
     var reviewModel = models.reviewModel;
 
-    app.post("/project/api/user/:userId/game/:gameId/review/", saveReview);
+    app.post("/project/api/review", saveReview);
     app.get("/project/api/review/game/:gameId",getAllReviewsByGameId);
     app.get("/project/api/review/user/:userId",getAllReviewsByUserId);
     app.put("/project/api/review/:reviewId", updateReview);
     app.delete("/project/api/review/:reviewId", deleteReview);
 
     function saveReview(req, res) {
-        var userId = req.params.userId;
-        var gameId = req.params.gameId;
         var review = req.body;
 
         reviewModel
-            .saveReview(userId, gameId, review)
+            .saveReview(review)
             .then(
                 function (review) {
                     res.json(review);

@@ -12,21 +12,7 @@
         vm.currentUser = $rootScope.currentUser;
         vm.gameId = $routeParams.gameId;
 
-
         function init() {
-
-            if(vm.currentUser && vm.currentUser.likedGames.indexOf(vm.gameId) > -1){
-                vm.liked = true;
-            }
-            else{
-                vm.liked = false;
-            }
-
-            vm.review = {
-                rating:0,
-                title:"",
-                comment:""
-            };
 
             GameService
                 .getGameById(vm.gameId)
@@ -48,6 +34,38 @@
                     },
                     function (error) {
                         vm.error = error.status;
+                    }
+                );
+
+            if(vm.currentUser){
+                vm.liked = false;
+                var likedGames = vm.currentUser.likedGames;
+                for(var i in likedGames){
+                    if(likedGames[i]._id === vm.gameId){
+                        vm.liked = true;
+                        break;
+                    }
+                }
+            }
+            else{
+                vm.liked = false;
+            }
+
+            vm.review = {
+                rating:0,
+                title:"",
+                comment:""
+            };
+
+            vm.reviewList = [];
+            ReviewService
+                .getAllReviewsByGameId(vm.gameId)
+                .then(
+                    function (response) {
+                        vm.reviewList = response.data;
+                    },
+                    function (error) {
+                        console.log("error finding reviews for game");
                     }
                 );
 
@@ -108,7 +126,7 @@
 
         function likeGame() {
             UserService
-                .likeGame(vm.currentUser._id, vm.game)
+                .likeGame(vm.currentUser._id, vm.storedGame)
                 .then(
                     function (response) {
                         vm.liked = true;
@@ -133,30 +151,54 @@
         }
 
         function submitReview(review) {
-            if(vm.storedGame) {
-                saveReview();
+            if (vm.currentUser) {
+
+                if (vm.storedGame) {
+                    saveReview();
+                }
+                else {
+                    storeTheGame()
+                        .then(
+                            function (response) {
+                                vm.storedGame = response.data;
+                                saveReview();
+                            },
+                            function (error) {
+                                console.log("unable to store game");
+                            }
+                        );
+                }
             }
-            else{
-                storeTheGame()
-                    .then(
-                        function (response) {
-                            vm.storedGame = response.data;
-                            saveReview();
-                        },
-                        function (error) {
-                            console.log("unable to store game");
-                        }
-                    );
+            else {
+                vm.error = "Please login to post review"
             }
         }
 
         function saveReview() {
-            console.log("in save");
+
+            var user = {
+                _id: vm.currentUser._id,
+                username: vm.currentUser.username,
+                image: vm.currentUser.image
+            };
+
+            var game = {
+                _id: vm.storedGame._id,
+                name: vm.storedGame.name,
+                image: vm.storedGame.image
+            };
+
+            vm.review.user = user;
+            vm.review.game = game;
+
+            console.log(vm.review);
+
             ReviewService
-                .saveReview(vm.currentUser._id, vm.gameId, vm.review)
+                .saveReview(vm.review)
                 .then(
                     function (response) {
-                        console.log(response.data);
+                        var newReview = response.data;
+                        vm.reviewList.push(newReview);
                     },
                     function (error) {
                         vm.error = "unable to save review";
