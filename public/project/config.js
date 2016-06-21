@@ -46,10 +46,10 @@
                 resolve: {
                     getLoggedIn: getLoggedIn
                 }
+            })
+            .otherwise({
+                redirectTo: "/home"
             });
-        /*.otherwise({
-         redirectTo: "/login"
-         });*/
 
         function checkLoggedIn(UserService, $location, $q, $rootScope) {
 
@@ -64,7 +64,7 @@
                         if(user == '0'){
                             $rootScope.currentUser = null;
                             deferred.reject();
-                            $location.url("/home");
+                            $location.url("/login");
                         }
                         else{
                             $rootScope.currentUser = user;
@@ -72,7 +72,7 @@
                         }
                     },
                     function (error) {
-                        $location.url("/home");
+                        $location.url("/login");
                     }
                 );
             return deferred.promise;
