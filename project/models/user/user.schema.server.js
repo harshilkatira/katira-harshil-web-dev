@@ -17,12 +17,8 @@ module.exports = function () {
         type: {type: String, default: 'gamer'},
         email: String,
         image: String,
-        followers: [{
-            type: mongoose.Schema.Types.ObjectId, ref: 'ProjectUser'
-        }],
-        following: [{
-            type: mongoose.Schema.Types.ObjectId, ref: 'ProjectUser'
-        }],
+        followers: [String],
+        following: [String],
         likedGames: [GameSchema],
         dateCreated: {type: Date, default: Date.now}
     }, {collection: "project.user"});

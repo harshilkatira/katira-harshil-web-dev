@@ -24,7 +24,12 @@
                 }
             })
             .when("/user/:userId", {
-                redirectTo: "/user"
+                templateUrl: "views/user/view-profile.view.client.html",
+                controller: "ViewProfileController",
+                controllerAs: "model",
+                resolve: {
+                    getLoggedIn: getLoggedIn
+                }
             })
             .when("/game/:gameId", {
                 templateUrl: "views/game/game-detail.view.client.html",

@@ -58,8 +58,10 @@
                 </a>
                 <div class="media-body">
                     <h4 class="media-heading">
-                        {{review.title}}
-                        <small>{{review.user.username}} : {{review.timestamp}}</small>
+                        <span>{{review.title}}</span>
+                        <p>
+                            <small><a href="" ng-click="model.viewProfile(review.user._id)">{{review.user.username}}</a> : {{review.timestamp}}</small>
+                        </p>
                     </h4>
                     <p>
                         <ng-rating ng-model="review.rating"

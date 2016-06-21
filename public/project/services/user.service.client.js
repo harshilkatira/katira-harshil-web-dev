@@ -16,7 +16,9 @@
             updateUser: updateUser,
             deleteUser: deleteUser,
             likeGame: likeGame,
-            unlikeGame: unlikeGame
+            unlikeGame: unlikeGame,
+            followUser: followUser,
+            unfollowUser: unfollowUser
         };
         return api;
 
@@ -83,6 +85,16 @@
         
         function unlikeGame(userId, gameId) {
             var url = "/project/api/user/"+userId+"/unlike/"+gameId;
+            return $http.put(url);
+        }
+        
+        function followUser(loggedInUserId, followedUserId) {
+            var url = "/project/api/user/"+loggedInUserId+"/follow/"+followedUserId;
+            return $http.put(url);
+        }
+        
+        function unfollowUser(loggedInUserId, unfollowedUserId) {
+            var url = "/project/api/user/"+loggedInUserId+"/unfollow/"+unfollowedUserId;
             return $http.put(url);
         }
     }

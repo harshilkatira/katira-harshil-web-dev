@@ -13,65 +13,67 @@ module.exports = function (app, userModel, passport) {
     app.post("/project/api/logout", logout);
     //app.get ('/auth/facebook', passport.authenticate('facebook'));
     /*app.get('/auth/facebook/callback',
-        passport.authenticate('facebook', {
-            successRedirect: '/assignment/#/user',
-            failureRedirect: '/assignment/#/login'
-        }));*/
+     passport.authenticate('facebook', {
+     successRedirect: '/assignment/#/user',
+     failureRedirect: '/assignment/#/login'
+     }));*/
     app.get("/project/api/loggedIn", loggedIn);
     app.get("/project/api/user", findUser);
     app.get("/project/api/user/:userId", findUserById);
     app.put("/project/api/user/:userId", updateUser);
     app.put("/project/api/user/:userId/like", userLikedGame);
     app.put("/project/api/user/:userId/unlike/:gameId", userUnlikedGame);
+    app.put("/project/api/user/:userId/follow/:followedUserId", followUser);
+    app.put("/project/api/user/:userId/unfollow/:unfollowedUserId", unfollowUser);
     app.delete("/project/api/user/:userId", deleteUser);
 
     /*passport.use('project', new LocalStrategy(localStrategy));
-    passport.serializeUser(serializeUser);
-    passport.deserializeUser(deserializeUser);*/
+     passport.serializeUser(serializeUser);
+     passport.deserializeUser(deserializeUser);*/
 
 
     /*var facebookConfig = {
-        clientID     : process.env.FACEBOOK_CLIENT_ID,
-        clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-        callbackURL  : process.env.FACEBOOK_CALLBACK_URL
-    };*/
+     clientID     : process.env.FACEBOOK_CLIENT_ID,
+     clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
+     callbackURL  : process.env.FACEBOOK_CALLBACK_URL
+     };*/
 
     //passport.use('facebook', new FacebookStrategy(facebookConfig, facebookLogin));
 
     /*function localStrategy(username, password, done) {
-        userModel
-            .findUserByUsername(username)
-            .then(
-                function(user) {
-                    if(user && bcrypt.compareSync(password, user.password)) {
-                        return done(null, user);
-                    }
-                    else {
-                        return done(null, false);
-                    }
-                },
-                function(err) {
-                    if (err) { return done(err); }
-                }
-            );
-    }
+     userModel
+     .findUserByUsername(username)
+     .then(
+     function(user) {
+     if(user && bcrypt.compareSync(password, user.password)) {
+     return done(null, user);
+     }
+     else {
+     return done(null, false);
+     }
+     },
+     function(err) {
+     if (err) { return done(err); }
+     }
+     );
+     }
 
-    function serializeUser(user, done) {
-        done(null, user);
-    }
+     function serializeUser(user, done) {
+     done(null, user);
+     }
 
-    function deserializeUser(user, done) {
-        userModel
-            .findUserById(user._id)
-            .then(
-                function(user){
-                    done(null, user);
-                },
-                function(err){
-                    done(err, null);
-                }
-            );
-    }*/
+     function deserializeUser(user, done) {
+     userModel
+     .findUserById(user._id)
+     .then(
+     function(user){
+     done(null, user);
+     },
+     function(err){
+     done(err, null);
+     }
+     );
+     }*/
 
     function register(req, res) {
         var username = req.body.username;
@@ -113,35 +115,35 @@ module.exports = function (app, userModel, passport) {
     }
 
     /*function facebookLogin(token, refreshToken, profile, done) {
-        //console.log(profile);
-        userModel
-            .findFacebookUser(profile.id)
-            .then(
-                function (facebookUser) {
-                    //console.log(facebookUser);
-                    if(facebookUser){
-                        return done(null, facebookUser);
-                    }
-                    else{
-                        facebookUser = {
-                            username: profile.displayName.replace(/ /g, ''),
-                            facebook: {
-                                id:    profile.id,
-                                token: token,
-                                displayName: profile.displayName
-                            }
-                        };
-                        userModel
-                            .createUser(facebookUser)
-                            .then(
-                                function (user) {
-                                    return done(null, user);
-                                }
-                            );
-                    }
-                }
-            );
-    }*/
+     //console.log(profile);
+     userModel
+     .findFacebookUser(profile.id)
+     .then(
+     function (facebookUser) {
+     //console.log(facebookUser);
+     if(facebookUser){
+     return done(null, facebookUser);
+     }
+     else{
+     facebookUser = {
+     username: profile.displayName.replace(/ /g, ''),
+     facebook: {
+     id:    profile.id,
+     token: token,
+     displayName: profile.displayName
+     }
+     };
+     userModel
+     .createUser(facebookUser)
+     .then(
+     function (user) {
+     return done(null, user);
+     }
+     );
+     }
+     }
+     );
+     }*/
 
     function createUser(req, res) {
         var user = req.body;
@@ -270,7 +272,7 @@ module.exports = function (app, userModel, passport) {
                 }
             );
     }
-    
+
     function userLikedGame(req, res) {
         var userId = req.params.userId;
         var game = req.body;
@@ -295,7 +297,7 @@ module.exports = function (app, userModel, passport) {
                 }
             );
     }
-    
+
     function userUnlikedGame(req, res) {
         var userId = req.params.userId;
         var gameId = req.params.gameId;
@@ -320,5 +322,92 @@ module.exports = function (app, userModel, passport) {
                     res.statusCode(400).send("unable to unlike");
                 }
             );
+    }
+
+    function followUser(req, res) {
+        var userId = req.params.userId;
+        var followedUserId = req.params.followedUserId;
+
+        userModel
+            .findUserById(userId)
+            .then(
+                function (user) {
+                    user.following.push(followedUserId);
+                    return userModel.updateUser(userId, user);
+                },
+                function (error) {
+                    res.statusCode(404).send("user not found");
+                }
+            )
+            .then(
+                function (stats) {
+                     return userModel.findUserById(followedUserId)
+                },
+                function (error) {
+                    res.statusCode(400).send("unable to follow");
+                }
+            )
+            .then(
+                function (user) {
+                    user.followers.push(userId);
+                    return userModel.updateUser(followedUserId, user);
+                },
+                function (error) {
+                    res.statusCode(404).send("user not found");
+                }
+            )
+            .then(
+                function (stats) {
+                    res.send(200);
+                },
+                function (error) {
+                    res.statusCode(400).send("unable to follow");
+                }
+            );
+    }
+
+    function unfollowUser(req, res) {
+        var userId = req.params.userId;
+        var unfollowedUserId = req.params.unfollowedUserId;
+
+        userModel
+            .findUserById(userId)
+            .then(
+                function (user) {
+                    var index = user.following.indexOf(unfollowedUserId);
+                    user.following.splice(index,1);
+                    return userModel.updateUser(userId, user);
+                },
+                function (error) {
+                    res.statusCode(404).send("user not found");
+                }
+            )
+            .then(
+                function (stats) {
+                    return userModel.findUserById(unfollowedUserId)
+                },
+                function (error) {
+                    res.statusCode(400).send("unable to unfollow");
+                }
+            )
+            .then(
+                function (user) {
+                    var index = user.followers.indexOf(userId);
+                    user.followers.splice(index,1);
+                    return userModel.updateUser(unfollowedUserId, user);
+                },
+                function (error) {
+                    res.statusCode(404).send("user not found");
+                }
+            )
+            .then(
+                function (stats) {
+                    res.send(200);
+                },
+                function (error) {
+                    res.statusCode(400).send("unable to unfollow");
+                }
+            );
+
     }
 };

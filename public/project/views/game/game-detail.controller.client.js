@@ -3,11 +3,12 @@
         .module("GamersBay")
         .controller("GameDetailController", GameDetailController);
 
-    function GameDetailController($sce, $routeParams, $rootScope, GameService, UserService, ReviewService) {
+    function GameDetailController($sce, $routeParams, $rootScope, $location, GameService, UserService, ReviewService) {
         var vm = this;
         vm.getSafeHtml = getSafeHtml;
         vm.clickLikeDislike = clickLikeDislike;
         vm.submitReview = submitReview;
+        vm.viewProfile = viewProfile;
 
         vm.currentUser = $rootScope.currentUser;
         vm.gameId = $routeParams.gameId;
@@ -37,8 +38,8 @@
                     }
                 );
 
+            vm.liked = false;
             if(vm.currentUser){
-                vm.liked = false;
                 var likedGames = vm.currentUser.likedGames;
                 for(var i in likedGames){
                     if(likedGames[i]._id === vm.gameId){
@@ -46,9 +47,6 @@
                         break;
                     }
                 }
-            }
-            else{
-                vm.liked = false;
             }
 
             vm.review = {
@@ -191,7 +189,7 @@
             vm.review.user = user;
             vm.review.game = game;
 
-            console.log(vm.review);
+            //console.log(vm.review);
 
             ReviewService
                 .saveReview(vm.review)
@@ -204,6 +202,15 @@
                         vm.error = "unable to save review";
                     }
                 );
+        }
+
+        function viewProfile(userId) {
+            if(vm.currentUser && vm.currentUser._id === userId){
+                $location.url("/user");
+            }
+            else{
+                $location.url("/user/"+userId);
+            }
         }
     }
 })();

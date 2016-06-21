@@ -5,41 +5,56 @@
 
     function ViewProfileController($location, $routeParams, UserService, $rootScope) {
         var vm = this;
-        vm.updateUser = updateUser;
-        vm.logout = logout;
+        vm.followUser = followUser;
+        vm.unfollowUser = unfollowUser;
 
-        var userId = $rootScope.currentUser._id;
+        vm.userId = $routeParams.userId;
+
+        vm.currentUser = $rootScope.currentUser;
 
         function init() {
             UserService
-                .findUserById(userId)
+                .findUserById(vm.userId)
                 .then(function (response) {
                     vm.user = response.data;
                 });
+            
+            vm.following = false;
+            if(vm.currentUser) {
+                if(vm.currentUser.following.indexOf(vm.userId) != -1){
+                    vm.following = true;
+                }
+            }
         }
         init();
 
-        function updateUser(newUser) {
-            UserService
-                .updateUser(userId, newUser)
-                .then(
-                    function (response) {
-                        vm.success = "Your profile was saved.";
-                    },
-                    function (error) {
-                        vm.error = "Error saving profile."
-                    });
+        function followUser() {
+            if(vm.currentUser) {
+                UserService
+                    .followUser(vm.currentUser._id, vm.userId)
+                    .then(
+                        function (response) {
+                            vm.following = true;
+                        },
+                        function (error) {
+                            console.log("error following user");
+                        }
+                    );
+            }
+            else{
+                vm.error = "Please login to follow";
+            }
         }
 
-        function logout() {
+        function unfollowUser() {
             UserService
-                .logout()
+                .unfollowUser(vm.currentUser._id, vm.userId)
                 .then(
                     function (response) {
-                        $location.url("/login");
+                        vm.following = false;
                     },
                     function (error) {
-                        $location.url("/login");
+                        console.log("error unfollowing user");
                     }
                 );
         }

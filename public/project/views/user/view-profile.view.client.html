@@ -9,7 +9,8 @@
                 <h1 class="">{{model.user.username}}</h1>
             </div><!--
                --><div class="col-xs-4 col-md-2 panel-title v-center text-right">
-                <button type="button" class="btn btn-primary">Follow</button>
+                <a href="" ng-click="model.followUser()" ng-show="!model.following" class="btn btn-primary">Follow</a>
+                <a href="" ng-click="model.unfollowUser()" ng-show="model.following" class="btn btn-primary">Unfollow</a>
                 <br>
             </div>
             </div>
@@ -58,10 +59,10 @@
 
                     <ul class="list-group">
                         <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
-                        <li class="list-group-item text-right"><span class="pull-left"><strong class="">My Games</strong></span> 13</li>
+                        <li class="list-group-item text-right"><span class="pull-left"><strong class="">Liked Games</strong></span> 13</li>
                         <li class="list-group-item text-right"><span class="pull-left"><strong class="">Following</strong></span> 37</li>
                         <li class="list-group-item text-right"><span class="pull-left"><strong class="">Followers</strong></span> 78</li>
-                        <li class="list-group-item text-right"><span class="pull-left"><strong class="">My Reviews</strong></span> 78</li>
+                        <li class="list-group-item text-right"><span class="pull-left"><strong class="">Reviews</strong></span> 78</li>
                     </ul>
                 </div>
                 <!--/col-3-->
