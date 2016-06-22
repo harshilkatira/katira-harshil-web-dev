@@ -193,8 +193,10 @@
                     function (response) {
                         var newReview = response.data;
                         vm.reviewList.push(newReview);
+                        vm.review = {};
                     },
                     function (error) {
+                        vm.review = {};
                         vm.error = "unable to save review";
                     }
                 );
