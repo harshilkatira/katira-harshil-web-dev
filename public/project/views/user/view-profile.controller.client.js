@@ -8,13 +8,14 @@
         vm.followUser = followUser;
         vm.unfollowUser = unfollowUser;
         vm.setActive = setActive;
-        vm.showDetails = showDetails;
+        vm.backToMenu = backToMenu;
 
         vm.userId = $routeParams.userId;
 
         vm.currentUser = $rootScope.currentUser;
 
         vm.reviewList = [];
+        vm.onlyData = false;
 
         function init() {
             UserService
@@ -45,8 +46,12 @@
         }
         init();
 
-        function setActive(menu) {
+        function setActive(menu, smallView) {
             vm.activeMenu = menu;
+
+            if(smallView)
+                vm.onlyData = true;
+
             switch (menu){
                 case "Liked Games":
                     vm.data = vm.user.likedGames;
@@ -63,24 +68,9 @@
             }
         }
 
-        function showDetails(menu) {
-            vm.activeMenu = menu;
-            switch (menu){
-                case "Liked Games":
-                    vm.data = vm.user.likedGames;
-                    break;
-                case "Following":
-                    vm.data = vm.user.following;
-                    break;
-                case "Followers":
-                    vm.data = vm.user.followers;
-                    break;
-                case "Reviews":
-                    vm.data = vm.reviewList;
-                    break;
-            }
+        function backToMenu() {
+            vm.onlyData = false;
         }
-
 
         function followUser() {
             if(vm.currentUser) {
