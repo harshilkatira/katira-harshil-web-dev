@@ -9,17 +9,19 @@
         vm.updateUser = updateUser;
         vm.logout = logout;
         vm.deleteImage = deleteImage;
+        vm.backToMenu = backToMenu;
 
         vm.currentUser = $rootScope.currentUser;
 
         vm.reviewList = [];
+        vm.onlyData = false;
 
         function init() {
             /*UserService
-                .findUserById(vm.currentUser._id)
-                .then(function (response) {
-                    vm.user = response.data;
-                });*/
+             .findUserById(vm.currentUser._id)
+             .then(function (response) {
+             vm.user = response.data;
+             });*/
             vm.activeMenu = "My Games";
             vm.data = vm.currentUser.likedGames;
 
@@ -36,7 +38,7 @@
                 );
         }
         init();
-        
+
         function deleteImage() {
             UserService
                 .deleteImage(vm.currentUser._id)
@@ -50,22 +52,55 @@
                 );
         }
 
-        function setActive(menu) {
+        function setActive(menu, smallView) {
             vm.activeMenu = menu;
+
+            if(smallView)
+                vm.onlyData = true;
+
             switch (menu){
                 case "My Games":
                     vm.data = vm.currentUser.likedGames;
                     break;
                 case "Following":
-                    vm.data = vm.currentUser.following;
+                    UserService
+                        .getUsersForIds(vm.currentUser.following)
+                        .then(
+                            function (response) {
+                                vm.data = [];
+                                for(var i in response){
+                                    vm.data.push(response[i].data);
+                                }
+                                console.log(vm.data);
+                            },
+                            function (error) {
+                                console.log("error getting users");
+                            }
+                        );
                     break;
                 case "Followers":
-                    vm.data = vm.currentUser.followers;
+                    UserService
+                        .getUsersForIds(vm.currentUser.followers)
+                        .then(
+                            function (response) {
+                                vm.data = [];
+                                for(var i in response){
+                                    vm.data.push(response[i].data);
+                                }
+                            },
+                            function (error) {
+                                console.log("error getting users");
+                            }
+                        );
                     break;
                 case "My Reviews":
                     vm.data = vm.reviewList;
                     break;
             }
+        }
+
+        function backToMenu() {
+            vm.onlyData = false;
         }
 
         function updateUser(newUser) {
