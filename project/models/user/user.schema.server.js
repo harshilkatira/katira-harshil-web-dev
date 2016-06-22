@@ -16,7 +16,7 @@ module.exports = function () {
         },*/
         type: {type: String, default: 'gamer'},
         email: String,
-        image: String,
+        image: {type: String, default: 'http://knightslpc.com/wp-content/uploads/2016/06/Knights-LPC-Person-Placeholder.jpg'},
         followers: [String],
         following: [String],
         likedGames: [GameSchema],

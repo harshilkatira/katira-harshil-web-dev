@@ -44,7 +44,7 @@
                 .deleteImage(vm.currentUser._id)
                 .then(
                     function (response) {
-                        vm.currentUser.image = "http://www.rlsandbox.com/img/profile.jpg";
+                        vm.currentUser.image = "http://knightslpc.com/wp-content/uploads/2016/06/Knights-LPC-Person-Placeholder.jpg";
                     },
                     function (error) {
                         vm.error = "unable to delete image";
@@ -71,7 +71,7 @@
                                 for(var i in response){
                                     vm.data.push(response[i].data);
                                 }
-                                console.log(vm.data);
+                                //console.log(vm.data);
                             },
                             function (error) {
                                 console.log("error getting users");
