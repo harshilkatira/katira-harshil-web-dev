@@ -195,9 +195,9 @@
                             <div ng-switch-when="Following">
                                 <div class="col-md-4" ng-repeat="obj in model.data">
                                     <div class="thumbnail well detail-fix-ht">
-                                        <a href="#/game/{{obj._id}}" class="text-center">
-                                            <img class="img-responsive detail-img" alt="300x300" ng-src="{{obj.image}}">
-                                            <h4>{{obj.name}}</h4>
+                                        <a href="#/user/{{obj._id}}" class="text-center">
+                                            <img class="img-responsive detail-img" alt="300x300" ng-src="{{obj.image}}" src="http://www.rlsandbox.com/img/profile.jpg">
+                                            <h4>{{obj.username}}</h4>
                                         </a>
                                     </div>
                                 </div>
@@ -205,9 +205,9 @@
                             <div ng-switch-when="Followers">
                                 <div class="col-md-4" ng-repeat="obj in model.data">
                                     <div class="thumbnail well detail-fix-ht">
-                                        <a href="#/game/{{obj._id}}" class="text-center">
-                                            <img class="img-responsive detail-img" alt="300x300" ng-src="{{obj.image}}">
-                                            <h4>{{obj.name}}</h4>
+                                        <a href="#/user/{{obj._id}}" class="text-center">
+                                            <img class="img-responsive detail-img" alt="300x300" ng-src="{{obj.image}}" src="http://www.rlsandbox.com/img/profile.jpg">
+                                            <h4>{{obj.username}}</h4>
                                         </a>
                                     </div>
                                 </div>

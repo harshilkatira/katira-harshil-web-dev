@@ -57,10 +57,34 @@
                     vm.data = vm.user.likedGames;
                     break;
                 case "Following":
-                    vm.data = vm.user.following;
+                    UserService
+                        .getUsersForIds(vm.user.following)
+                        .then(
+                            function (response) {
+                                vm.data = [];
+                                for(var i in response){
+                                    vm.data.push(response[i].data);
+                                }
+                            },
+                            function (error) {
+                                console.log("error getting users");
+                            }
+                        );
                     break;
                 case "Followers":
-                    vm.data = vm.user.followers;
+                    UserService
+                        .getUsersForIds(vm.user.followers)
+                        .then(
+                            function (response) {
+                                vm.data = [];
+                                for(var i in response){
+                                    vm.data.push(response[i].data);
+                                }
+                            },
+                            function (error) {
+                                console.log("error getting users");
+                            }
+                        );
                     break;
                 case "Reviews":
                     vm.data = vm.reviewList;

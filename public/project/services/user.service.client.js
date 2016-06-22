@@ -3,7 +3,7 @@
         .module("GamersBay")
         .factory("UserService", UserService);
 
-    function UserService($http){
+    function UserService($http, $q){
         var api = {
             createUser: createUser,
             register: register,
@@ -19,7 +19,8 @@
             unlikeGame: unlikeGame,
             followUser: followUser,
             unfollowUser: unfollowUser,
-            deleteImage: deleteImage
+            deleteImage: deleteImage,
+            getUsersForIds: getUsersForIds
         };
         return api;
 
@@ -78,22 +79,22 @@
             var url = "/project/api/user/"+userId;
             return $http.delete(url);
         }
-        
+
         function likeGame(userId, game) {
             var url = "/project/api/user/"+userId+"/like";
             return $http.put(url, game);
         }
-        
+
         function unlikeGame(userId, gameId) {
             var url = "/project/api/user/"+userId+"/unlike/"+gameId;
             return $http.put(url);
         }
-        
+
         function followUser(loggedInUserId, followedUserId) {
             var url = "/project/api/user/"+loggedInUserId+"/follow/"+followedUserId;
             return $http.put(url);
         }
-        
+
         function unfollowUser(loggedInUserId, unfollowedUserId) {
             var url = "/project/api/user/"+loggedInUserId+"/unfollow/"+unfollowedUserId;
             return $http.put(url);
@@ -102,6 +103,22 @@
         function deleteImage(userId) {
             var url = "/project/api/user/"+userId+"/image/delete";
             return $http.put(url);
+        }
+
+        function getUsersForIds(userIds) {
+
+            var promiseArray = [];
+            var users = [];
+
+            for(var i in userIds){
+                var id = userIds[i];
+                promiseArray
+                    .push($http.get("/project/api/user/"+id)
+                    .success(function (response) {
+                        users.push(response);
+                    }));
+            }
+            return $q.all(promiseArray);
         }
     }
 })();
