@@ -491,10 +491,18 @@ module.exports = function (app, models, userModel, passport) {
             .deleteImage(userId)
             .then(
                 function (stats) {
-                    res.send(200);
+                    return reviewModel.updateUserImage(userId, "http://knightslpc.com/wp-content/uploads/2016/06/Knights-LPC-Person-Placeholder.jpg");
                 },
                 function (error) {
                     res.statusCode(400).send("unable to delete image");
+                }
+            )
+            .then(
+                function (response) {
+                    res.send(200);
+                },
+                function (error) {
+                    res.statusCode(400).send("unable to delete image from reviews");
                 }
             );
     }
