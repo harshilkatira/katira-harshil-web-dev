@@ -318,8 +318,12 @@ module.exports = function (app, userModel, passport) {
             .findUserById(userId)
             .then(
                 function (user) {
-                    user.likedGames.push(game);
-                    return userModel.updateUser(userId, user);
+                    var likedGames = user.likedGames;
+                    likedGames.push(game);
+                    var newUser = {
+                        likedGames: likedGames
+                    };
+                    return userModel.updateUser(userId, newUser);
                 },
                 function (error) {
                     res.statusCode(404).send("user not found");
@@ -350,8 +354,10 @@ module.exports = function (app, userModel, passport) {
                             break;
                         }
                     }
-                    user.likedGames = games;
-                    return userModel.updateUser(userId, user);
+                    var newUser = {
+                        likedGames: games
+                    };
+                    return userModel.updateUser(userId, newUser);
                 },
                 function (error) {
                     res.statusCode(404).send("user not found");
@@ -375,8 +381,12 @@ module.exports = function (app, userModel, passport) {
             .findUserById(userId)
             .then(
                 function (user) {
-                    user.following.push(followedUserId);
-                    return userModel.updateUser(userId, user);
+                    var following = user.following;
+                    following.push(followedUserId);
+                    var newUser = {
+                        following: following
+                    };
+                    return userModel.updateUser(userId, newUser);
                 },
                 function (error) {
                     res.statusCode(404).send("user not found");
@@ -392,8 +402,12 @@ module.exports = function (app, userModel, passport) {
             )
             .then(
                 function (user) {
-                    user.followers.push(userId);
-                    return userModel.updateUser(followedUserId, user);
+                    var followers = user.followers;
+                    followers.push(userId);
+                    var newUser = {
+                        followers: followers
+                    };
+                    return userModel.updateUser(followedUserId, newUser);
                 },
                 function (error) {
                     res.statusCode(404).send("user not found");
@@ -417,9 +431,13 @@ module.exports = function (app, userModel, passport) {
             .findUserById(userId)
             .then(
                 function (user) {
-                    var index = user.following.indexOf(unfollowedUserId);
-                    user.following.splice(index,1);
-                    return userModel.updateUser(userId, user);
+                    var following = user.following;
+                    var index = following.indexOf(unfollowedUserId);
+                    following.splice(index,1);
+                    var newUser = {
+                        following: following
+                    };
+                    return userModel.updateUser(userId, newUser);
                 },
                 function (error) {
                     res.statusCode(404).send("user not found");
@@ -435,9 +453,13 @@ module.exports = function (app, userModel, passport) {
             )
             .then(
                 function (user) {
-                    var index = user.followers.indexOf(userId);
-                    user.followers.splice(index,1);
-                    return userModel.updateUser(unfollowedUserId, user);
+                    var followers = user.followers;
+                    var index = followers.indexOf(userId);
+                    followers.splice(index,1);
+                    var newUser = {
+                        followers: followers
+                    };
+                    return userModel.updateUser(unfollowedUserId, newUser);
                 },
                 function (error) {
                     res.statusCode(404).send("user not found");
