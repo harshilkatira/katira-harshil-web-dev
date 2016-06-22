@@ -54,7 +54,7 @@
             <hr/>
             <div class="media" ng-repeat="review in model.reviewList">
                 <a class="pull-left" href="">
-                    <img class="media-object" src="http://placehold.it/64x64" alt="">
+                    <img class="media-object detail-review-img" ng-src="{{review.user.image}}" src="http://placehold.it/64x64" alt="">
                 </a>
                 <div class="media-body">
                     <h4 class="media-heading">

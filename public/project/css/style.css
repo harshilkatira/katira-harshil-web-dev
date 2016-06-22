@@ -99,6 +99,11 @@ a,a:hover {
     height: 200px!important;
     width: 170px;
 }
+.detail-review-img{
+    min-height: 100px;
+    height: 100px!important;
+    width: 100px;
+}
 .margin-left{
     margin-left: 6px;
 }

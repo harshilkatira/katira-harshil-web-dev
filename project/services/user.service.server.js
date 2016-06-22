@@ -3,7 +3,9 @@
 //var FacebookStrategy = require('passport-facebook').Strategy;
 var bcrypt = require("bcrypt-nodejs");
 
-module.exports = function (app, userModel, passport) {
+module.exports = function (app, models, userModel, passport) {
+
+    var reviewModel = models.reviewModel;
 
     var multer = require('multer'); // npm install multer --save
     var upload = multer({ dest: __dirname+'/../../public/uploads' });
@@ -104,6 +106,14 @@ module.exports = function (app, userModel, passport) {
             .then(
                 function (stats) {
                     //console.log(stats);
+                    return reviewModel.updateUserImage(userId, "/uploads/"+filename);
+                },
+                function (error) {
+                    res.statusCode(404).send(error);
+                }
+            )
+            .then(
+                function (stats) {
                     res.redirect("/project/#/user");
                 },
                 function (error) {
