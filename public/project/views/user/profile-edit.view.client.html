@@ -128,8 +128,9 @@
                             <form action="/project/api/upload"  method="post" enctype="multipart/form-data">
                                 <input  name="myFile" type="file" class="form-control"/>
                                 <input  name="userId" value="{{model.currentUser._id}}"   style="display: none"/>
-                                <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
+                                <button type="submit" class="btn btn-block btn-primary margin-btn">Upload Image</button>
                             </form>
+                            <a ng-click="model.deleteImage()" class="btn btn-block btn-danger margin-btn">Delete Image</a>
                         </li>
                     </ul>
                     <!--<div class="panel panel-default">
@@ -225,9 +226,9 @@
                     </div>
                 </div>
             </div>
-            <a class="btn btn-danger btn-block"
+            <!--<a class="btn btn-danger btn-block"
                ng-click="model.logout()"
-               role="button">Logout</a>
+               role="button">Logout</a>-->
         </div>
     </div>
 </div>

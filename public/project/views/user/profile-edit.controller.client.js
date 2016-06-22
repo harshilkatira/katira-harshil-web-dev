@@ -8,6 +8,7 @@
         vm.setActive = setActive;
         vm.updateUser = updateUser;
         vm.logout = logout;
+        vm.deleteImage = deleteImage;
 
         vm.currentUser = $rootScope.currentUser;
 
@@ -35,6 +36,19 @@
                 );
         }
         init();
+        
+        function deleteImage() {
+            UserService
+                .deleteImage(vm.currentUser._id)
+                .then(
+                    function (response) {
+                        vm.currentUser.image = "http://www.rlsandbox.com/img/profile.jpg";
+                    },
+                    function (error) {
+                        vm.error = "unable to delete image";
+                    }
+                );
+        }
 
         function setActive(menu) {
             vm.activeMenu = menu;

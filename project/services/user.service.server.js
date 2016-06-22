@@ -28,6 +28,7 @@ module.exports = function (app, userModel, passport) {
     app.put("/project/api/user/:userId/unlike/:gameId", userUnlikedGame);
     app.put("/project/api/user/:userId/follow/:followedUserId", followUser);
     app.put("/project/api/user/:userId/unfollow/:unfollowedUserId", unfollowUser);
+    app.put("/project/api/user/:userId/image/delete", deleteImage);
     app.delete("/project/api/user/:userId", deleteUser);
 
     /*passport.use('project', new LocalStrategy(localStrategy));
@@ -83,7 +84,7 @@ module.exports = function (app, userModel, passport) {
         var myFile = req.file;
 
         if(myFile == null) {
-            res.redirect("/project/#/user/");
+            res.redirect("/project/#/user");
             return;
         }
 
@@ -103,7 +104,7 @@ module.exports = function (app, userModel, passport) {
             .then(
                 function (stats) {
                     //console.log(stats);
-                    res.redirect("/project/#/user/");
+                    res.redirect("/project/#/user");
                 },
                 function (error) {
                     res.statusCode(404).send(error);
@@ -450,6 +451,19 @@ module.exports = function (app, userModel, passport) {
                     res.statusCode(400).send("unable to unfollow");
                 }
             );
-
+    }
+    
+    function deleteImage(req, res) {
+        var userId = req.params.userId;
+        userModel
+            .deleteImage(userId)
+            .then(
+                function (stats) {
+                    res.send(200);
+                },
+                function (error) {
+                    res.statusCode(400).send("unable to delete image");
+                }
+            );
     }
 };

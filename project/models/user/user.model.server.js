@@ -11,7 +11,8 @@ module.exports = function () {
         findUserByCredentials: findUserByCredentials,
         findUserByUsername: findUserByUsername,
         updateUser: updateUser,
-        deleteUser: deleteUser
+        deleteUser: deleteUser,
+        deleteImage: deleteImage
     };
     return api;
 
@@ -44,6 +45,15 @@ module.exports = function () {
         return User
             .update({_id: userId},{
                $set: user
+            });
+    }
+
+    function deleteImage(userId) {
+        return User
+            .update({_id: userId},{
+                $set: {
+                    image: undefined
+                }
             });
     }
 };

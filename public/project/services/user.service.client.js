@@ -18,7 +18,8 @@
             likeGame: likeGame,
             unlikeGame: unlikeGame,
             followUser: followUser,
-            unfollowUser: unfollowUser
+            unfollowUser: unfollowUser,
+            deleteImage: deleteImage
         };
         return api;
 
@@ -95,6 +96,11 @@
         
         function unfollowUser(loggedInUserId, unfollowedUserId) {
             var url = "/project/api/user/"+loggedInUserId+"/unfollow/"+unfollowedUserId;
+            return $http.put(url);
+        }
+
+        function deleteImage(userId) {
+            var url = "/project/api/user/"+userId+"/image/delete";
             return $http.put(url);
         }
     }
