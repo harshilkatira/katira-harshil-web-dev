@@ -52,7 +52,7 @@ module.exports = function () {
         return User
             .update({_id: userId},{
                 $set: {
-                    image: undefined
+                    image: "http://knightslpc.com/wp-content/uploads/2016/06/Knights-LPC-Person-Placeholder.jpg"
                 }
             });
     }
