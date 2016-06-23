@@ -20,23 +20,23 @@
             </div>
             </div>
         </div>
-    <!--<div class="panel panel-default">
-        <div class="panel-heading panel-heading-custom">
-            <div class="row">
-                <div class="col-xs-4 v-center">
-                    <img class="img-responsive img-thumbnail detail-heading-img" src='{{model.game.image.medium_url}}'>
+        <!--<div class="panel panel-default">
+            <div class="panel-heading panel-heading-custom">
+                <div class="row">
+                    <div class="col-xs-4 v-center">
+                        <img class="img-responsive img-thumbnail detail-heading-img" src='{{model.game.image.medium_url}}'>
+                    </div>&lt;!&ndash;
+                    &ndash;&gt;<div class="col-xs-6 panel-title v-center">
+                    <h3>{{model.game.name}}</h3>
                 </div>&lt;!&ndash;
-                &ndash;&gt;<div class="col-xs-6 panel-title v-center">
-                <h3>{{model.game.name}}</h3>
-            </div>&lt;!&ndash;
-               &ndash;&gt;<div class="col-xs-2 panel-title v-center">
-                    <span ng-click="model.clickLike()"
-                          class="btn btn-block">
-                        <i ng-class="{'btn-green': liked}" class="fa fa-thumbs-o-up fa-lg"></i>
-                    </span>
-            </div>
-            </div>
-        </div>-->
+                   &ndash;&gt;<div class="col-xs-2 panel-title v-center">
+                        <span ng-click="model.clickLike()"
+                              class="btn btn-block">
+                            <i ng-class="{'btn-green': liked}" class="fa fa-thumbs-o-up fa-lg"></i>
+                        </span>
+                </div>
+                </div>
+            </div>-->
         <div class="panel-body">
             <h5 class="well">{{model.game.deck}}</h5>
             <!--<div class="panel">
@@ -67,7 +67,11 @@
                                    editable="false">
                         </ng-rating>
                     </p>
-                    <div>{{review.comment}}</div>
+                    {{review.comment}}
+                    <span class="pull-right" ng-if="model.currentUser._id === review.user._id">
+                        <a href="" ng-click="model.deleteReview(review._id)" class="btn btn-danger">Delete</a>
+                    </span>
+
                 </div>
                 <hr/>
             </div>
