@@ -47,6 +47,14 @@
                     getLoggedIn: getLoggedIn
                 }
             })
+            .when("/search/:searchText", {
+                templateUrl: "views/search/search.view.client.html",
+                controller: "SearchController",
+                controllerAs: "model",
+                resolve: {
+                    getLoggedIn: getLoggedIn
+                }
+            })
             .otherwise({
                 redirectTo: "/home"
             });

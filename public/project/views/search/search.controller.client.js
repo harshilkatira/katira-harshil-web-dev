@@ -1,23 +1,26 @@
 (function () {
     angular
         .module("GamersBay")
-        .controller("HomeController", HomeController);
+        .controller("SearchController", SearchController);
 
-    function HomeController($window, $location, GameService) {
+    function SearchController($window, $routeParams, GameService) {
         var vm = this;
-        //vm.searchGames = searchGames;
-        //vm.getMoreResults = getMoreResults;
+        vm.searchGames = searchGames;
+        vm.getMoreResults = getMoreResults;
 
+        vm.searchText = $routeParams.searchText;
         vm.showSpinnerBottom = false;
-        vm.offset = 0;
+        vm.pageNo = 1;
+        vm.games = [];
 
         function init() {
             GameService
-                .getPopularGamesList(vm.offset)
+                .searchGames(vm.searchText, vm.pageNo)
                 .then(
                     function (response) {
                         vm.games = response.data.results;
-                        vm.offset = vm.offset + vm.games.length;
+                        vm.pageNo = ((response.data.offset)/(response.data.limit)) + 2;
+                        console.log(response.data);
                     },
                     function (error) {
                         vm.games = error.status;
@@ -33,16 +36,16 @@
             windowBottom = windowHeight + window.pageYOffset;
             if (windowBottom >= docHeight) {
                 vm.showSpinnerBottom = true;
-                getMoreResults();
+                vm.getMoreResults();
             }});
 
         function getMoreResults() {
             GameService
-                .getPopularGamesList(vm.offset)
+                .searchGames(vm.searchText, vm.pageNo+1)
                 .then(
                     function (response) {
                         vm.games = vm.games.concat(response.data.results);
-                        vm.offset = vm.offset + vm.games.length;
+                        vm.pageNo = ((response.data.offset)/(response.data.limit)) + 2;
                         vm.showSpinnerBottom = true;
                     },
                     function (error) {
@@ -51,17 +54,20 @@
                 );
         }
 
-        /*function searchGames(searchText) {
+        function searchGames() {
+            vm.games = [];
+            vm.pageNo = 1;
             GameService
-                .searchGames(searchText)
+                .searchGames(vm.searchText, vm.pageNo)
                 .then(
                     function (response) {
                         vm.games = response.data.results;
+                        vm.pageNo = ((response.data.offset)/(response.data.limit)) + 2;
                     },
                     function (error) {
-                        vm.games = error.status;
+                        console.log("Error searching games");
                     }
                 );
-        }*/
+        }
     }
 })();

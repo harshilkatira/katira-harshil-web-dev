@@ -21,6 +21,8 @@
     var search = "&query=QUERY&resources=game";
 
     var offset = "&offset=OFFSET";
+    
+    var page = "&page=PAGENO";
 
     function GameService($http) {
         var api = {
@@ -55,15 +57,15 @@
             return $http.jsonp(url);
         }
 
-        function searchGames(searchTerm) {
+        function searchGames(searchTerm, pageno) {
 
-            var url = urlBase + search + limit + searchFieldList+ offset;
+            var url = urlBase + search + limit + searchFieldList+ page;
 
             url = url
                 .replace("API_KEY", key)
                 .replace("RESOURCE", "search")
-                .replace("QUERY", searchTerm);
-
+                .replace("QUERY", searchTerm)
+                .replace("PAGENO", pageno);
 
             return $http.jsonp(url);
         }

@@ -1,16 +1,16 @@
 <div class="container">
     <!-- Search bar -->
     <div class="input-group">
-        <input ng-model="searchText" type="text" class="form-control" placeholder="Look up your favourite Game!">
+        <input ng-model="model.searchText" type="text" class="form-control" placeholder="Look up your favourite Game!">
     <span class="input-group-btn">
-        <a href="#/search/{{searchText}}" class="btn btn-default" type="button">
+        <a ng-click="model.searchGames(searchText)" class="btn btn-default" type="button">
             <span class="glyphicon glyphicon-search"></span>
         </a>
     </span>
     </div>
 
     <div class="row">
-        <h3 class="home-title">Popular Games</h3>
+        <h3 class="home-title">Search Results</h3>
         <hr/>
         <div ng-show="!model.games" class="text-center">
             <i class="fa fa-refresh fa-spin fa-3x fa-fw" aria-hidden="true"></i>
