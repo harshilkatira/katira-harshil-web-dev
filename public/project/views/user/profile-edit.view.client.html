@@ -108,7 +108,7 @@
                         <li class="list-group-item">
                             <span class="pull-left">
                                 <strong class="">Joined</strong>
-                            </span> : {{model.currentUser.dateCreated}}
+                            </span> : <span ng-bind="model.currentUser.dateCreated | date:'EEE, MMM-dd yyyy'"></span>
                         </li>
                         <li class="list-group-item">
                             <a class="btn btn-primary btn-block"
@@ -214,7 +214,7 @@
                         <li class="list-group-item">
                             <span class="pull-left">
                                 <strong class="">Joined</strong>
-                            </span> : {{model.currentUser.dateCreated}}
+                            </span> : <span ng-bind="model.currentUser.dateCreated | date:'EEE, MMM-dd yyyy'"></span>
                         </li>
                         <li class="list-group-item">
                             <a class="btn btn-primary btn-block"

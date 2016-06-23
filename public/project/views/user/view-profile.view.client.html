@@ -98,7 +98,7 @@
                         <li class="list-group-item">
                             <span class="pull-left">
                                 <strong class="">Joined</strong>
-                            </span> : {{model.user.dateCreated}}
+                            </span> : <span ng-bind="model.user.dateCreated | date:'EEE, MMM-dd yyyy'"></span>
                         </li>
                     </ul>
                 </div>
@@ -175,7 +175,7 @@
                         <li class="list-group-item">
                             <span class="pull-left">
                                 <strong class="">Joined</strong>
-                            </span> : {{model.user.dateCreated}}
+                            </span> : <span ng-bind="model.user.dateCreated | date:'EEE, MMM-dd yyyy'"></span>
                         </li>
                     </ul>
                 </div>
