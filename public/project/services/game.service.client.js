@@ -10,17 +10,17 @@
         "expected_release_year,franchises,genres,id,image,images,name,original_release_date," +
         "platforms,publishers,similar_games,themes,videos";
 
-    var searchFieldList = "&field_list=aliases,deck,developers,expected_release_month," +
+    var searchFieldList = "&field_list=deck,developers,expected_release_month," +
         "expected_release_year,franchises,genres,id,image,name,original_release_date," +
         "platforms,publishers";
 
-    var limit = "&limit=15";
+    var limit = "&limit=9";
 
     var sort = "&sort=number_of_user_reviews:desc";
 
     var search = "&query=QUERY&resources=game";
 
-    var page = "&page=PAGENO";
+    var offset = "&offset=OFFSET";
 
     function GameService($http) {
         var api = {
@@ -32,12 +32,14 @@
         };
         return api;
 
-        function getPopularGamesList() {
+        function getPopularGamesList(offsetValue) {
             var url = urlBase
                 .replace("API_KEY", key)
                 .replace("RESOURCE", "games");
 
-            url = url + limit + sort + searchFieldList + page;
+            url = url + limit + sort + searchFieldList + offset;
+
+            url = url.replace("OFFSET", offsetValue);
 
             return $http.jsonp(url);
         }
@@ -55,7 +57,7 @@
 
         function searchGames(searchTerm) {
 
-            var url = urlBase + search + limit + searchFieldList;
+            var url = urlBase + search + limit + searchFieldList+ offset;
 
             url = url
                 .replace("API_KEY", key)
