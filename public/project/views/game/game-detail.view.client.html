@@ -8,7 +8,7 @@
         <div class="panel-heading panel-heading-custom">
             <div class="row">
                 <div class="col-xs-4 col-md-3 v-center">
-                    <img class="img-responsive" src="{{model.game.image.medium_url}}">
+                    <img class="img-responsive img-thumbnail" src="{{model.game.image.medium_url}}">
                 </div><!--
                 --><div class="col-xs-4 col-md-7 panel-title v-center text-center">
                 <h2>{{model.game.name}}</h2>
@@ -24,7 +24,7 @@
         <div class="panel-heading panel-heading-custom">
             <div class="row">
                 <div class="col-xs-4 v-center">
-                    <img class="img-responsive detail-heading-img" src='{{model.game.image.medium_url}}'>
+                    <img class="img-responsive img-thumbnail detail-heading-img" src='{{model.game.image.medium_url}}'>
                 </div>&lt;!&ndash;
                 &ndash;&gt;<div class="col-xs-6 panel-title v-center">
                 <h3>{{model.game.name}}</h3>
@@ -53,7 +53,7 @@
             <hr/>
             <div class="media" ng-repeat="review in model.reviewList">
                 <a class="pull-left" href="">
-                    <img class="media-object detail-review-img" ng-src="{{review.user.image}}" src="http://placehold.it/64x64" alt="">
+                    <img class="media-object img-thumbnail detail-review-img" ng-src="{{review.user.image}}" src="http://placehold.it/64x64" alt="">
                 </a>
                 <div class="media-body">
                     <h4 class="media-heading">
