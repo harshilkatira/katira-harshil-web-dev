@@ -216,7 +216,7 @@
                                 </div>
                             </div>
                             <div ng-switch-when="Reviews">
-                                <div class="well" ng-repeat="review in model.data">
+                                <div ng-repeat="review in model.data">
                                     <div class="media">
                                         <a class="pull-left" href="#/game/{{review.game._id}}">
                                             <img class="media-object img-thumbnail img-responsive review-img" ng-src="{{review.game.image}}">
@@ -234,6 +234,7 @@
                                             <div>{{review.comment}}</div>
                                         </div>
                                     </div>
+                                    <hr/>
                                 </div>
                             </div>
 
@@ -254,7 +255,7 @@
                     <div class="row">
                         <div ng-switch="model.activeMenu">
                             <div ng-switch-when="Liked Games">
-                                <div class="col-md-4" ng-repeat="obj in model.data">
+                                <div class="col-sm-6 col-md-4" ng-repeat="obj in model.data">
                                     <div class="thumbnail well detail-fix-ht">
                                         <a href="#/game/{{obj._id}}" class="text-center">
                                             <img class="img-responsive img-thumbnail detail-img" alt="300x300" ng-src="{{obj.image}}">
@@ -264,7 +265,7 @@
                                 </div>
                             </div>
                             <div ng-switch-when="Following">
-                                <div class="col-md-4" ng-repeat="obj in model.data">
+                                <div class="col-sm-6 col-md-4" ng-repeat="obj in model.data">
                                     <div class="thumbnail well detail-fix-ht">
                                         <a href="#/user/{{obj._id}}" class="text-center">
                                             <img class="img-responsive img-thumbnail detail-img" alt="300x300" ng-src="{{obj.image}}" src="http://knightslpc.com/wp-content/uploads/2016/06/Knights-LPC-Person-Placeholder.jpg">
@@ -274,7 +275,7 @@
                                 </div>
                             </div>
                             <div ng-switch-when="Followers">
-                                <div class="col-md-4" ng-repeat="obj in model.data">
+                                <div class="col-sm-6 col-md-4" ng-repeat="obj in model.data">
                                     <div class="thumbnail well detail-fix-ht">
                                         <a href="#/user/{{obj._id}}" class="text-center">
                                             <img class="img-responsive img-thumbnail detail-img" alt="300x300" ng-src="{{obj.image}}" src="http://knightslpc.com/wp-content/uploads/2016/06/Knights-LPC-Person-Placeholder.jpg">
@@ -284,7 +285,7 @@
                                 </div>
                             </div>
                             <div ng-switch-when="Reviews">
-                                <div class="well" ng-repeat="review in model.data">
+                                <div ng-repeat="review in model.data">
                                     <div class="media">
                                         <a class="pull-left" href="#/game/{{review.game._id}}">
                                             <img class="media-object img-thumbnail img-responsive review-img" ng-src="{{review.game.image}}">
@@ -302,6 +303,7 @@
                                             <div>{{review.comment}}</div>
                                         </div>
                                     </div>
+                                    <hr/>
                                 </div>
                             </div>
 
