@@ -52,14 +52,14 @@
             <h4>Reviews:</h4>
             <hr/>
             <div class="media" ng-repeat="review in model.reviewList">
-                <a class="pull-left" href="">
+                <a class="pull-left" href="" ng-click="model.viewProfile(review.user._id)">
                     <img class="media-object img-thumbnail detail-review-img" ng-src="{{review.user.image}}" src="http://placehold.it/64x64" alt="">
                 </a>
                 <div class="media-body">
                     <h4 class="media-heading">
                         <span>{{review.title}}</span>
                         <p>
-                            <small><a href="" ng-click="model.viewProfile(review.user._id)">{{review.user.username}}</a> : {{review.timestamp}}</small>
+                            <small><a href="" ng-click="model.viewProfile(review.user._id)">{{review.user.username}}</a> : <span ng-bind="review.timestamp | date:'EEE, MMM-dd yyyy'"></span></small>
                         </p>
                     </h4>
                     <p>
