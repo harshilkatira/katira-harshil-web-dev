@@ -25,6 +25,7 @@ module.exports = function (app, models, userModel, passport) {
     app.get("/project/api/loggedIn", loggedIn);
     app.get("/project/api/user", findUser);
     app.get("/project/api/user/:userId", findUserById);
+    app.get("/project/api/users", findAllUsers);
     app.put("/project/api/user/:userId", updateUser);
     app.put("/project/api/user/:userId/like", userLikedGame);
     app.put("/project/api/user/:userId/unlike/:gameId", userUnlikedGame);
@@ -280,6 +281,19 @@ module.exports = function (app, models, userModel, passport) {
             .then(
                 function (user) {
                     res.json(user);
+                },
+                function (error) {
+                    res.statusCode(404).send(error);
+                }
+            );
+    }
+
+    function findAllUsers(req, res) {
+        userModel
+            .findAllUsers()
+            .then(
+                function (users) {
+                    res.json(users);
                 },
                 function (error) {
                     res.statusCode(404).send(error);

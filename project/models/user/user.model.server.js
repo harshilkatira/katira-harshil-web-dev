@@ -12,7 +12,8 @@ module.exports = function () {
         findUserByUsername: findUserByUsername,
         updateUser: updateUser,
         deleteUser: deleteUser,
-        deleteImage: deleteImage
+        deleteImage: deleteImage,
+        findAllUsers: findAllUsers
     };
     return api;
 
@@ -55,5 +56,9 @@ module.exports = function () {
                     image: "http://knightslpc.com/wp-content/uploads/2016/06/Knights-LPC-Person-Placeholder.jpg"
                 }
             });
+    }
+
+    function findAllUsers() {
+        return User.find();
     }
 };

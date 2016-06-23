@@ -20,6 +20,7 @@ module.exports = function () {
         followers: [String],
         following: [String],
         likedGames: [GameSchema],
+        role: {type: String, enum: ['admin', 'gamer'], default: 'gamer'},
         dateCreated: {type: Date, default: Date.now}
     }, {collection: "project.user"});
     

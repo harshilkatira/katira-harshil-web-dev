@@ -20,7 +20,8 @@
             followUser: followUser,
             unfollowUser: unfollowUser,
             deleteImage: deleteImage,
-            getUsersForIds: getUsersForIds
+            getUsersForIds: getUsersForIds,
+            findAllUsers: findAllUsers
         };
         return api;
 
@@ -119,6 +120,11 @@
                     }));
             }
             return $q.all(promiseArray);
+        }
+
+        function findAllUsers() {
+            var url = "/project/api/users";
+            return $http.get(url);
         }
     }
 })();

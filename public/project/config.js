@@ -55,6 +55,14 @@
                     getLoggedIn: getLoggedIn
                 }
             })
+            .when("/admin", {
+                templateUrl: "views/user/admin.view.client.html",
+                controller: "AdminController",
+                controllerAs: "model",
+                resolve: {
+                    getLoggedIn: getLoggedIn
+                }
+            })
             .otherwise({
                 redirectTo: "/home"
             });

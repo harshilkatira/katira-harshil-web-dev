@@ -15,6 +15,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <!--<li><a href="#">Link</a></li>-->
+                <li ng-if="currentUser && currentUser.role == 'admin'"><a href="#/admin">Admin</a></li>
                 <li ng-show="currentUser"><a href="#/user">{{currentUser.username}}</a></li>
                 <li ng-show="!currentUser"><a href="#/register">Register</a></li>
                 <li ng-show="!currentUser"><a href="#/login">Login</a></li>
