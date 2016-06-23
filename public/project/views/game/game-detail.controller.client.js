@@ -10,6 +10,7 @@
         vm.unlikeGame = unlikeGame;
         vm.submitReview = submitReview;
         vm.viewProfile = viewProfile;
+        vm.deleteReview = deleteReview;
 
         vm.currentUser = $rootScope.currentUser;
         vm.gameId = $routeParams.gameId;
@@ -197,7 +198,7 @@
                     },
                     function (error) {
                         vm.review = {};
-                        vm.error = "unable to save review";
+                        vm.error = "Unable to save review";
                     }
                 );
         }
@@ -209,6 +210,24 @@
             else{
                 $location.url("/user/"+userId);
             }
+        }
+
+        function deleteReview(reviewId) {
+            ReviewService
+                .deleteReview(reviewId)
+                .then(
+                    function (response) {
+                        for(var i in vm.reviewList){
+                            if(vm.reviewList[i]._id === reviewId){
+                                vm.reviewList.splice(i,1);
+                                break;
+                            }
+                        }
+                    },
+                    function (error) {
+                        vm.error = "Unable to delete review"
+                    }
+                );
         }
     }
 })();
