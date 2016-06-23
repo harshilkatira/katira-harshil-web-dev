@@ -3,7 +3,7 @@
     <div class="input-group">
         <input ng-model="searchText" type="text" class="form-control" placeholder="Look up your favourite Game!">
     <span class="input-group-btn">
-        <a href="#/search/{{searchText}}" class="btn btn-default" type="button">
+        <a ng-click="#/search/{{}}model.searchText" class="btn btn-default" type="button">
             <span class="glyphicon glyphicon-search"></span>
         </a>
     </span>
@@ -20,7 +20,7 @@
             <div class="thumbnail well fix-ht">
                 <div class="caption">
                     <a href="#/game/{{game.id}}">
-                        <img class="img-responsive img-thumbnail thumbnail-img" ng-src="{{game.image.medium_url}}">
+                        <img class="img-responsive thumbnail-img" ng-src="{{game.image.medium_url}}">
                         <h3>{{game.name}}</h3>
                     </a>
                     <h5>{{game.deck}}</h5>

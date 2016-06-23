@@ -14,7 +14,7 @@
         "expected_release_year,franchises,genres,id,image,name,original_release_date," +
         "platforms,publishers";
 
-    var limit = "&limit=9";
+    var limit = "&limit=6";
 
     var sort = "&sort=number_of_user_reviews:desc";
 
