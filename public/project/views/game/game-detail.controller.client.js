@@ -11,12 +11,14 @@
         vm.submitReview = submitReview;
         vm.viewProfile = viewProfile;
         vm.deleteReview = deleteReview;
+        vm.getYoutubeURL = getYoutubeURL;
+
 
         vm.currentUser = $rootScope.currentUser;
         vm.gameId = $routeParams.gameId;
 
         function init() {
-
+            vm.videos = 1;
             GameService
                 .getGameById(vm.gameId)
                 .then(
@@ -34,11 +36,51 @@
                          .split('</table>')
                          .join('</table></div>');
                          }*/
+                        //console.log(vm.game);
+
+                        //For GB vidoes
+                        /*var videos = vm.game.videos;
+                        videos.splice(5);
+                        return GameService
+                            .getVideos(videos);*/
+
+                        return GameService
+                            .searchIGDBGame(vm.game.name);
+
+
                     },
                     function (error) {
                         vm.error = error.status;
                     }
+                )
+                .then(
+                    function (response) {
+                        var games = response.data.games;
+                        //console.log(games);
+                        return GameService
+                                .getIGDBGame(games[0].id);
+                    }
+                )
+                .then(
+                    function (response) {
+                        vm.videos = response.data.game.videos;
+                        //console.log(vm.IGDBGame);
+                    }
                 );
+            //For GB videos
+                /*.then(
+                    function (response) {
+
+                        vm.gameVideos = [];
+                        for(var i in response){
+                            vm.gameVideos.push(response[i].data.results);
+                        }
+                        console.log(vm.gameVideos);
+                    },
+                    function (error) {
+                        console.log("error getting videos");
+                    }
+                );*/
 
             vm.liked = false;
             if(vm.currentUser){
@@ -79,8 +121,15 @@
                         console.log("game is not stored");
                     }
                 );
+
         }
         init();
+
+
+        function getYoutubeURL(youtubeId) {
+            var url = "https://www.youtube.com/embed/"+youtubeId;
+            return $sce.trustAsResourceUrl(url);
+        }
 
         function getSafeHtml(desc) {
             return $sce.trustAsHtml(desc);

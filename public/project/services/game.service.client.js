@@ -103,7 +103,10 @@
             getGameById: getGameById,
             searchGames: searchGames,
             storeGame: storeGame,
-            findStoredGameById: findStoredGameById
+            findStoredGameById: findStoredGameById,
+            getVideos: getVideos,
+            searchIGDBGame: searchIGDBGame,
+            getIGDBGame: getIGDBGame
         };
         return api;
 
@@ -163,5 +166,38 @@
 
             return $http.get(url);
         }
+
+        function getVideos(videos){
+            var url = urlBase
+                .replace("API_KEY", key)
+                .replace("RESOURCE", "video/VIDEOID");
+
+            var promiseArray = [];
+            var results = [];
+
+            for(var i in videos){
+                var id = videos[i].id;
+                promiseArray
+                    .push($http.jsonp(url.replace("VIDEOID", id))
+                        .success(function (response) {
+                            //console.log(response);
+                            results.push(response);
+                        }));
+            }
+            return $q.all(promiseArray);
+
+            //return $http.jsonp(url);
+        }
+
+        function searchIGDBGame(gameName) {
+            var url = "https://crossorigin.me/https://www.igdb.com/api/v1/games/search?token=nqfTe348L9jQMzWCeMKzVjjltsoj3K6Yku4Aq9ERvf4&q="+gameName;
+            return $http.get(url);
+        }
+
+        function getIGDBGame(gameId) {
+            var gameURL = "https://crossorigin.me/https://www.igdb.com/api/v1/games/"+gameId+"?token=nqfTe348L9jQMzWCeMKzVjjltsoj3K6Yku4Aq9ERvf4";
+            return $http.get(gameURL);
+        }
+
     }
 })();

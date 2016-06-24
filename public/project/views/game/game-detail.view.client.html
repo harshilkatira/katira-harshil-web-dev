@@ -3,106 +3,120 @@
         {{model.error}}
     </div>
     <!--{{model.game}}-->
-
-    <div class="panel panel-default">
-        <div class="panel-heading panel-heading-custom">
-            <div class="row">
-                <div class="col-xs-4 col-md-3 v-center">
-                    <img class="img-responsive img-thumbnail" src="{{model.game.image.medium_url}}">
-                </div><!--
-                --><div class="col-xs-6 col-md-7 panel-title v-center text-center">
-                <h2>{{model.game.name}}</h2>
-            </div><!--
-               --><div class="col-xs-2 col-md-2 panel-title v-center text-center">
-                <a href="" ng-click="model.clickLike()" ng-show="!model.liked"><i class="fa fa-thumbs-o-up fa-2x"></i></a>
-                <a href="" ng-click="model.unlikeGame()" ng-show="model.liked"><i class="fa fa-thumbs-o-down fa-2x"></i></a>
-                <br>
-            </div>
-            </div>
-        </div>
-        <!--<div class="panel panel-default">
+    <div class="col-md-9">
+        <div class="panel panel-default">
             <div class="panel-heading panel-heading-custom">
                 <div class="row">
-                    <div class="col-xs-4 v-center">
-                        <img class="img-responsive img-thumbnail detail-heading-img" src='{{model.game.image.medium_url}}'>
+                    <div class="col-xs-4 col-md-3 v-center">
+                        <img class="img-responsive img-thumbnail" src="{{model.game.image.medium_url}}">
+                    </div><!--
+                --><div class="col-xs-6 col-md-7 panel-title v-center text-center">
+                    <h2>{{model.game.name}}</h2>
+                </div><!--
+               --><div class="col-xs-2 col-md-2 panel-title v-center text-center">
+                    <a href="" ng-click="model.clickLike()" ng-show="!model.liked"><i class="fa fa-thumbs-o-up fa-2x"></i></a>
+                    <a href="" ng-click="model.unlikeGame()" ng-show="model.liked"><i class="fa fa-thumbs-o-down fa-2x"></i></a>
+                    <br>
+                </div>
+                </div>
+            </div>
+            <!--<div class="panel panel-default">
+                <div class="panel-heading panel-heading-custom">
+                    <div class="row">
+                        <div class="col-xs-4 v-center">
+                            <img class="img-responsive img-thumbnail detail-heading-img" src='{{model.game.image.medium_url}}'>
+                        </div>&lt;!&ndash;
+                        &ndash;&gt;<div class="col-xs-6 panel-title v-center">
+                        <h3>{{model.game.name}}</h3>
                     </div>&lt;!&ndash;
-                    &ndash;&gt;<div class="col-xs-6 panel-title v-center">
-                    <h3>{{model.game.name}}</h3>
-                </div>&lt;!&ndash;
-                   &ndash;&gt;<div class="col-xs-2 panel-title v-center">
-                        <span ng-click="model.clickLike()"
-                              class="btn btn-block">
-                            <i ng-class="{'btn-green': liked}" class="fa fa-thumbs-o-up fa-lg"></i>
-                        </span>
-                </div>
-                </div>
-            </div>-->
-        <div class="panel-body">
-            <h5 class="well">{{model.game.deck}}</h5>
-            <!--<div class="panel">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Game WIKI</h3>
-                </div>
-                <div class="panel-body">
-                    <div id="description" ng-bind-html="model.getSafeHtml(model.game.description)"></div>
-                </div>
-            </div>-->
+                       &ndash;&gt;<div class="col-xs-2 panel-title v-center">
+                            <span ng-click="model.clickLike()"
+                                  class="btn btn-block">
+                                <i ng-class="{'btn-green': liked}" class="fa fa-thumbs-o-up fa-lg"></i>
+                            </span>
+                    </div>
+                    </div>
+                </div>-->
+            <div class="panel-body">
+                <h5 class="well">{{model.game.deck}}</h5>
+                <!--<div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Game WIKI</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div id="description" ng-bind-html="model.getSafeHtml(model.game.description)"></div>
+                    </div>
+                </div>-->
 
 
-            <h4>Reviews:</h4>
-            <hr/>
-            <div class="media" ng-repeat="review in model.reviewList">
-                <a class="pull-left" href="" ng-click="model.viewProfile(review.user._id)">
-                    <img class="media-object img-thumbnail detail-review-img" ng-src="{{review.user.image}}" src="http://placehold.it/64x64" alt="">
-                </a>
-                <div class="media-body">
-                    <h4 class="media-heading">
-                        <span>{{review.title}}</span>
+                <h4>Reviews:</h4>
+                <hr/>
+                <div class="media" ng-repeat="review in model.reviewList">
+                    <a class="pull-left" href="" ng-click="model.viewProfile(review.user._id)">
+                        <img class="media-object img-thumbnail detail-review-img" ng-src="{{review.user.image}}" src="http://placehold.it/64x64" alt="">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <span>{{review.title}}</span>
+                            <p>
+                                <small><a href="" ng-click="model.viewProfile(review.user._id)">{{review.user.username}}</a> : <span ng-bind="review.timestamp | date:'EEE, MMM-dd yyyy'"></span></small>
+                            </p>
+                        </h4>
                         <p>
-                            <small><a href="" ng-click="model.viewProfile(review.user._id)">{{review.user.username}}</a> : <span ng-bind="review.timestamp | date:'EEE, MMM-dd yyyy'"></span></small>
+                            <ng-rating ng-model="review.rating"
+                                       editable="false">
+                            </ng-rating>
                         </p>
-                    </h4>
-                    <p>
-                        <ng-rating ng-model="review.rating"
-                                   editable="false">
-                        </ng-rating>
-                    </p>
-                    <h6>{{review.comment}}</h6>
+                        <h6>{{review.comment}}</h6>
                     <span class="pull-right" ng-if="model.currentUser._id === review.user._id || model.currentUser.role === 'admin'">
                         <a href="" ng-click="model.deleteReview(review._id)" class="btn btn-danger">Delete</a>
                     </span>
 
-                </div>
-                <hr/>
-            </div>
-
-            <div class="well">
-                <h4>Write a Review:</h4>
-                <p>
-                    <ng-rating ng-model="model.review.rating"
-                               editable="model.currentUser != null">
-                    </ng-rating>
-                </p>
-                <form role="form">
-                    <div class="form-group">
-                        <input type="text"
-                               ng-model="model.review.title"
-                               placeholder="Review Title"
-                               class="form-control" ng-disabled="!model.currentUser">
                     </div>
-                    <div class="form-group">
+                    <hr/>
+                </div>
+
+                <div class="well">
+                    <h4>Write a Review:</h4>
+                    <p>
+                        <ng-rating ng-model="model.review.rating"
+                                   editable="model.currentUser != null">
+                        </ng-rating>
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text"
+                                   ng-model="model.review.title"
+                                   placeholder="Review Title"
+                                   class="form-control" ng-disabled="!model.currentUser">
+                        </div>
+                        <div class="form-group">
                     <textarea ng-model="model.review.comment"
                               placeholder="Review Comments"
                               rows="3"
                               class="form-control" ng-disabled="!model.currentUser">
                     </textarea>
-                    </div>
-                    <a ng-click="model.submitReview(model.review)" class="btn btn-primary" ng-disabled="!model.currentUser">Submit</a>
-                </form>
+                        </div>
+                        <a ng-click="model.submitReview(model.review)" class="btn btn-primary" ng-disabled="!model.currentUser">Submit</a>
+                    </form>
+                </div>
             </div>
         </div>
-
     </div>
+
+    <div class="col-md-3">
+        <div class="well text-center">
+            <div>Game Videos</div>
+            <hr/>
+            <div ng-if="!model.videos" >
+                No Videos
+            </div>
+            <div ng-repeat="vid in model.videos" class="well youtube-widget">
+                <iframe width="100%" ng-src="{{model.getYoutubeURL(vid.uid)}}" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
 </div>
 <!--<div class="row nav">
     <div class="col-xs-12" style="margin: 0px;padding: 0px;">
