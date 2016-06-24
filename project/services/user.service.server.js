@@ -343,6 +343,15 @@ module.exports = function (app, models, userModel, passport) {
             .then(
                 function (stats) {
                     //console.log(stats);
+                    return reviewModel
+                        .deleteUserFromReview(userId)
+                },
+                function (error) {
+                    res.statusCode(404).send(error);
+                }
+            )
+            .then(
+                function (stats) {
                     res.send(200);
                 },
                 function (error) {

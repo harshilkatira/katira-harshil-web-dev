@@ -10,7 +10,8 @@ module.exports = function () {
         getAllReviewsByUserId: getAllReviewsByUserId,
         updateReview: updateReview,
         deleteReview: deleteReview,
-        updateUserImage: updateUserImage
+        updateUserImage: updateUserImage,
+        deleteUserFromReview: deleteUserFromReview
     };
     return api;
 
@@ -45,6 +46,14 @@ module.exports = function () {
                 "user.image": imageUrl
             }
         });
+    }
+
+    function deleteUserFromReview(userId) {
+        return Review.update({"user._id": userId},{
+            $set: {
+                user: {}
+            }
+        })
     }
 
 };
