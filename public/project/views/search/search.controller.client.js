@@ -11,7 +11,7 @@
         vm.searchText = $routeParams.searchText;
         vm.showSpinnerBottom = false;
         vm.pageNo = 1;
-        vm.games = [];
+        //vm.games = [];
 
         function init() {
             GameService
@@ -20,7 +20,7 @@
                     function (response) {
                         vm.games = response.data.results;
                         vm.pageNo = ((response.data.offset)/(response.data.limit)) + 2;
-                        console.log(response.data);
+                        //console.log(response.data);
                     },
                     function (error) {
                         vm.games = error.status;
@@ -46,9 +46,10 @@
                     function (response) {
                         vm.games = vm.games.concat(response.data.results);
                         vm.pageNo = ((response.data.offset)/(response.data.limit)) + 2;
-                        vm.showSpinnerBottom = true;
+                        vm.showSpinnerBottom = false;
                     },
                     function (error) {
+                        vm.showSpinnerBottom = false;
                         console.log("error getting more data");
                     }
                 );

@@ -52,6 +52,7 @@
                         vm.showSpinnerBottom = false;
                     },
                     function (error) {
+                        vm.showSpinnerBottom = false;
                         console.log("error getting more data");
                     }
                 );
