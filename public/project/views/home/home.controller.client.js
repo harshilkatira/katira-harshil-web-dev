@@ -10,12 +10,14 @@
 
         vm.showSpinnerBottom = false;
         vm.offset = 0;
+        vm.called = false;
 
         function init() {
             GameService
                 .getPopularGamesList(vm.offset)
                 .then(
                     function (response) {
+                        //vm.games = response.results;
                         vm.games = response.data.results;
                         vm.offset = vm.offset + vm.games.length;
                     },
@@ -31,19 +33,23 @@
             var body = document.body, html = document.documentElement;
             var docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
             windowBottom = windowHeight + window.pageYOffset;
-            if (windowBottom >= docHeight) {
+            var x = windowBottom + (0.02*windowBottom);
+            if (x >= docHeight && !vm.called) {
+                x = 0;
                 vm.showSpinnerBottom = true;
                 getMoreResults();
             }});
 
         function getMoreResults() {
+            vm.called = true;
             GameService
                 .getPopularGamesList(vm.offset)
                 .then(
                     function (response) {
+                        vm.called = false;
                         vm.games = vm.games.concat(response.data.results);
                         vm.offset = vm.offset + vm.games.length;
-                        vm.showSpinnerBottom = true;
+                        vm.showSpinnerBottom = false;
                     },
                     function (error) {
                         console.log("error getting more data");
@@ -52,16 +58,16 @@
         }
 
         /*function searchGames(searchText) {
-            GameService
-                .searchGames(searchText)
-                .then(
-                    function (response) {
-                        vm.games = response.data.results;
-                    },
-                    function (error) {
-                        vm.games = error.status;
-                    }
-                );
-        }*/
+         GameService
+         .searchGames(searchText)
+         .then(
+         function (response) {
+         vm.games = response.data.results;
+         },
+         function (error) {
+         vm.games = error.status;
+         }
+         );
+         }*/
     }
 })();
