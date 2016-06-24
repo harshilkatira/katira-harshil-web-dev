@@ -81,7 +81,7 @@
         }
 
         function error(error) {
-            vm.error = error;
+            vm.error = "Error creating/updating user";
         }
     }
 })();

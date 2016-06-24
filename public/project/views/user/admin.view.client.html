@@ -42,8 +42,12 @@
                            ng-model="model.inputUser.lastName">
                 </td>
                 <td>
-                    <input type="text" class="form-control" id="roles" placeholder="gamer/admin"
-                           ng-model="model.inputUser.role">
+                    <select ng-model="model.inputUser.role" class="form-control">
+                        <option value="gamer">gamer</option>
+                        <option value="admin">admin</option>
+                    </select>
+                    <!-- <input type="text" class="form-control" id="roles" placeholder="gamer/admin"
+                                ng-model="model.inputUser.role">-->
                 </td>
                 <td>
                     <a href="" ng-click="model.add(model.inputUser)"
