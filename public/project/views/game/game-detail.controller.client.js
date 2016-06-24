@@ -93,11 +93,7 @@
                 }
             }
 
-            vm.review = {
-                rating:0,
-                title:"",
-                comment:""
-            };
+            //vm.review = {};
 
             vm.reviewList = [];
             ReviewService
@@ -195,26 +191,32 @@
         }
 
         function submitReview(review) {
-            if (vm.currentUser) {
+            if (review) {
+                vm.reviewError = "";
+                if (vm.currentUser) {
 
-                if (vm.storedGame) {
-                    saveReview();
+                    if (vm.storedGame) {
+                        saveReview();
+                    }
+                    else {
+                        storeTheGame()
+                            .then(
+                                function (response) {
+                                    vm.storedGame = response.data;
+                                    saveReview();
+                                },
+                                function (error) {
+                                    console.log("unable to store game");
+                                }
+                            );
+                    }
                 }
                 else {
-                    storeTheGame()
-                        .then(
-                            function (response) {
-                                vm.storedGame = response.data;
-                                saveReview();
-                            },
-                            function (error) {
-                                console.log("unable to store game");
-                            }
-                        );
+                    vm.error = "Please login to post review"
                 }
             }
-            else {
-                vm.error = "Please login to post review"
+            else{
+                vm.reviewError = "Please enter a review"
             }
         }
 
@@ -243,7 +245,7 @@
                     function (response) {
                         var newReview = response.data;
                         vm.reviewList.push(newReview);
-                        vm.review = {};
+                        vm.review = undefined;
                     },
                     function (error) {
                         vm.review = {};

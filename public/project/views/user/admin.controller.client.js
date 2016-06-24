@@ -3,14 +3,21 @@
         .module("GamersBay")
         .controller("AdminController", AdminController);
 
-    function AdminController(UserService) {
+    function AdminController($location, $rootScope, UserService) {
         var vm = this;
         vm.remove = remove;
         vm.update = update;
         vm.add = add;
         vm.select = select;
-        
+
+        var user = $rootScope.currentUser;
+
+
         function init() {
+            if(!user){
+                $location.url("/login");
+            }
+
             vm.selected = false;
             UserService
                 .findAllUsers()

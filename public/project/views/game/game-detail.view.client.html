@@ -78,6 +78,9 @@
 
                 <div class="well">
                     <h4>Write a Review:</h4>
+                    <div ng-if="model.reviewError" class="alert alert-danger review-err">
+                        {{model.reviewError}}
+                    </div>
                     <p>
                         <ng-rating ng-model="model.review.rating"
                                    editable="model.currentUser != null">
@@ -88,17 +91,18 @@
                             <input type="text"
                                    ng-model="model.review.title"
                                    placeholder="Review Title"
-                                   class="form-control" ng-disabled="!model.currentUser">
+                                   class="form-control" ng-disabled="!model.currentUser" ng-required="true">
                         </div>
                         <div class="form-group">
                     <textarea ng-model="model.review.comment"
                               placeholder="Review Comments"
                               rows="3"
-                              class="form-control" ng-disabled="!model.currentUser">
+                              class="form-control" ng-disabled="!model.currentUser" ng-required="true">
                     </textarea>
                         </div>
                         <a href="" ng-click="model.submitReview(model.review)" class="btn btn-primary" ng-disabled="!model.currentUser">Submit</a>
                     </form>
+
                 </div>
             </div>
         </div>
