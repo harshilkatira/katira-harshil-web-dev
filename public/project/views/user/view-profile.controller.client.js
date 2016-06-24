@@ -18,6 +18,11 @@
         vm.onlyData = false;
 
         function init() {
+
+            if(vm.userId === vm.currentUser._id){
+                $location.url("/user");
+            }
+
             UserService
                 .findUserById(vm.userId)
                 .then(function (response) {
