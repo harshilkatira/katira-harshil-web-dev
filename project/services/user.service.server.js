@@ -194,16 +194,33 @@ module.exports = function (app, models, userModel, passport) {
      }*/
 
     function createUser(req, res) {
-        var user = req.body;
-
+        var username = req.body.username;
+        var password = req.body.password;
         userModel
-            .createUser(user)
+            .findUserByUsername(username)
             .then(
                 function (user) {
-                    res.json(user);
+                    if(user){
+                        res.status(400).send("Username already in use");
+                    }
+                    else{
+                        req.body.password = bcrypt.hashSync(req.body.password);
+                        return userModel
+                            .createUser(req.body);
+                    }
                 },
                 function (error) {
-                    res.statusCode(400).send(error);
+                    res.status(400).send(error);
+                }
+            )
+            .then(
+                function (user) {
+                    if(user){
+                        res.json(user);
+                    }
+                },
+                function (error) {
+                    res.status(400).send(error);
                 }
             );
     }

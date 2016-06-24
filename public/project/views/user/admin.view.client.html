@@ -2,7 +2,81 @@
     <div ng-if="model.error" class="alert alert-danger">
         {{model.error}}
     </div>
-    <div class="well well-sm">
+    <h1 class="page-header">Admin</h1>
+    <h2 class="sub-header">Manage Users</h2>
 
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr class="theadrow">
+                <th class="nowrap">
+                    Username
+                </th>
+                <th>Password</th>
+                <th class="nowrap">
+                    First Name
+                </th>
+                <th class="nowrap">
+                    Last Name
+                </th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="forms-input-row">
+                <td>
+                    <input type="text" class="form-control" id="username" placeholder="username"
+                           ng-model="model.inputUser.username" ng-disabled="model.selected">
+                </td>
+                <td>
+                    <input type="password" class="form-control" id="password" placeholder="password"
+                           ng-model="model.inputUser.password">
+                </td>
+                <td>
+                    <input type="text" class="form-control" id="firstName" placeholder="First Name"
+                           ng-model="model.inputUser.firstName">
+                </td>
+                <td>
+                    <input type="text" class="form-control" id="lastName" placeholder="Last Name"
+                           ng-model="model.inputUser.lastName">
+                </td>
+                <td>
+                    <input type="text" class="form-control" id="roles" placeholder="gamer/admin"
+                           ng-model="model.inputUser.role">
+                </td>
+                <td>
+                    <a href="" ng-click="model.add(model.inputUser)"
+                       ng-show="!model.selected"><span
+                            class="glyphicon glyphicon-plus plusicon pull-left" aria-hidden="true"></span>
+                    </a>
+                    <a href="" ng-click="model.update(model.inputUser)"
+                       ng-hide="!model.selected"><span
+                            class="glyphicon glyphicon-ok okicon pull-right" aria-hidden="true"></span>
+                    </a>
+                </td>
+            </tr>
+            <tr ng-repeat="u in model.users">
+                <td>{{u.username}}</td>
+                <td>&nbsp;</td>
+                <td>{{u.firstName}}</td>
+                <td>{{u.lastName}}</td>
+                <td>{{u.role}}</td>
+                <td>
+                    <a href="" ng-click="model.remove(u)"><span
+                            class="glyphicon glyphicon-remove removeicon pull-left"
+                            aria-hidden="true"></span>
+                    </a>
+                    <a href="" ng-click="model.select(u)"><span
+                            class="glyphicon glyphicon-cog pencilicon pull-right" aria-hidden="true"></span>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
+
 </div>
+
+<!--Reference: https://github.com/bansalp/webdev/blob/master/public/project/client/views/admin/admin.view.html-->
+

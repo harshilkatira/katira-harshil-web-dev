@@ -33,7 +33,7 @@
             var body = document.body, html = document.documentElement;
             var docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
             windowBottom = windowHeight + window.pageYOffset;
-            var x = windowBottom + (0.02*windowBottom);
+            var x = windowBottom + (0.2*windowBottom);
             if (x >= docHeight && !vm.called) {
                 x = 0;
                 vm.showSpinnerBottom = true;
