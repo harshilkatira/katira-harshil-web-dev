@@ -13,7 +13,8 @@ module.exports = function () {
         updateUser: updateUser,
         deleteUser: deleteUser,
         deleteImage: deleteImage,
-        findAllUsers: findAllUsers
+        findAllUsers: findAllUsers,
+        findUserByGoogleId: findUserByGoogleId
     };
     return api;
 
@@ -60,5 +61,9 @@ module.exports = function () {
 
     function findAllUsers() {
         return User.find();
+    }
+    
+    function findUserByGoogleId(profileId) {
+        return User.findOne({"google.id": profileId});
     }
 };
