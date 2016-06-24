@@ -68,7 +68,7 @@
                         </ng-rating>
                     </p>
                     <h6>{{review.comment}}</h6>
-                    <span class="pull-right" ng-if="model.currentUser._id === review.user._id">
+                    <span class="pull-right" ng-if="model.currentUser._id === review.user._id || model.currentUser.role === 'admin'">
                         <a href="" ng-click="model.deleteReview(review._id)" class="btn btn-danger">Delete</a>
                     </span>
 
