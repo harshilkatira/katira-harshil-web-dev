@@ -18,8 +18,14 @@
                 .searchGames(vm.searchText, vm.pageNo)
                 .then(
                     function (response) {
-                        vm.games = response.data.results;
-                        vm.pageNo = ((response.data.offset)/(response.data.limit)) + 2;
+                        if(response.data.results.length>0) {
+                            vm.games = response.data.results;
+                            vm.pageNo = ((response.data.offset) / (response.data.limit)) + 2;
+                        }
+                        else{
+                            vm.info = "No results found!";
+                            vm.games = [];
+                        }
                         //console.log(response.data);
                     },
                     function (error) {
@@ -58,12 +64,20 @@
         function searchGames() {
             vm.games = [];
             vm.pageNo = 1;
+
+
             GameService
                 .searchGames(vm.searchText, vm.pageNo)
                 .then(
                     function (response) {
-                        vm.games = response.data.results;
-                        vm.pageNo = ((response.data.offset)/(response.data.limit)) + 2;
+                        if(response.data.results.length > 0) {
+                            vm.games = response.data.results;
+                            vm.pageNo = ((response.data.offset) / (response.data.limit)) + 2;
+                        }
+                        else{
+                            vm.info = "No results found!";
+                            vm.games = [];
+                        }
                     },
                     function (error) {
                         console.log("Error searching games");

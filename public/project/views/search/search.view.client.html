@@ -16,6 +16,9 @@
             <i class="fa fa-refresh fa-spin fa-3x fa-fw" aria-hidden="true"></i>
             <span class="sr-only">Refreshing...</span>
         </div>
+        <div ng-show="model.info" class="text-center">
+            {{model.info}}
+        </div>
         <div ng-repeat="game in model.games" class="col-sm-6 col-md-4">
             <div class="thumbnail well fix-ht">
                 <div class="caption">
