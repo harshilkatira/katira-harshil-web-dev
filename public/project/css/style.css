@@ -23,7 +23,13 @@ body {
     background: #ffffff;
     border-radius: 15px;
 }
-#description a{
+.description-container{
+    font-weight: normal;
+}
+.description-container figure{
+    text-align: -webkit-center;
+}
+.description a{
     pointer-events: none;
     cursor: default;
     color: black;

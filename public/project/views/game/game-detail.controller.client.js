@@ -24,10 +24,11 @@
                 .then(
                     function (response) {
                         vm.game = response.data.results;
-                        /*if(vm.game.description) {
+
+                        if(vm.game.description) {
                          vm.game.description = vm.game.description
                          .split('<img')
-                         .join('<img class="img-responsive col-xs-12"');
+                         .join('<img class="img-responsive"');
                          vm.game.description = vm.game.description
                          .split('<table')
                          .join('<div class="table-responsive">' +
@@ -35,14 +36,14 @@
                          vm.game.description = vm.game.description
                          .split('</table>')
                          .join('</table></div>');
-                         }*/
+                         }
                         //console.log(vm.game);
 
                         //For GB vidoes
                         /*var videos = vm.game.videos;
-                        videos.splice(5);
-                        return GameService
-                            .getVideos(videos);*/
+                         videos.splice(5);
+                         return GameService
+                         .getVideos(videos);*/
 
                         return GameService
                             .searchIGDBGame(vm.game.name);
@@ -58,7 +59,7 @@
                         var games = response.data.games;
                         //console.log(games);
                         return GameService
-                                .getIGDBGame(games[0].id);
+                            .getIGDBGame(games[0].id);
                     }
                 )
                 .then(
@@ -84,19 +85,19 @@
                     }
                 );
             //For GB videos
-                /*.then(
-                    function (response) {
+            /*.then(
+             function (response) {
 
-                        vm.gameVideos = [];
-                        for(var i in response){
-                            vm.gameVideos.push(response[i].data.results);
-                        }
-                        console.log(vm.gameVideos);
-                    },
-                    function (error) {
-                        console.log("error getting videos");
-                    }
-                );*/
+             vm.gameVideos = [];
+             for(var i in response){
+             vm.gameVideos.push(response[i].data.results);
+             }
+             console.log(vm.gameVideos);
+             },
+             function (error) {
+             console.log("error getting videos");
+             }
+             );*/
 
             vm.liked = false;
             if(vm.currentUser){
@@ -144,7 +145,7 @@
         }
 
         function getSafeHtml(desc) {
-            return $sce.trustAsHtml(desc);
+            return $sce.trustAsHtml(divTag);
         }
 
         function clickLike() {
