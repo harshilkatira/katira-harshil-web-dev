@@ -7,13 +7,16 @@
         <div class="panel panel-default">
             <div class="panel-heading panel-heading-custom">
                 <div class="row">
-                    <div class="col-xs-4 col-md-3 v-center">
+                    <div class="col-xs-12 visible-xs v-center text-center">
+                        <img class="img-responsive img-thumbnail" src="{{model.game.image.small_url}}">
+                    </div><!--
+                --><div class="col-sm-3 hidden-xs v-center text-center">
                         <img class="img-responsive img-thumbnail" src="{{model.game.image.medium_url}}">
                     </div><!--
-                --><div class="col-xs-6 col-md-7 panel-title v-center text-center">
+                --><div class="col-xs-12 col-sm-7 panel-title v-center text-center">
                     <h2>{{model.game.name}}</h2>
                 </div><!--
-               --><div class="col-xs-2 col-md-2 panel-title v-center text-center">
+               --><div class="col-xs-12 col-sm-2 panel-title v-center text-center">
                     <a href="" ng-click="model.clickLike()" ng-show="!model.liked"><i class="fa fa-thumbs-o-up fa-2x"></i></a>
                     <a href="" ng-click="model.unlikeGame()" ng-show="model.liked"><i class="fa fa-thumbs-o-down fa-2x"></i></a>
                     <br>
