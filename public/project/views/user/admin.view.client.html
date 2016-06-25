@@ -61,7 +61,7 @@
                 </td>
             </tr>
             <tr ng-repeat="u in model.users">
-                <td>{{u.username}}</td>
+                <td><a href="#/user/{{u._id}}">{{u.username}}</a></td>
                 <td>&nbsp;</td>
                 <td>{{u.firstName}}</td>
                 <td>{{u.lastName}}</td>
