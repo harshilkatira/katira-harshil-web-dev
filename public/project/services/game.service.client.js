@@ -106,7 +106,8 @@
             findStoredGameById: findStoredGameById,
             getVideos: getVideos,
             searchIGDBGame: searchIGDBGame,
-            getIGDBGame: getIGDBGame
+            getIGDBGame: getIGDBGame,
+            findSimilarGames: findSimilarGames
         };
         return api;
 
@@ -187,6 +188,27 @@
             return $q.all(promiseArray);
 
             //return $http.jsonp(url);
+        }
+
+        function findSimilarGames(similarGames) {
+            var url = urlBase
+                .replace("API_KEY", key)
+                .replace("RESOURCE", "game/GAMEID");
+
+            url = url + "&field_list=id,image,name";
+
+            var promiseArray = [];
+            var results = [];
+            for(var i in similarGames){
+                var id = similarGames[i].id;
+                promiseArray
+                    .push($http.jsonp(url.replace("GAMEID", id))
+                        .success(function (response) {
+                            //console.log(response);
+                            results.push(response);
+                        }));
+            }
+            return $q.all(promiseArray);
         }
 
         function searchIGDBGame(gameName) {

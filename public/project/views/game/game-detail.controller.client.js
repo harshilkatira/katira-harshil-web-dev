@@ -50,7 +50,7 @@
 
                     },
                     function (error) {
-                        vm.error = error.status;
+                        vm.error = "Unable to find game data";
                     }
                 )
                 .then(
@@ -65,6 +65,19 @@
                     function (response) {
                         vm.videos = response.data.game.videos;
                         //console.log(vm.IGDBGame);
+                        if(vm.game.similar_games.length > 0) {
+                            return GameService
+                                .findSimilarGames(vm.game.similar_games)
+                        }
+                    }
+                )
+                .then(
+                    function (response) {
+                        vm.similarGames = [];
+                        for(var i in response){
+                            vm.similarGames.push(response[i].data.results);
+                        }
+                        //console.log(vm.similarGames);
                     }
                 );
             //For GB videos
