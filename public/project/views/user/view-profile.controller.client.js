@@ -19,7 +19,7 @@
 
         function init() {
 
-            if(vm.userId === vm.currentUser._id){
+            if(vm.currentUser && vm.userId === vm.currentUser._id){
                 $location.url("/user");
             }
 
