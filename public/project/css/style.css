@@ -188,6 +188,9 @@ p {
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
 }
+.search-bar{
+    margin-top: 5px;
+}
 /*
 .game-name{
     overflow: hidden;
