@@ -41,8 +41,8 @@ hr {
     margin: 0;
 }*/
 .fix-ht{
-    min-height: 540px;
-    height: 540px;
+    min-height: 550px;
+    height: 550px;
 }
 .fix-similar-ht{
     min-height: 300px;
@@ -207,4 +207,7 @@ p {
 .similar-games-well{
     height: 1500px;
     overflow-y: scroll;
+}
+.liked{
+    color: limegreen;
 }

@@ -66,13 +66,16 @@
                         vm.videos = response.data.game.videos;
                         //console.log(vm.IGDBGame);
                         if(vm.game.similar_games.length > 0) {
+                            var similarGames = vm.game.similar_games;
+                            similarGames.splice(5);
                             return GameService
-                                .findSimilarGames(vm.game.similar_games)
+                                .findSimilarGames(similarGames)
                         }
                     }
                 )
                 .then(
                     function (response) {
+
                         vm.similarGames = [];
                         for(var i in response){
                             vm.similarGames.push(response[i].data.results);
