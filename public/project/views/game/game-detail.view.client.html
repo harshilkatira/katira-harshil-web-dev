@@ -50,7 +50,13 @@
                         <div id="description" ng-bind-html="model.getSafeHtml(model.game.description)"></div>
                     </div>
                 </div>-->
-
+                <div ng-if="model.videos" class="well text-center">
+                    <div>Game Trailer</div>
+                    <hr/>
+                    <div ng-repeat="vid in model.videos|limitTo:1" class="well youtube-widget">
+                        <iframe width="100%" ng-src="{{model.getYoutubeURL(vid.uid)}}" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
 
                 <h4>Reviews:</h4>
                 <hr/>
@@ -111,15 +117,19 @@
         </div>
     </div>
 
-    <div class="col-md-3">
-        <div class="well text-center">
-            <div>Game Videos</div>
+    <div class="col-xs-12 col-md-3">
+        <div ng-if="model.similarGames" class="well text-center similar-games-well">
+            <div>Similar Games</div>
             <hr/>
-            <div ng-if="!model.videos" >
-                No Videos
-            </div>
-            <div ng-repeat="vid in model.videos" class="well youtube-widget">
-                <iframe width="100%" ng-src="{{model.getYoutubeURL(vid.uid)}}" frameborder="0" allowfullscreen></iframe>
+            <div ng-repeat="sg in model.similarGames">
+                <a href="#/game/{{sg.id}}">
+                    <div>
+                        <img class="img-responsive thumbnail-img"
+                             ng-src="{{sg.image.medium_url}}"
+                             src="http://play.freeciv.org/blog/wp-content/themes/flymag/images/placeholder.png">
+                    </div>
+                    <h4 class="similar-game-name">{{sg.name}}</h4>
+                </a>
             </div>
         </div>
     </div>

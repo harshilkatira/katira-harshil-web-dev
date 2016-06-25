@@ -44,6 +44,10 @@ hr {
     min-height: 540px;
     height: 540px;
 }
+.fix-similar-ht{
+    min-height: 300px;
+    height: 300px;
+}
 .thumbnail-img{
     min-height: 350px;
     height: 350px!important;
@@ -196,4 +200,11 @@ p {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+.similar-game-name{
+    color: darkslategrey;
+}
+.similar-games-well{
+    height: 1500px;
+    overflow-y: scroll;
 }
