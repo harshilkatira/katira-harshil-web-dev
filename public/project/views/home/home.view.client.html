@@ -20,11 +20,17 @@
             <div class="thumbnail well fix-ht">
                 <div class="caption">
                     <a href="#/game/{{game.id}}">
-                        <img class="img-responsive thumbnail-img" ng-src="{{game.image.medium_url}}">
-                        <h3 class="game-name" title="{{game.name}}">{{game.name}}</h3>
+                        <img class="img-responsive thumbnail-img"
+                             ng-src="{{game.image.medium_url}}"
+                             src="http://play.freeciv.org/blog/wp-content/themes/flymag/images/placeholder.png">
+                        <h2 class="game-name" title="{{game.name}}">{{game.name}}</h2>
                     </a>
                     <h5 class="deck-text block-with-text">{{game.deck}}</h5>
-
+                    <!--<div>
+                        <span class="label label-primary platform-label" ng-repeat="platform in game.platforms|limitTo:3">
+                            {{platform.name}}
+                        </span>
+                    </div>-->
                 </div>
             </div>
         </div>

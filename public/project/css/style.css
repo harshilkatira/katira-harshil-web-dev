@@ -41,8 +41,8 @@ hr {
     margin: 0;
 }*/
 .fix-ht{
-    min-height: 560px;
-    height: 560px;
+    min-height: 540px;
+    height: 540px;
 }
 .thumbnail-img{
     min-height: 350px;
@@ -191,9 +191,9 @@ p {
 .search-bar{
     margin-top: 5px;
 }
-/*
 .game-name{
+    color: darkslategrey;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-}*/
+}
