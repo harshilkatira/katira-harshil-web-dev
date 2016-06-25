@@ -67,7 +67,7 @@
                         //console.log(vm.IGDBGame);
                         if(vm.game.similar_games.length > 0) {
                             var similarGames = vm.game.similar_games;
-                            similarGames.splice(5);
+                            similarGames.splice(4);
                             return GameService
                                 .findSimilarGames(similarGames)
                         }

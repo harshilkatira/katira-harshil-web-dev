@@ -4,61 +4,61 @@
     </div>
     <!--{{model.game}}-->
     <!--<div class="col-md-9">-->
-        <div class="panel panel-default">
+    <div class="panel panel-default">
+        <div class="panel-heading panel-heading-custom">
+            <div class="row">
+                <div class="col-xs-12 visible-xs v-center text-center">
+                    <img class="img-responsive img-thumbnail" src="{{model.game.image.small_url}}">
+                </div><!--
+                --><div class="col-sm-3 hidden-xs v-center text-center">
+                <img class="img-responsive img-thumbnail" src="{{model.game.image.medium_url}}">
+            </div><!--
+                --><div class="col-xs-12 col-sm-7 panel-title v-center text-center">
+                <h2>{{model.game.name}}</h2>
+            </div><!--
+               --><div class="col-xs-12 col-sm-2 panel-title v-center text-center">
+                <a href="" ng-click="model.clickLike()" ng-show="!model.liked"><i class="fa fa-thumbs-o-up fa-2x liked"></i></a>
+                <a href="" ng-click="model.unlikeGame()" ng-show="model.liked"><i class="fa fa-thumbs-o-up fa-2x"></i></a>
+                <br>
+            </div>
+            </div>
+        </div>
+        <!--<div class="panel panel-default">
             <div class="panel-heading panel-heading-custom">
                 <div class="row">
-                    <div class="col-xs-12 visible-xs v-center text-center">
-                        <img class="img-responsive img-thumbnail" src="{{model.game.image.small_url}}">
-                    </div><!--
-                --><div class="col-sm-3 hidden-xs v-center text-center">
-                        <img class="img-responsive img-thumbnail" src="{{model.game.image.medium_url}}">
-                    </div><!--
-                --><div class="col-xs-12 col-sm-7 panel-title v-center text-center">
-                    <h2>{{model.game.name}}</h2>
-                </div><!--
-               --><div class="col-xs-12 col-sm-2 panel-title v-center text-center">
-                    <a href="" ng-click="model.clickLike()" ng-show="!model.liked"><i class="fa fa-thumbs-o-up fa-2x liked"></i></a>
-                    <a href="" ng-click="model.unlikeGame()" ng-show="model.liked"><i class="fa fa-thumbs-o-up fa-2x"></i></a>
-                    <br>
+                    <div class="col-xs-4 v-center">
+                        <img class="img-responsive img-thumbnail detail-heading-img" src='{{model.game.image.medium_url}}'>
+                    </div>&lt;!&ndash;
+                    &ndash;&gt;<div class="col-xs-6 panel-title v-center">
+                    <h3>{{model.game.name}}</h3>
+                </div>&lt;!&ndash;
+                   &ndash;&gt;<div class="col-xs-2 panel-title v-center">
+                        <span ng-click="model.clickLike()"
+                              class="btn btn-block">
+                            <i ng-class="{'btn-green': liked}" class="fa fa-thumbs-o-up fa-lg"></i>
+                        </span>
                 </div>
+                </div>
+            </div>-->
+        <div class="panel-body">
+            <h5 class="well">{{model.game.deck}}</h5>
+            <!--<div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Game WIKI</h3>
+                </div>
+                <div class="panel-body">
+                    <div id="description" ng-bind-html="model.getSafeHtml(model.game.description)"></div>
+                </div>
+            </div>-->
+            <div ng-if="model.videos">
+                <h3>Game Trailer</h3>
+                <hr/>
+                <div ng-repeat="vid in model.videos|limitTo:1" class="well youtube-widget">
+                    <iframe width="100%" ng-src="{{model.getYoutubeURL(vid.uid)}}" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
-            <!--<div class="panel panel-default">
-                <div class="panel-heading panel-heading-custom">
-                    <div class="row">
-                        <div class="col-xs-4 v-center">
-                            <img class="img-responsive img-thumbnail detail-heading-img" src='{{model.game.image.medium_url}}'>
-                        </div>&lt;!&ndash;
-                        &ndash;&gt;<div class="col-xs-6 panel-title v-center">
-                        <h3>{{model.game.name}}</h3>
-                    </div>&lt;!&ndash;
-                       &ndash;&gt;<div class="col-xs-2 panel-title v-center">
-                            <span ng-click="model.clickLike()"
-                                  class="btn btn-block">
-                                <i ng-class="{'btn-green': liked}" class="fa fa-thumbs-o-up fa-lg"></i>
-                            </span>
-                    </div>
-                    </div>
-                </div>-->
-            <div class="panel-body">
-                <h5 class="well">{{model.game.deck}}</h5>
-                <!--<div class="panel">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Game WIKI</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div id="description" ng-bind-html="model.getSafeHtml(model.game.description)"></div>
-                    </div>
-                </div>-->
-                <div ng-if="model.videos" class="well text-center">
-                    <div>Game Trailer</div>
-                    <hr/>
-                    <div ng-repeat="vid in model.videos|limitTo:1" class="well youtube-widget">
-                        <iframe width="100%" ng-src="{{model.getYoutubeURL(vid.uid)}}" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <h4>Reviews:</h4>
+            <div>
+                <h3>Reviews:</h3>
                 <hr/>
                 <div class="media" ng-repeat="review in model.reviewList">
                     <a class="pull-left" href="" ng-click="model.viewProfile(review.user._id)">
@@ -114,26 +114,33 @@
 
                 </div>
             </div>
+
+            <div ng-if="model.similarGames">
+                <h3>Similar Games</h3>
+                <hr/>
+                <div class="row text-center">
+                    <div class="col-xs-12 col-md-3" ng-repeat="sg in model.similarGames">
+                        <div class="well fix-similar-ht">
+                            <a href="#/game/{{sg.id}}">
+                                <img class="img-responsive thumbnail-img"
+                                     ng-src="{{sg.image.medium_url}}"
+                                     src="http://play.freeciv.org/blog/wp-content/themes/flymag/images/placeholder.png">
+                                <div class="caption">
+                                    <h4 class="similar-game-name">
+                                        {{sg.name}}
+                                    </h4>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
+
+    </div>
     <!--</div>-->
 
-    <!--<div class="col-xs-12 col-md-3">
-        <div ng-if="model.similarGames" class="well text-center similar-games-well">
-            <div>Similar Games</div>
-            <hr/>
-            <div ng-repeat="sg in model.similarGames">
-                <a href="#/game/{{sg.id}}">
-                    <div>
-                        <img class="img-responsive thumbnail-img"
-                             ng-src="{{sg.image.medium_url}}"
-                             src="http://play.freeciv.org/blog/wp-content/themes/flymag/images/placeholder.png">
-                    </div>
-                    <h4 class="similar-game-name">{{sg.name}}</h4>
-                </a>
-            </div>
-        </div>
-    </div>
--->
 </div>
 <!--<div class="row nav">
     <div class="col-xs-12" style="margin: 0px;padding: 0px;">
