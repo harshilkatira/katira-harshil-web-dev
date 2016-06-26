@@ -14,9 +14,13 @@
         "expected_release_year,franchises,genres,id,image,name,original_release_date," +
         "platforms,publishers";
 
+    var gamesFieldList = "&field_list=deck,id,image,name,platforms";
+
     var limit = "&limit=6";
 
-    var sort = "&sort=number_of_user_reviews:desc";
+    var popularSort = "&sort=number_of_user_reviews:desc";
+
+    var platformSort = "&sort=date_added:desc";
 
     var search = "&query=QUERY&resources=game";
 
@@ -100,6 +104,7 @@
     function GameService($http, $q) {
         var api = {
             getPopularGamesList: getPopularGamesList,
+            searchGamesByPlatformId: searchGamesByPlatformId,
             getGameById: getGameById,
             searchGames: searchGames,
             storeGame: storeGame,
@@ -116,7 +121,7 @@
                 .replace("API_KEY", key)
                 .replace("RESOURCE", "games");
 
-            url = url + limit + sort + searchFieldList + offset;
+            url = url + limit + popularSort + gamesFieldList + offset;
 
             url = url.replace("OFFSET", offsetValue);
 
@@ -130,6 +135,22 @@
             // else {
                 return $http.jsonp(url);
             //}
+        }
+        
+        function searchGamesByPlatformId(platformId, offsetValue) {
+            var url = urlBase
+                .replace("API_KEY", key)
+                .replace("RESOURCE", "games");
+
+            url = url + limit + platformSort+ gamesFieldList + offset;
+
+            url = url.replace("OFFSET", offsetValue);
+
+            url = url + "&platforms="+platformId;
+
+            console.log(url);
+
+            return $http.jsonp(url);
         }
 
         function getGameById(gameId) {

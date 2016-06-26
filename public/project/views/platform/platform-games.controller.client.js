@@ -1,9 +1,9 @@
 (function () {
     angular
         .module("GamersBay")
-        .controller("HomeController", HomeController);
+        .controller("PlatformController", PlatformController);
 
-    function HomeController($window, $location, GameService, PlatformService) {
+    function PlatformController($window, $location, $routeParams, GameService, PlatformService) {
         var vm = this;
         //vm.searchGames = searchGames;
         //vm.getMoreResults = getMoreResults;
@@ -13,21 +13,42 @@
         vm.offset = 0;
         vm.called = false;
 
+        vm.platformId = $routeParams.platformId;
+
         function init() {
 
             vm.platforms = PlatformService.getAllPlatforms();
 
+            vm.platform = PlatformService.getPlatformById(vm.platformId);
+
+            console.log(vm.platform);
+
+            if(!vm.platform){
+                vm.error = "Unable to find games for this platform."
+            }
+            /*GameService
+             .getPopularGamesList(vm.offset)
+             .then(
+             function (response) {
+             //vm.games = response.results;
+             vm.games = response.data.results;
+             vm.offset = vm.offset + vm.games.length;
+             vm.showSpinnerBottom = false;
+             },
+             function (error) {
+             vm.games = error.status;
+             }
+             );*/
             GameService
-                .getPopularGamesList(vm.offset)
+                .searchGamesByPlatformId(vm.platformId, vm.offset)
                 .then(
                     function (response) {
-                        //vm.games = response.results;
                         vm.games = response.data.results;
                         vm.offset = vm.offset + vm.games.length;
                         vm.showSpinnerBottom = false;
                     },
                     function (error) {
-                        vm.games = error.status;
+                        vm.error = "No games found."
                     }
                 );
         }
@@ -48,7 +69,7 @@
         function getMoreResults() {
             vm.called = true;
             GameService
-                .getPopularGamesList(vm.offset)
+                .searchGamesByPlatformId(vm.platformId, vm.offset)
                 .then(
                     function (response) {
                         vm.called = false;
@@ -62,34 +83,5 @@
                     }
                 );
         }
-        
-       /* function searchGamesByPlatform(platformId) {
-            vm.games = [];
-            vm.showSpinnerBottom = true;
-            GameService
-                .searchGamesByPlatform(platformId)
-                .then(
-                    function (response) {
-                        vm.games = response.data.results;
-                        vm.showSpinnerBottom = false;
-                    },
-                    function (error) {
-                        vm.error = "No games found!"
-                    }
-                );
-        }*/
-
-        /*function searchGames(searchText) {
-         GameService
-         .searchGames(searchText)
-         .then(
-         function (response) {
-         vm.games = response.data.results;
-         },
-         function (error) {
-         vm.games = error.status;
-         }
-         );
-         }*/
     }
 })();

@@ -3,7 +3,7 @@
         .module("GamersBay")
         .controller("SearchController", SearchController);
 
-    function SearchController($window, $routeParams, GameService) {
+    function SearchController($window, $routeParams, GameService, PlatformService) {
         var vm = this;
         vm.searchGames = searchGames;
         vm.getMoreResults = getMoreResults;
@@ -14,6 +14,9 @@
         //vm.games = [];
 
         function init() {
+
+            vm.platforms = PlatformService.getAllPlatforms();
+
             GameService
                 .searchGames(vm.searchText, vm.pageNo)
                 .then(

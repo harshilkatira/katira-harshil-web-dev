@@ -1,9 +1,20 @@
 <div class="container">
     <!-- Search bar -->
+    <!--<span class="form-control">
+        <select>
+            <option value="">All Platforms</option>
+            <option>PS4</option>
+            <option>XBOX 360</option>
+            <option>PC</option>
+            <option>PS3</option>
+            <option>XBOX ONE</option>
+            <option>OTHER..</option>
+        </select>
+    </span>-->
     <div class="input-group search-bar">
-        <input ng-model="model.searchText" type="text" class="form-control" placeholder="Look up your favourite Game!">
+        <input ng-model="searchText" type="text" class="form-control" placeholder="Look up your favourite Game!">
     <span class="input-group-btn">
-        <a ng-click="model.searchGames(searchText)" class="btn btn-default" type="button">
+        <a href="#/search/{{searchText}}" class="btn btn-primary" type="button">
             <span class="glyphicon glyphicon-search"></span>
         </a>
     </span>
@@ -36,15 +47,12 @@
     </div>
 
     <div class="row">
-        <h3 class="home-title">Search Results</h3>
+        <h3 class="home-title">Games for "{{model.platform.name}}" gamers</h3>
         <hr/>
-        <div ng-show="!model.games" class="text-center">
+        <!--<div ng-show="!model.games" class="text-center">
             <i class="fa fa-refresh fa-spin fa-3x fa-fw" aria-hidden="true"></i>
             <span class="sr-only">Refreshing...</span>
-        </div>
-        <div ng-show="model.info" class="text-center">
-            {{model.info}}
-        </div>
+        </div>-->
         <div ng-repeat="game in model.games" class="col-sm-6 col-md-4">
             <div class="thumbnail well fix-ht">
                 <div class="caption">
@@ -55,7 +63,7 @@
                         <h2 class="game-name" title="{{game.name}}">{{game.name}}</h2>
                     </a>
                     <h5 class="deck-text block-with-text">{{game.deck}}</h5>
-                    <!--<div class="platform-holder">
+                    <!--<div>
                         <span class="label label-primary platform-label" ng-repeat="platform in game.platforms|limitTo:3">
                             {{platform.name}}
                         </span>

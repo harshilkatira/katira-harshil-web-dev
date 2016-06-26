@@ -22,24 +22,26 @@
 
     <div class="well platform-well">
         <div ng-click="showOptions = !showOptions">
-            <h4 class="platform-title">Browse Games by Platform..
-            <span class="pull-right">
-                <i ng-show="!showOptions" class="fa fa-chevron-right" aria-hidden="true"></i>
-                <i ng-show="showOptions" class="fa fa-chevron-down" aria-hidden="true"></i>
-            </span>
-            </h4>
+            <a href="">
+                <h4 class="platform-title">Browse Games by Platform..
+                <span class="pull-right">
+                    <i ng-show="!showOptions" class="fa fa-chevron-right" aria-hidden="true"></i>
+                    <i ng-show="showOptions" class="fa fa-chevron-down" aria-hidden="true"></i>
+                </span>
+                </h4>
+            </a>
         </div>
         <hr ng-show="showOptions" />
         <div ng-init="showOptions = false" ng-show="showOptions" class="row">
             <div class="col-md-4" ng-repeat="platform in model.platforms">
-                <div class="thumbnail">
+                <a href="#/games/platform/{{platform.id}}" class="thumbnail">
                     <img class="platform-image" ng-src="{{platform.image.icon_url}}">
                     <div class="caption text-center">
                         <h3>
                             {{platform.name}}
                         </h3>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>

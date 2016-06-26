@@ -55,6 +55,14 @@
                     getLoggedIn: getLoggedIn
                 }
             })
+            .when("/games/platform/:platformId", {
+                templateUrl: "views/platform/platform-games.view.client.html",
+                controller: "PlatformController",
+                controllerAs: "model",
+                resolve: {
+                    getLoggedIn: getLoggedIn
+                }
+            })
             .when("/admin", {
                 templateUrl: "views/user/admin.view.client.html",
                 controller: "AdminController",
