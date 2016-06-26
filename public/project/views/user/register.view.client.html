@@ -2,90 +2,94 @@
     <div ng-if="model.error" class="alert alert-danger">
         {{model.error}}
     </div>
-    <div class="well well-sm user-well">
-        <form>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="well well-sm user-well col-md-6">
+            <form>
 
-            <h3 class="text-center well-header">Register</h3>
+                <h3 class="text-center well-header">Register</h3>
 
-            <div class="input-group">
+                <div class="input-group">
             <span class="input-group-addon" id="firstName">
                 <i class="fa fa-pencil-square-o"></i>
             </span>
-                <input ng-model="model.user.firstName"
-                       type="text"
-                       placeholder="First Name"
-                       class="form-control"
-                       aria-describedby="firstName"
-                       required />
-            </div>
+                    <input ng-model="model.user.firstName"
+                           type="text"
+                           placeholder="First Name"
+                           class="form-control"
+                           aria-describedby="firstName"
+                           required />
+                </div>
 
-            <div class="input-group">
+                <div class="input-group">
             <span class="input-group-addon" id="lastName">
                 <i class="fa fa-pencil-square-o"></i>
             </span>
-                <input ng-model="model.user.lastName"
-                       type="text"
-                       placeholder="Last Name"
-                       class="form-control"
-                       aria-describedby="lastName"
-                       required />
-            </div>
+                    <input ng-model="model.user.lastName"
+                           type="text"
+                           placeholder="Last Name"
+                           class="form-control"
+                           aria-describedby="lastName"
+                           required />
+                </div>
 
-            <div class="input-group">
+                <div class="input-group">
             <span class="input-group-addon" id="username">
                 <i class="fa fa-user"></i>
             </span>
-                <input ng-model="model.user.username"
-                       type="text"
-                       placeholder="Username"
-                       class="form-control"
-                       aria-describedby="username"
-                       required />
-            </div>
+                    <input ng-model="model.user.username"
+                           type="text"
+                           placeholder="Username"
+                           class="form-control"
+                           aria-describedby="username"
+                           required />
+                </div>
 
-            <div class="input-group">
+                <div class="input-group">
             <span class="input-group-addon" id="password">
                 <i class="fa fa-lock"></i>
             </span>
-                <input ng-model="model.user.password"
-                       type="password"
-                       placeholder="Password"
-                       class="form-control"
-                       aria-describedby="password"
-                       required />
-            </div>
+                    <input ng-model="model.user.password"
+                           type="password"
+                           placeholder="Password"
+                           class="form-control"
+                           aria-describedby="password"
+                           required />
+                </div>
 
-            <div class="input-group">
+                <div class="input-group">
             <span class="input-group-addon" id="verifyPassword">
                 <i class="fa fa-lock"></i>
             </span>
-                <input ng-model="model.user.verifyPassword"
-                       type="password"
-                       placeholder="Verify Password"
-                       class="form-control"
-                       aria-describedby="verifyPassword"
-                       required />
-            </div>
+                    <input ng-model="model.user.verifyPassword"
+                           type="password"
+                           placeholder="Verify Password"
+                           class="form-control"
+                           aria-describedby="verifyPassword"
+                           required />
+                </div>
 
-            <div class="input-group">
+                <div class="input-group">
             <span class="input-group-addon" id="email">
                 <i class="fa fa-envelope-o"></i>
             </span>
-                <input ng-model="model.user.email"
-                       type="email"
-                       placeholder="Email"
-                       class="form-control"
-                       aria-describedby="email"
-                       required />
-            </div>
+                    <input ng-model="model.user.email"
+                           type="email"
+                           placeholder="Email"
+                           class="form-control"
+                           aria-describedby="email"
+                           required />
+                </div>
 
-            <a href="" class="btn btn-success btn-block"
-               ng-click="model.register(model.user)"
-               role="button">Register</a>
+                <a href="" class="btn btn-success btn-block"
+                   ng-click="model.register(model.user)"
+                   role="button">Register</a>
 
-            <div class="row href-text">
-                <a href="#/login">Already a member?</a>
-            </div>
-        </form>
+                <div class="row href-text">
+                    <a href="#/login">Already a member?</a>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
     </div>
 </div>

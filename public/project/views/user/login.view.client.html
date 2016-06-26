@@ -2,47 +2,51 @@
     <div ng-if="model.error" class="alert alert-danger">
         {{model.error}}
     </div>
-    <div class="well well-sm user-well">
-        <form>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="well well-sm user-well col-md-6">
+            <form>
 
-            <h3 class="text-center well-header">Login</h3>
+                <h3 class="text-center well-header">Login</h3>
 
-            <div class="input-group">
+                <div class="input-group">
             <span class="input-group-addon" id="username">
                 <i class="fa fa-envelope-o"></i>
             </span>
-                <input ng-model="username"
-                       type="text"
-                       placeholder="Username"
-                       class="form-control"
-                       aria-describedby="username"
-                       required />
-            </div>
+                    <input ng-model="username"
+                           type="text"
+                           placeholder="Username"
+                           class="form-control"
+                           aria-describedby="username"
+                           required />
+                </div>
 
-            <div class="input-group">
+                <div class="input-group">
             <span class="input-group-addon" id="password">
                 <i class="fa fa-lock"></i>
             </span>
-                <input ng-model="password"
-                       type="password"
-                       placeholder="Password"
-                       class="form-control"
-                       aria-describedby="password"
-                       required />
-            </div>
+                    <input ng-model="password"
+                           type="password"
+                           placeholder="Password"
+                           class="form-control"
+                           aria-describedby="password"
+                           required />
+                </div>
 
-            <a href="" class="btn btn-success btn-block"
-               ng-click="model.login(username,password)"
-               role="button">Login</a>
+                <a href="" class="btn btn-success btn-block"
+                   ng-click="model.login(username,password)"
+                   role="button">Login</a>
 
-            <a href="/auth/google" class="btn btn-primary btn-block">
-                <span class="fa fa-google-plus"></span>
-                Google
-            </a>
+                <a href="/auth/google" class="btn btn-primary btn-block">
+                    <span class="fa fa-google-plus"></span>
+                    Google
+                </a>
 
-            <div class="row href-text">
-                <a href="#/register">Not a member?</a>
-            </div>
-        </form>
+                <div class="row href-text">
+                    <a href="#/register">Not a member?</a>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
     </div>
 </div>
