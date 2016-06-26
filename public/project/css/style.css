@@ -25,6 +25,7 @@ body {
 }
 .description-container{
     font-weight: normal;
+    padding: 0 25px 0 25px;
 }
 .description-container figure{
     text-align: -webkit-center;
@@ -69,6 +70,10 @@ a,a:hover {
 }
 .panel-default{
     border-radius: 15px;
+}
+.panel-default .panel-heading{
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
 .detail-heading-img {
     //border: 3px solid #cccccc;
@@ -233,4 +238,27 @@ p {
 }
 .wiki-title{
     color: black;
+}
+.list-group .list-content{
+    font-weight: normal;
+}
+.flex-heights{
+    display: flex;
+    align-items: stretch;
+    flex-flow: row wrap;
+}
+.block{
+    display: block;
+    font-weight: normal;
+}
+.row .well .flex-heights{
+    padding: 15px;
+}
+.game-info{
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+.game-info-heading{
+    text-decoration: underline;
 }

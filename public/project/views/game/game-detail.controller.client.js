@@ -12,7 +12,8 @@
         vm.viewProfile = viewProfile;
         vm.deleteReview = deleteReview;
         vm.getYoutubeURL = getYoutubeURL;
-
+        vm.toJsDate = toJsDate;
+        vm.toJsExpectedDate = toJsExpectedDate;
 
         vm.currentUser = $rootScope.currentUser;
         vm.gameId = $routeParams.gameId;
@@ -66,7 +67,7 @@
                     function (response) {
                         vm.videos = response.data.game.videos;
                         //console.log(vm.IGDBGame);
-                        if(vm.game.similar_games.length > 0) {
+                        if(vm.game.similar_games && vm.game.similar_games.length > 0) {
                             var similarGames = vm.game.similar_games;
                             similarGames.splice(4);
                             return GameService
@@ -137,6 +138,19 @@
 
         }
         init();
+
+        function toJsDate(str){
+            if(!str)return null;
+            return new Date(str);
+        }
+
+        function toJsExpectedDate(month,year) {
+            if(!month || !year) return null;
+            var d = new Date();
+            d.setMonth(month);
+            d.setFullYear(year);
+            return d;
+        }
 
 
         function getYoutubeURL(youtubeId) {

@@ -24,22 +24,98 @@
             </div>
         </div>
         <div class="panel-body">
+            <div ng-if="model.game.original_release_date">Release Date: {{model.toJsDate(model.game.original_release_date) | date: 'mediumDate'}}</div>
+            <div ng-if="!model.game.original_release_date">Expected Release Date: {{model.toJsExpectedDate(model.game.expected_release_month,model.game.expected_release_year) | date: 'MMM, yyyy'}}</div>
             <h5 class="well">{{model.game.deck}}</h5>
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Game Information</div>
+            <div class="row panel-body fix-heights game-info">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <h4 class="game-info-heading">Platforms</h4>
+                    <p class="block" ng-repeat="platform in model.game.platforms">{{platform.name}}</p>
+                </div>
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <h4 class="game-info-heading">Developers</h4>
+                    <p class="block" ng-repeat="developer in model.game.developers">{{developer.name}}</p>
+                </div>
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <h4 class="game-info-heading">Publishers</h4>
+                    <p class="block" ng-repeat="publisher in model.game.publishers">{{publisher.name}}</p>
+                </div>
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <h4 class="game-info-heading">Genres</h4>
+                    <p class="block" ng-repeat="genre in model.game.genres">{{genre.name}}</p>
+                </div>
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <h4 class="game-info-heading">Themes</h4>
+                    <p class="block" ng-repeat="theme in model.game.themes">{{theme.name}}</p>
+                </div>
+                <div ng-if="model.game.franchises.length > 0" class="col-md-3 col-sm-4 col-xs-6">
+                    <h4 class="game-info-heading">Franchise</h4>
+                    <p class="block" ng-repeat="franchise in model.game.franchises">{{franchise.name}}</p>
+                </div>
+            </div>
+            </div>
+
+            <!--<div class="row">
+                <div class="col-md-3">
+                    &lt;!&ndash;<h4>Platforms:</h4>&ndash;&gt;
+                    <ul class="list-group">
+                        <li class="list-group-item"><i class="fa fa-caret-square-o-right" aria-hidden="true"></i> &nbsp; Platforms:</li>
+                        <li class="list-group-item list-content"  ng-repeat="platform in model.game.platforms|limitTo:4">
+                            {{platform.name}}
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    &lt;!&ndash;<h4>Developers:</h4>&ndash;&gt;
+                    <ul class="list-group">
+                        <li class="list-group-item"><i class="fa fa-caret-square-o-right" aria-hidden="true"></i> &nbsp; Developers:</li>
+                        <li class="list-group-item list-content"  ng-repeat="developer in model.game.developers|limitTo:4">
+                            {{developer.name}}
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    &lt;!&ndash;<h4>Genres:</h4>&ndash;&gt;
+                    <ul class="list-group">
+                        <li class="list-group-item"><i class="fa fa-caret-square-o-right" aria-hidden="true"></i> &nbsp; Genres:</li>
+                        <li class="list-group-item list-content"  ng-repeat="genre in model.game.genres|limitTo:4">
+                            {{genre.name}}
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    &lt;!&ndash;<h4>Themes:</h4>&ndash;&gt;
+                    <ul class="list-group">
+                        <li class="list-group-item"><i class="fa fa-caret-square-o-right" aria-hidden="true"></i> &nbsp; Themes:</li>
+                        <li class="list-group-item list-content"  ng-repeat="theme in model.game.themes|limitTo:4">
+                            {{theme.name}}
+                        </li>
+                    </ul>
+                </div>
+            </div>-->
+
             <div ng-click="showOptions = !showOptions" ng-if="model.game.description">
                 <a href="">
-                <h3 class="wiki-title">
-                    Game WIKI
+                    <h3 class="wiki-title">
+                        Game WIKI
                     <span class="pull-right">
                     <i ng-show="!showOptions" class="fa fa-chevron-right" aria-hidden="true"></i>
                     <i ng-show="showOptions" class="fa fa-chevron-down" aria-hidden="true"></i>
-                </span>
-                </h3>
-                    </a>
+                    </span>
+                    </h3>
+                </a>
                 <hr/>
                 <div ng-init="showOptions = false" ng-show="showOptions" class="text-justify description-container">
                     <div class="description" ng-bind-html="model.game.description"></div>
                 </div>
             </div>
+
+            <!--Platform,genre,franchise,developers-->
+
             <div ng-if="model.videos.length > 0">
                 <h3>Game Trailer</h3>
                 <hr/>
@@ -47,6 +123,7 @@
                     <iframe width="100%" ng-src="{{model.getYoutubeURL(vid.uid)}}" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
+
             <div>
                 <h3>Reviews:</h3>
                 <hr/>

@@ -10,9 +10,9 @@
         "expected_release_year,franchises,genres,id,image,images,name,original_release_date," +
         "platforms,publishers,similar_games,themes,videos";
 
-    var searchFieldList = "&field_list=deck,developers,expected_release_month," +
+    /*var searchFieldList = "&field_list=deck,developers,expected_release_month," +
         "expected_release_year,franchises,genres,id,image,name,original_release_date," +
-        "platforms,publishers";
+        "platforms,publishers";*/
 
     var gamesFieldList = "&field_list=deck,id,image,name,platforms";
 
@@ -166,7 +166,7 @@
 
         function searchGames(searchTerm, pageno) {
 
-            var url = urlBase + search + limit + searchFieldList+ page;
+            var url = urlBase + search + limit + gamesFieldList + page;
 
             url = url
                 .replace("API_KEY", key)
