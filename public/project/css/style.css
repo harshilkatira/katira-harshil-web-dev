@@ -217,3 +217,16 @@ p {
 .liked{
     color: limegreen;
 }
+.platform-image{
+    margin-top: 10px;
+}
+.platform-well{
+    padding: 0 10px 0 10px;
+    border-radius: 3px;
+}
+.platform-label{
+    color: #999999;
+}
+.platform-title{
+    font-size: 17px;
+}
