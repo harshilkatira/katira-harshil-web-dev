@@ -8,10 +8,10 @@
         <div class="panel-heading panel-heading-custom">
             <div class="row">
                 <div class="col-xs-12 visible-xs v-center text-center">
-                    <img class="img-responsive img-thumbnail" src="{{model.game.image.small_url}}">
+                    <img class="img-responsive img-thumbnail" src="{{model.game.image.small_url}}" err-src="http://play.freeciv.org/blog/wp-content/themes/flymag/images/placeholder.png">
                 </div><!--
                 --><div class="col-sm-3 hidden-xs v-center text-center">
-                <img class="img-responsive img-thumbnail" src="{{model.game.image.medium_url}}">
+                <img class="img-responsive img-thumbnail" src="{{model.game.image.medium_url}}" err-src="http://play.freeciv.org/blog/wp-content/themes/flymag/images/placeholder.png">
             </div><!--
                 --><div class="col-xs-12 col-sm-7 panel-title v-center text-center">
                 <h2>{{model.game.name}}</h2>
@@ -25,14 +25,22 @@
         </div>
         <div class="panel-body">
             <h5 class="well">{{model.game.deck}}</h5>
-            <div>
-                <h3>Game WIKI</h3>
+            <div ng-click="showOptions = !showOptions" ng-if="model.game.description">
+                <a href="">
+                <h3 class="wiki-title">
+                    Game WIKI
+                    <span class="pull-right">
+                    <i ng-show="!showOptions" class="fa fa-chevron-right" aria-hidden="true"></i>
+                    <i ng-show="showOptions" class="fa fa-chevron-down" aria-hidden="true"></i>
+                </span>
+                </h3>
+                    </a>
                 <hr/>
-                <div class="text-justify description-container">
+                <div ng-init="showOptions = false" ng-show="showOptions" class="text-justify description-container">
                     <div class="description" ng-bind-html="model.game.description"></div>
                 </div>
             </div>
-            <div ng-if="model.videos">
+            <div ng-if="model.videos.length > 0">
                 <h3>Game Trailer</h3>
                 <hr/>
                 <div ng-repeat="vid in model.videos|limitTo:1" class="well youtube-widget">
@@ -106,7 +114,8 @@
                             <a href="#/game/{{sg.id}}">
                                 <img class="img-responsive thumbnail-img"
                                      ng-src="{{sg.image.medium_url}}"
-                                     src="http://play.freeciv.org/blog/wp-content/themes/flymag/images/placeholder.png">
+                                     src="http://play.freeciv.org/blog/wp-content/themes/flymag/images/placeholder.png"
+                                     err-src="http://play.freeciv.org/blog/wp-content/themes/flymag/images/placeholder.png">
                                 <div class="caption">
                                     <h4 class="similar-game-name">
                                         {{sg.name}}

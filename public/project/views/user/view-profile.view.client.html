@@ -189,7 +189,8 @@
                                 <div class="col-md-4" ng-repeat="obj in model.data">
                                     <div class="thumbnail well detail-fix-ht">
                                         <a href="#/game/{{obj._id}}" class="text-center">
-                                            <img class="img-responsive img-thumbnail detail-img" alt="300x300" ng-src="{{obj.image}}">
+                                            <img class="img-responsive img-thumbnail detail-img" alt="300x300" ng-src="{{obj.image}}"
+                                                 err-src="http://play.freeciv.org/blog/wp-content/themes/flymag/images/placeholder.png">
                                             <h4>{{obj.name}}</h4>
                                         </a>
                                     </div>
@@ -221,7 +222,8 @@
                                 <div ng-repeat="review in model.data">
                                     <div class="media">
                                         <a class="pull-left" href="#/game/{{review.game._id}}">
-                                            <img class="media-object img-thumbnail img-responsive review-img" ng-src="{{review.game.image}}">
+                                            <img class="media-object img-thumbnail img-responsive review-img" ng-src="{{review.game.image}}"
+                                                 err-src="http://play.freeciv.org/blog/wp-content/themes/flymag/images/placeholder.png">
                                         </a>
                                         <div class="media-body">
                                             <h4 class="media-heading">
@@ -263,7 +265,8 @@
                                 <div class="col-sm-6 col-md-4" ng-repeat="obj in model.data">
                                     <div class="thumbnail well detail-fix-ht">
                                         <a href="#/game/{{obj._id}}" class="text-center">
-                                            <img class="img-responsive img-thumbnail detail-img" alt="300x300" ng-src="{{obj.image}}">
+                                            <img class="img-responsive img-thumbnail detail-img" alt="300x300" ng-src="{{obj.image}}"
+                                                 err-src="http://play.freeciv.org/blog/wp-content/themes/flymag/images/placeholder.png">
                                             <h4>{{obj.name}}</h4>
                                         </a>
                                     </div>
@@ -295,7 +298,8 @@
                                 <div ng-repeat="review in model.data">
                                     <div class="media">
                                         <a class="pull-left" href="#/game/{{review.game._id}}">
-                                            <img class="media-object img-thumbnail img-responsive review-img" ng-src="{{review.game.image}}">
+                                            <img class="media-object img-thumbnail img-responsive review-img" ng-src="{{review.game.image}}"
+                                                 err-src="http://play.freeciv.org/blog/wp-content/themes/flymag/images/placeholder.png">
                                         </a>
                                         <div class="media-body">
                                             <h4 class="media-heading">

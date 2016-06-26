@@ -20,7 +20,7 @@
 
     var popularSort = "&sort=number_of_user_reviews:desc";
 
-    var platformSort = "&sort=date_added:desc";
+    var platformSort = "&sort=date_last_updated:desc";
 
     var search = "&query=QUERY&resources=game";
 

@@ -1,3 +1,3 @@
 (function(){
-    angular.module("GamersBay", ["ngRoute", "ngSanitize", "ngRating"]);
+    angular.module("GamersBay", ["ngRoute", "ngSanitize", "ngRating", "gbDirectives"]);
 })();
