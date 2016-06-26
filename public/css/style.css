@@ -1,0 +1,388 @@
+/*General setting*/
+*{
+    font-family: 'Raleway', Helvetica, Arial, sans-serif;
+    font-weight: 300;
+}
+body {
+    font-size: 16px;
+    line-height: 24px;
+    margin: 0 auto;
+}
+h1, h2, h3, h4, h5, h6{
+    font-weight: 600;
+}
+h1 {
+    font-size: 66px;
+    line-height: 72px;
+    margin-top: 48px;
+    margin-bottom: 24px;
+}
+h2 {
+    font-size: 41px;
+    line-height: 48px;
+    margin-top: 48px;
+    margin-bottom: 24px;
+}
+h3 {
+    font-size: 26px;
+    line-height: 48px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+h4 {
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+p, ul, ol, pre, table, blockquote {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+hr {
+    border: 1px solid;
+    margin: -1px 0;
+}
+ul ul, ol ol, ul ol, ol ul {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+b, strong, em, small, code {
+    line-height: 1;
+}
+table{
+    margin: 0;
+    padding: 0;
+}
+sup, sub {
+    vertical-align: baseline;
+    position: relative;
+    top: -0.4em;
+}
+sub {
+    top: 0.4em;
+}
+a{
+    text-decoration: none;
+    outline: none;
+}
+a:hover, a:visited, a:focus, a:active{
+    text-decoration: none;
+    outline: none;
+}
+.container {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+.hover-animate{
+    cursor: pointer;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+.text-right{
+    text-align: right;
+}
+.text-left{
+    text-align: left;
+}
+.text-center{
+    text-align: center;
+}
+.font-weight-m{
+    font-weight: 500;
+}
+.social ul{
+    padding: 0;
+    margin: 12px 0;
+}
+.social li{
+    display: inline-block;
+    list-style: none;
+}
+.home-icons {
+    display: inline-block;
+    font-size: 16px;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    margin: 0px 7px 7px;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 1px;
+    padding-top: 9px;
+}
+.home-icons:first-child{
+    margin-left: 0px;
+}
+.home-icons:hover{
+}
+.btn{
+    border-style: solid;
+    border-width: 1px;
+    padding: 0px 20px;
+    line-height: 38px;
+    font-size: 16px;
+    border-radius: 50px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.width-td{
+    width: 100px;
+}
+.width-td1{
+    width: 150px;
+}
+.title-resume{
+    margin-bottom: 30px;
+}
+.title-contact{
+    margin-bottom: 30px;
+}
+.title-blog{
+    margin-bottom: 0px;
+}
+.btn:hover{
+}
+.btn-color{
+}
+.btn-color:hover{
+}
+.block-grey{
+    width: 100%;
+    border-style: solid;
+    border-width: 1px;
+    padding: 30px;
+}
+.block-grey table{
+    width: 100%;
+}
+.block-grey table td{
+    line-height: 16px;
+    padding-bottom: 18px;
+}
+.border-bottom{
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+.border-top{
+    border-top-width: 1px;
+    border-top-style: solid;
+}
+.border-left{
+    border-left-width: 1px;
+    border-left-style: solid;
+}
+.border-right{
+    border-right-width: 1px;
+    border-right-style: solid;
+}
+.padding-block{
+    padding-top: 48px;
+    padding-bottom: 48px;
+}
+#wraper{
+    border-width: 1px;
+    border-style: solid;
+    margin: 50px auto;
+    width: 1230px;
+}
+.scrollToTop {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    line-height: 40px;
+    text-align: center;
+    position: fixed;
+    bottom: 100px;
+    right: 0px;
+    display: none;
+}
+
+
+/*Home header*/
+.home-header .foto{
+    border-radius: 50%;
+    border-width: 1px;
+    border-style: solid;
+    width: 232px;
+    height: 232px;
+    overflow: hidden;
+    display: inline-block;
+}
+.home-header .foto img{
+    width: 232px;
+    height: 232px;
+}
+.home-header .title{
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+.home-header .sub-title{
+    font-weight: 300;
+    margin: 0;
+    line-height: 34px;
+}
+.home-header  .full-length-photo{
+    margin-top: 24px;
+}
+
+
+/*Menu section*/
+.menu{
+    padding: 48px 0;
+    text-align: center;
+}
+.menu .menu-li{
+    display: inline-block;
+    width: 170px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.menu .menu-li .foto {
+    display: block;
+}
+.menu .menu-li .name{
+    text-underline: none;
+    margin-top: 13px;
+    display: block;
+}
+
+.menu-style1{
+    padding: 48px 0;
+    text-align: center;
+}
+.menu-style1 .menu-li{
+    display: inline-block;
+    position: relative;
+    width: 170px;
+    height: 170px;
+    margin-left: 20px;
+    margin-right: 20px;
+    overflow: hidden;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 50%;
+    border-color: #cccccc;
+}
+.menu-style1 .menu-li .name{
+    text-underline: none;
+    top: 0px;
+    padding-top: 75px;
+    display: block;
+    text-align: center;
+    width: 170px;
+    height: 170px;
+    font-size: 21px;
+    z-index: 3;
+}
+.menu-style1 .menu-li .foto{
+    display: block;
+    overflow: hidden;
+    z-index: 4;
+    position: relative;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+.menu-style1 .menu-li:hover .foto{
+    margin-top: -172px;
+}
+
+.small-menu{
+    margin: 125px 0 40px;
+    position: relative;
+}
+.small-menu .arrow{
+    background: url("../img/arrow.png") left top no-repeat;
+    width: 300px;
+    height: 200px;
+    position: absolute;
+    top: -35px;
+    left: 95px;
+}
+.small-menu .open-menu{
+    font-family: "The Girl Next Door";
+    position: absolute;
+    font-size: 30px;
+    top: 40px;
+    left: 130px;;
+}
+.icons-menu {
+    height: 100px;
+    margin: 0 auto;
+    -webkit-filter: url("#goo");
+    position: relative;
+}
+.icons-menu-button,
+.icons-menu-toggle-button {
+    position: absolute;
+    display: inline-block;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    margin-left: 0;
+    margin-top: 0;
+    text-align: center;
+    border: none;
+    outline: none;
+}
+.icons-menu-button {
+    font-size: 30px;
+    -webkit-transform: scale(0.95, 0.95);
+    transform: scale(0.95, 0.95);
+}
+a.icons-menu-button {
+    border-style: solid;
+    border-width: 1px;
+}
+a.icons-menu-button:hover,
+a.icons-menu-button:focus,
+.icons-menu-toggle-button:hover{
+    border-style: solid;
+    border-width: 1px;
+}
+.icons-menu-toggle-button {
+    z-index: 9;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 20px;
+}
+.icons-menu-items {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.icons-menu-item {
+    display: inline-block;
+}
+
+/*Footer section*/
+.footer{
+    line-height: 36px;
+    padding: 17px 0;
+    border-top-width: 1px;
+    border-top-style: solid;
+}
+.footer a{
+}
+.footer .home-icons{
+}
+.footer a:hover{
+}
+.footer a:hover .home-icons{
+}
+
+/*Profile section*/
+.profile-section{
+    padding-left: 50px;
+    padding-right: 50px;
+}
