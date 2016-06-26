@@ -148,7 +148,7 @@
 
             url = url + "&platforms="+platformId;
 
-            console.log(url);
+            //console.log(url);
 
             return $http.jsonp(url);
         }

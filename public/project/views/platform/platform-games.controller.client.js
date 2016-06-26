@@ -21,7 +21,7 @@
 
             vm.platform = PlatformService.getPlatformById(vm.platformId);
 
-            console.log(vm.platform);
+            //console.log(vm.platform);
 
             if(!vm.platform){
                 vm.error = "Unable to find games for this platform."
