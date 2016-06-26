@@ -284,15 +284,18 @@
                                         </a>
                                         <div class="media-body">
                                             <h4 class="media-heading">
-                                                <a href="#/game/{{review.game._id}}">{{review.title}}</a>
+                                                <a href="#/game/{{review.game._id}}">{{review.game.name}}</a>
                                             </h4>
+                                            <h5 class="media-heading">
+                                                {{review.title}}
+                                            </h5>
                                             <p>
                                                 <ng-rating ng-model="review.rating"
                                                            editable="false">
                                                 </ng-rating>
                                             </p>
                                             <h6>On: <span ng-bind="review.timestamp | date:'EEE, MMM-dd yyyy'"></span></h6>
-                                            <div>{{review.comment}}</div>
+                                            <div class="description-container">{{review.comment}}</div>
                                         </div>
                                     </div>
                                     <hr/>
@@ -354,15 +357,18 @@
                                         </a>
                                         <div class="media-body">
                                             <h4 class="media-heading">
-                                                <a href="#/game/{{review.game._id}}">{{review.title}}</a>
+                                                <a href="#/game/{{review.game._id}}">{{review.game.name}}</a>
                                             </h4>
+                                            <h5 class="media-heading">
+                                                {{review.title}}
+                                            </h5>
                                             <p>
                                                 <ng-rating ng-model="review.rating"
                                                            editable="false">
                                                 </ng-rating>
                                             </p>
                                             <h6>On: <span ng-bind="review.timestamp | date:'EEE, MMM-dd yyyy'"></span></h6>
-                                            <div>{{review.comment}}</div>
+                                            <div class="description-container">{{review.comment}}</div>
                                         </div>
                                     </div>
                                     <hr/>
