@@ -22,7 +22,7 @@
              .then(function (response) {
              vm.user = response.data;
              });*/
-            vm.activeMenu = "My Games";
+            vm.activeMenu = "Liked Games";
             vm.data = vm.currentUser.likedGames;
 
             ReviewService
@@ -59,7 +59,7 @@
                 vm.onlyData = true;
 
             switch (menu){
-                case "My Games":
+                case "Liked Games":
                     vm.data = vm.currentUser.likedGames;
                     break;
                 case "Following":

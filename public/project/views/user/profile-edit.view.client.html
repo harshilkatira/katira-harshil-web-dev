@@ -31,10 +31,10 @@
                             <i class="fa fa-dashboard fa-1x pull-right"></i>
                         </li>
                         <a href="" class="list-group-item text-right"
-                           ng-class="{'active' : model.activeMenu === 'My Games'}"
-                           ng-click="model.setActive('My Games', false)">
+                           ng-class="{'active' : model.activeMenu === 'Liked Games'}"
+                           ng-click="model.setActive('Liked Games', false)">
                             <div>
-                                <span class="pull-left">My Games </span>
+                                <span class="pull-left">Liked Games </span>
                                 <span class="badge">{{model.currentUser.likedGames.length}}</span>
                                 <span class="margin-left">
                                     <i class="fa fa-chevron-right" aria-hidden="true"></i>
@@ -141,9 +141,9 @@
                             <i class="fa fa-dashboard fa-1x pull-right"></i>
                         </li>
                         <a href="" class="list-group-item text-right"
-                           ng-click="model.setActive('My Games', true)">
+                           ng-click="model.setActive('Liked Games', true)">
                             <div>
-                                <span class="pull-left">My Games </span>
+                                <span class="pull-left">Liked Games </span>
                                 <span class="badge">{{model.currentUser.likedGames.length}}</span>
                                 <span class="margin-left">
                                     <i class="fa fa-chevron-right" aria-hidden="true"></i>
@@ -244,7 +244,7 @@
                     <hr/>
                     <div class="row">
                         <div ng-switch="model.activeMenu">
-                            <div ng-switch-when="My Games">
+                            <div ng-switch-when="Liked Games">
                                 <div class="col-md-4" ng-repeat="obj in model.data">
                                     <div class="thumbnail well detail-fix-ht">
                                         <a href="#/game/{{obj._id}}" class="text-center">
@@ -319,7 +319,7 @@
                     <hr/>
                     <div class="row">
                         <div ng-switch="model.activeMenu">
-                            <div ng-switch-when="My Games">
+                            <div ng-switch-when="Liked Games">
                                 <div class="col-sm-6 col-md-4" ng-repeat="obj in model.data">
                                     <div class="thumbnail well detail-fix-ht">
                                         <a href="#/game/{{obj._id}}" class="text-center">
