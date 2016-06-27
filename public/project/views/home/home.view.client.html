@@ -15,7 +15,7 @@
         <h2 class="hidden-xs text-center tagline">Play in your world, Live in ours!</h2>
         <h2 class="visible-xs text-center tagline">Play in your world, <br>Live in ours!</h2>
     <div class="input-group search-bar">
-        <input ng-model="searchText" type="text" class="form-control" placeholder="Look up your favourite Game!">
+        <input ng-model="searchText" type="text" class="form-control" placeholder="Enter a Game name..">
     <span class="input-group-btn">
         <a href="#/search/{{searchText}}" class="btn btn-default" type="button">
             <span class="glyphicon glyphicon-search"></span>
@@ -26,7 +26,7 @@
     <div class="well platform-well">
         <div ng-click="showOptions = !showOptions">
             <a href="">
-                <h4 class="platform-title">Browse Games by Platform..
+                <h4 class="platform-title">Browse by Platform..
                 <span class="pull-right">
                     <i ng-show="!showOptions" class="fa fa-chevron-right" aria-hidden="true"></i>
                     <i ng-show="showOptions" class="fa fa-chevron-down" aria-hidden="true"></i>
