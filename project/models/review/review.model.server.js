@@ -45,7 +45,7 @@ module.exports = function () {
             $set: {
                 "user.image": imageUrl
             }
-        });
+        }, {multi: true});
     }
 
     function deleteUserFromReview(userId) {
