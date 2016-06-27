@@ -28,7 +28,7 @@
                 thumb_url: "http://static.giantbomb.com/uploads/scale_avatar/5/56742/2495936-9012444134_80ba47fd6e_o.jpg",
                 tiny_url: "http://static.giantbomb.com/uploads/square_mini/5/56742/2495936-9012444134_80ba47fd6e_o.jpg"
             },
-            name: "PLAYSTATION 4"
+            name: "PS4"
         },
         {
             id: 94,
@@ -80,7 +80,7 @@
                 thumb_url: "http://static.giantbomb.com/uploads/scale_avatar/0/1992/1426360-logo.jpg",
                 tiny_url: "http://static.giantbomb.com/uploads/square_mini/0/1992/1426360-logo.jpg"
             },
-            name: "PLAYSTATION 3"
+            name: "PS3"
         }];
 
     function PlatformService($http) {
