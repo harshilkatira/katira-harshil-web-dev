@@ -297,7 +297,7 @@
                                                 </ng-rating>
                                             </p>
                                             <h6>On: <span ng-bind="review.timestamp | date:'EEE, MMM-dd yyyy'"></span></h6>
-                                            <div class="description-container">{{review.comment}}</div>
+                                            <div class="review-comment">{{review.comment}}</div>
                                         </div>
                                     </div>
                                     <hr/>
@@ -361,7 +361,7 @@
                                         </a>
                                         <div class="media-body">
                                             <h4 class="media-heading">
-                                                <a href="#/game/{{review.game._id}}">{{review.game.name}}</a>
+                                               <a href="#/game/{{review.game._id}}">{{review.game.name}}</a>
                                             </h4>
                                             <h5 class="media-heading">
                                                 {{review.title}}
@@ -372,7 +372,7 @@
                                                 </ng-rating>
                                             </p>
                                             <h6>On: <span ng-bind="review.timestamp | date:'EEE, MMM-dd yyyy'"></span></h6>
-                                            <div class="description-container">{{review.comment}}</div>
+                                            <div class="review-comment">{{review.comment}}</div>
                                         </div>
                                     </div>
                                     <hr/>

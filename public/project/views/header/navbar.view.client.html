@@ -15,11 +15,11 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <!--<li><a href="#">Link</a></li>-->
-                <li ng-if="currentUser && currentUser.role == 'admin'"><a href="#/admin">Admin</a></li>
-                <li ng-show="currentUser"><a href="#/user">{{currentUser.username}}</a></li>
-                <li ng-show="!currentUser"><a href="#/register">Register</a></li>
-                <li ng-show="!currentUser"><a href="#/login">Login</a></li>
-                <li ng-show="currentUser"><a href="" ng-click="model.logout()">Logout</a></li>
+                <li ng-if="currentUser && currentUser.role == 'admin'"><a href="#/admin"><i class="fa fa-cogs" aria-hidden="true"></i>&nbsp;Admin</a></li>
+                <li ng-show="currentUser"><a href="#/user"><i class="fa fa-user" aria-hidden="true"></i> &nbsp;{{currentUser.username}}</a></li>
+                <li ng-show="!currentUser"><a href="#/register"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;Register</a></li>
+                <li ng-show="!currentUser"><a href="#/login"><i class="fa fa-key" aria-hidden="true"></i> &nbsp;Login</a></li>
+                <li ng-show="currentUser"><a href="" ng-click="model.logout()"><i class="fa fa-power-off" aria-hidden="true"></i> &nbsp;Logout</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
