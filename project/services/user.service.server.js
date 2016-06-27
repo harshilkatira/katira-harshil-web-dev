@@ -351,7 +351,7 @@ module.exports = function (app, models, userModel, passport) {
                     res.json(user);
                 },
                 function (error) {
-                    res.statusCode(404).send(error);
+                    res.send(error);
                 }
             );
     }

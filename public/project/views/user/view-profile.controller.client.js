@@ -25,11 +25,19 @@
 
             UserService
                 .findUserById(vm.userId)
-                .then(function (response) {
-                    vm.user = response.data;
-                    vm.activeMenu = "Liked Games";
-                    vm.data = vm.user.likedGames;
-                });
+                .then(
+                    function (response) {
+                        vm.user = response.data;
+                        if(!vm.user._id){
+                            $location.url("/home");
+                        }
+                        vm.activeMenu = "Liked Games";
+                        vm.data = vm.user.likedGames;
+                    },
+                    function (error) {
+                        $location.url("/home");
+                    }
+                );
 
             vm.following = false;
             if(vm.currentUser) {
