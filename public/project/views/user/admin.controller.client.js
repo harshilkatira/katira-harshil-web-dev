@@ -67,13 +67,16 @@
         function add(user) {
             if(user.username) {
                 UserService
-                    .register(user)
+                    .createUser(user)
                     .then(
                         function (response) {
                             vm.inputUser = {};
                             vm.selected = false;
                             vm.users.push(response.data);
                         }, error);
+            }
+            else{
+                vm.error = "Username is mandatory.";
             }
         }
 

@@ -30,14 +30,14 @@
         }
 
         function createUser(user) {
-            var newUser = {
+            /*var newUser = {
                 username: user.username,
                 password: user.password,
                 firstName: user.firstName,
                 lastName: user.lastName,
                 email: user.email
-            };
-            return $http.post("/project/api/user", newUser);
+            };*/
+            return $http.post("/project/api/user", user);
         }
 
         function login(username, password) {
