@@ -282,4 +282,11 @@ p {
     .detail-spinner {
         padding-top: 200px;
     }
+    .home-controls{
+        padding: 50px;
+    }
+    .tagline {
+        margin-bottom: 40px;
+        font-size: 22px;
+    }
 }
