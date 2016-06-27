@@ -4,7 +4,11 @@
     </div>
     <!--{{model.game}}-->
     <!--<div class="col-md-9">-->
-    <div class="panel panel-default">
+    <div ng-show="model.showSpinner" class="text-center detail-spinner">
+        <i class="fa fa-refresh fa-spin fa-3x fa-fw" aria-hidden="true"></i>
+        <span class="sr-only">Refreshing...</span>
+    </div>
+    <div class="panel panel-default" ng-if="!model.showSpinner">
         <div class="panel-heading panel-heading-custom">
             <div class="row">
                 <div class="col-xs-12 visible-xs v-center text-center">
@@ -186,10 +190,10 @@
                 <h3>Similar Games</h3>
                 <hr/>
                 <div class="row text-center">
-                    <div class="col-xs-12 col-md-3" ng-repeat="sg in model.similarGames">
+                    <div class="col-xs-12 col-md-4" ng-repeat="sg in model.similarGames">
                         <div class="well fix-similar-ht">
                             <a href="#/game/{{sg.id}}">
-                                <img class="img-responsive thumbnail-img center-block"
+                                <img class="img-responsive img-thumbnail thumbnail-img center-block"
                                      ng-src="{{sg.image.medium_url}}"
                                      src="https://www.skylib.com/img/game_placeholder.jpg"
                                      err-src="https://www.skylib.com/img/game_placeholder.jpg">

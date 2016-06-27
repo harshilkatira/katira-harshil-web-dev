@@ -20,6 +20,7 @@
 
         function init() {
             vm.videos = 1;
+            vm.showSpinner = true;
             GameService
                 .getGameById(vm.gameId)
                 .then(
@@ -77,7 +78,7 @@
                 )
                 .then(
                     function (response) {
-
+                        vm.showSpinner = false;
                         vm.similarGames = [];
                         for(var i in response){
                             vm.similarGames.push(response[i].data.results);
