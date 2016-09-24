@@ -276,12 +276,16 @@ p {
     margin-top: 0;
 }
 .detail-spinner {
-    padding-top: 400px;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
 @media only screen and (max-width: 544px) {
-    .detail-spinner {
-        padding-top: 200px;
-    }
     .home-controls{
         padding: 50px;
     }

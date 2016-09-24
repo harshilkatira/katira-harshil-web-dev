@@ -28,7 +28,7 @@
 
     var page = "&page=PAGENO";
 
-    /*var results6 = {
+    var results6 = {
     data:{
         results: [
             {
@@ -99,7 +99,7 @@
             }
         ]
         }
-    };*/
+    };
 
     function GameService($http, $q) {
         var api = {
@@ -125,16 +125,16 @@
 
             url = url.replace("OFFSET", offsetValue);
 
-            // if(offsetValue === 0){
-            //     var deferred = $q.defer();
-            //     setTimeout(function() {
-            //     deferred.resolve(results6);
-            //     }, 1000);
-            //     return deferred.promise;
-            // }
-            // else {
+            if(offsetValue === 0){
+                var deferred = $q.defer();
+                setTimeout(function() {
+                deferred.resolve(results6);
+                }, 1000);
+                return deferred.promise;
+            }
+            else {
                 return $http.jsonp(url);
-            //}
+            }
         }
         
         function searchGamesByPlatformId(platformId, offsetValue) {
